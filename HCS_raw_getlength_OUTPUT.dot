@@ -1,0 +1,13 @@
+digraph "CFG for 'raw_getlength' function" {
+	label="CFG for 'raw_getlength' function";
+
+	Node0x555823269250 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  call void @llvm.dbg.value(metadata %struct.BlockDriverState* %bs, metadata\l... !2857, metadata !DIExpression()), !dbg !2936\l  %opaque = getelementptr inbounds %struct.BlockDriverState,\l... %struct.BlockDriverState* %bs, i64 0, i32 8, !dbg !2937\l  %0 = bitcast i8** %opaque to %struct.BDRVRawState**, !dbg !2937\l  %1 = load %struct.BDRVRawState*, %struct.BDRVRawState** %0, align 8, !dbg\l... !2937\l  call void @llvm.dbg.value(metadata %struct.BDRVRawState* %1, metadata !2858,\l... metadata !DIExpression()), !dbg !2936\l  call void @llvm.dbg.value(metadata %struct.BlockDriverState* %bs, metadata\l... !2938, metadata !DIExpression()), !dbg !2942\l  call void @llvm.dbg.value(metadata %struct.BDRVRawState* %1, metadata !2941,\l... metadata !DIExpression()), !dbg !2942\l  %fd.i = getelementptr inbounds %struct.BDRVRawState, %struct.BDRVRawState*\l... %1, i64 0, i32 0, !dbg !2944\l  %2 = load i32, i32* %fd.i, align 8, !dbg !2944\l  %cmp.inv.i = icmp slt i32 %2, 0, !dbg !2942\l  call void @llvm.dbg.value(metadata i32 undef, metadata !2932, metadata\l... !DIExpression()), !dbg !2936\l  br i1 %cmp.inv.i, label %cleanup, label %if.end, !dbg !2946, !prof !2947\l|{<s0>T|<s1>F}}"];
+	Node0x555823269250:s0 -> Node0x555823276bc0;
+	Node0x555823269250:s1 -> Node0x555823276350;
+	Node0x555823276350 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.end:                                           \l  %call1 = tail call i64 @lseek64(i32 %2, i64 0, i32 2) #18, !dbg !2948\l  call void @llvm.dbg.value(metadata i64 %call1, metadata !2933, metadata\l... !DIExpression()), !dbg !2936\l  %cmp2 = icmp slt i64 %call1, 0, !dbg !2949\l  br i1 %cmp2, label %if.then4, label %cleanup, !dbg !2951, !prof !2947\l|{<s0>T|<s1>F}}"];
+	Node0x555823276350:s0 -> Node0x555823277300;
+	Node0x555823276350:s1 -> Node0x555823276bc0;
+	Node0x555823277300 [shape=record,penwidth=3.0, color="red",label="{if.then4:                                         \l  %call5 = tail call i32* @__errno_location() #19, !dbg !2952\l  %3 = load i32, i32* %call5, align 4, !dbg !2952\l  %sub = sub i32 0, %3, !dbg !2954\l  %conv6 = sext i32 %sub to i64, !dbg !2954\l  br label %cleanup, !dbg !2955\l}"];
+	Node0x555823277300 -> Node0x555823276bc0;
+	Node0x555823276bc0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{cleanup:                                          \l  %retval.0 = phi i64 [ %conv6, %if.then4 ], [ %call1, %if.end ], [ -5, %entry\l... ], !dbg !2936\l  ret i64 %retval.0, !dbg !2956\l}"];
+}

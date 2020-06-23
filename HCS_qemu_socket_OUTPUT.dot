@@ -1,0 +1,16 @@
+digraph "CFG for 'qemu_socket' function" {
+	label="CFG for 'qemu_socket' function";
+
+	Node0x5584527567a0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  call void @llvm.dbg.value(metadata i32 %domain, metadata !107, metadata\l... !DIExpression()), !dbg !112\l  call void @llvm.dbg.value(metadata i32 %type, metadata !108, metadata\l... !DIExpression()), !dbg !112\l  call void @llvm.dbg.value(metadata i32 %protocol, metadata !109, metadata\l... !DIExpression()), !dbg !112\l  %or = or i32 %type, 524288, !dbg !113\l  %call = tail call i32 @socket(i32 %domain, i32 %or, i32 %protocol) #7, !dbg\l... !114\l  call void @llvm.dbg.value(metadata i32 %call, metadata !110, metadata\l... !DIExpression()), !dbg !112\l  %cmp = icmp eq i32 %call, -1, !dbg !115\l  br i1 %cmp, label %lor.lhs.false, label %cleanup, !dbg !117, !prof !118\l|{<s0>T|<s1>F}}"];
+	Node0x5584527567a0:s0 -> Node0x558452759b30;
+	Node0x5584527567a0:s1 -> Node0x55845275a3e0;
+	Node0x558452759b30 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{lor.lhs.false:                                    \l  %call1 = tail call i32* @__errno_location() #18, !dbg !119\l  %0 = load i32, i32* %call1, align 4, !dbg !119\l  %cmp2 = icmp eq i32 %0, 22, !dbg !120\l  br i1 %cmp2, label %if.end, label %cleanup, !dbg !121\l|{<s0>T|<s1>F}}"];
+	Node0x558452759b30:s0 -> Node0x558452759ae0;
+	Node0x558452759b30:s1 -> Node0x55845275a3e0;
+	Node0x558452759ae0 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.end:                                           \l  %call3 = tail call i32 @socket(i32 %domain, i32 %type, i32 %protocol) #7,\l... !dbg !122\l  call void @llvm.dbg.value(metadata i32 %call3, metadata !110, metadata\l... !DIExpression()), !dbg !112\l  %cmp4 = icmp sgt i32 %call3, -1, !dbg !123\l  br i1 %cmp4, label %if.then5, label %cleanup, !dbg !125\l|{<s0>T|<s1>F}}"];
+	Node0x558452759ae0:s0 -> Node0x55845275a7d0;
+	Node0x558452759ae0:s1 -> Node0x55845275a3e0;
+	Node0x55845275a7d0 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.then5:                                         \l  tail call void @qemu_set_cloexec(i32 %call3) #7, !dbg !126\l  br label %cleanup, !dbg !128\l}"];
+	Node0x55845275a7d0 -> Node0x55845275a3e0;
+	Node0x55845275a3e0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{cleanup:                                          \l  %retval.0 = phi i32 [ -1, %lor.lhs.false ], [ %call, %entry ], [ %call3,\l... %if.then5 ], [ %call3, %if.end ], !dbg !112\l  ret i32 %retval.0, !dbg !129\l}"];
+}

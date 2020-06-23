@@ -1,0 +1,44 @@
+digraph "CFG for 'qemu_clock_get_ns' function" {
+	label="CFG for 'qemu_clock_get_ns' function";
+
+	Node0x55757a848a90 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  %tv.i = alloca %struct.timeval, align 8\l  %tv.i.i = alloca %struct.timeval, align 8\l  %ts.i = alloca %struct.timespec, align 8\l  call void @llvm.dbg.value(metadata i32 %type, metadata !202, metadata\l... !DIExpression()), !dbg !204\l  switch i32 %type, label %sw.bb1 [\l    i32 0, label %sw.bb\l    i32 3, label %sw.bb15\l    i32 2, label %sw.bb4\l  ], !dbg !205, !prof !206\l|{<s0>def|<s1>0|<s2>3|<s3>2}}"];
+	Node0x55757a848a90:s0 -> Node0x55757a692d30;
+	Node0x55757a848a90:s1 -> Node0x55757a84d1b0;
+	Node0x55757a848a90:s2 -> Node0x55757a84ff50;
+	Node0x55757a848a90:s3 -> Node0x55757a84f520;
+	Node0x55757a84d1b0 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#d0473d70",label="{sw.bb:                                            \l  %0 = load i32, i32* @use_rt_clock, align 4, !dbg !207\l  %tobool.i = icmp eq i32 %0, 0, !dbg !207\l  br i1 %tobool.i, label %if.else.i, label %if.then.i, !dbg !224, !prof !225\l|{<s0>T|<s1>F}}"];
+	Node0x55757a84d1b0:s0 -> Node0x55757a81a3e0;
+	Node0x55757a84d1b0:s1 -> Node0x55757a789070;
+	Node0x55757a789070 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#d0473d70",label="{if.then.i:                                        \l  %1 = bitcast %struct.timespec* %ts.i to i8*, !dbg !226\l  call void @llvm.lifetime.start.p0i8(i64 16, i8* nonnull %1) #19, !dbg !226\l  call void @llvm.dbg.declare(metadata %struct.timespec* %ts.i, metadata !213,\l... metadata !DIExpression()) #19, !dbg !227\l  %call.i = call i32 @clock_gettime(i32 1, %struct.timespec* nonnull %ts.i)\l... #19, !dbg !228\l  %tv_sec.i = getelementptr inbounds %struct.timespec, %struct.timespec*\l... %ts.i, i64 0, i32 0, !dbg !229\l  %2 = load i64, i64* %tv_sec.i, align 8, !dbg !229\l  %mul.i = mul i64 %2, 1000000000, !dbg !230\l  %tv_nsec.i = getelementptr inbounds %struct.timespec, %struct.timespec*\l... %ts.i, i64 0, i32 1, !dbg !231\l  %3 = load i64, i64* %tv_nsec.i, align 8, !dbg !231\l  %add.i = add i64 %mul.i, %3, !dbg !232\l  call void @llvm.lifetime.end.p0i8(i64 16, i8* nonnull %1) #19, !dbg !233\l  br label %return\l}"];
+	Node0x55757a789070 -> Node0x55757a84c940;
+	Node0x55757a81a3e0 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.else.i:                                        \l  %4 = bitcast %struct.timeval* %tv.i.i to i8*, !dbg !234\l  call void @llvm.lifetime.start.p0i8(i64 16, i8* nonnull %4) #19, !dbg !234\l  call void @llvm.dbg.declare(metadata %struct.timeval* %tv.i.i, metadata\l... !237, metadata !DIExpression()) #19, !dbg !246\l  %call.i.i = call i32 @gettimeofday(%struct.timeval* nonnull %tv.i.i,\l... %struct.timezone* null) #19, !dbg !247\l  %tv_sec.i.i = getelementptr inbounds %struct.timeval, %struct.timeval*\l... %tv.i.i, i64 0, i32 0, !dbg !248\l  %5 = load i64, i64* %tv_sec.i.i, align 8, !dbg !248\l  %mul.i.i = mul i64 %5, 1000000000, !dbg !249\l  %tv_usec.i.i = getelementptr inbounds %struct.timeval, %struct.timeval*\l... %tv.i.i, i64 0, i32 1, !dbg !250\l  %6 = load i64, i64* %tv_usec.i.i, align 8, !dbg !250\l  %mul1.i.i = mul i64 %6, 1000, !dbg !251\l  %add.i.i = add i64 %mul1.i.i, %mul.i.i, !dbg !252\l  call void @llvm.lifetime.end.p0i8(i64 16, i8* nonnull %4) #19, !dbg !253\l  br label %return, !dbg !254\l}"];
+	Node0x55757a81a3e0 -> Node0x55757a84c940;
+	Node0x55757a692d30 [shape=record,color="#b70d28ff", style=filled, fillcolor="#bb1b2c70",label="{sw.bb1:                                           \l  %7 = load i32, i32* @use_icount, align 4, !dbg !255\l  %tobool = icmp eq i32 %7, 0, !dbg !255\l  br i1 %tobool, label %if.else, label %if.then, !dbg !257, !prof !258\l|{<s0>T|<s1>F}}"];
+	Node0x55757a692d30:s0 -> Node0x55757a84f570;
+	Node0x55757a692d30:s1 -> Node0x55757a84f4d0;
+	Node0x55757a84f4d0 [shape=record,penwidth=3.0, color="red",label="{if.then:                                          \l  %call2 = tail call i64 @cpu_get_icount() #19, !dbg !259\l  br label %return, !dbg !261\l}"];
+	Node0x55757a84f4d0 -> Node0x55757a84c940;
+	Node0x55757a84f570 [shape=record,color="#b70d28ff", style=filled, fillcolor="#bb1b2c70",label="{if.else:                                          \l  %call3 = tail call i64 @cpu_get_clock() #19, !dbg !262\l  br label %return, !dbg !264\l}"];
+	Node0x55757a84f570 -> Node0x55757a84c940;
+	Node0x55757a84f520 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#d8564670",label="{sw.bb4:                                           \l  %8 = load i32, i32* @replay_mode, align 4, !dbg !265\l  %cmp = icmp eq i32 %8, 2, !dbg !265\l  br i1 %cmp, label %cond.true, label %cond.false, !dbg !265, !prof !266\l|{<s0>T|<s1>F}}"];
+	Node0x55757a84f520:s0 -> Node0x55757a79cce0;
+	Node0x55757a84f520:s1 -> Node0x55757a79cd60;
+	Node0x55757a79cce0 [shape=record,penwidth=3.0, color="red",label="{cond.true:                                        \l  %call5 = tail call i64 @replay_read_clock(i32 0) #19, !dbg !265\l  br label %return, !dbg !265\l}"];
+	Node0x55757a79cce0 -> Node0x55757a84c940;
+	Node0x55757a79cd60 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#d8564670",label="{cond.false:                                       \l  %cmp6 = icmp eq i32 %8, 1, !dbg !265\l  %9 = bitcast %struct.timeval* %tv.i to i8*, !dbg !267\l  call void @llvm.lifetime.start.p0i8(i64 16, i8* nonnull %9) #19, !dbg !267\l  call void @llvm.dbg.declare(metadata %struct.timeval* %tv.i, metadata !237,\l... metadata !DIExpression()) #19, !dbg !269\l  %call.i32 = call i32 @gettimeofday(%struct.timeval* nonnull %tv.i,\l... %struct.timezone* null) #19, !dbg !270\l  %tv_sec.i33 = getelementptr inbounds %struct.timeval, %struct.timeval*\l... %tv.i, i64 0, i32 0, !dbg !271\l  %10 = load i64, i64* %tv_sec.i33, align 8, !dbg !271\l  %mul.i34 = mul i64 %10, 1000000000, !dbg !272\l  %tv_usec.i = getelementptr inbounds %struct.timeval, %struct.timeval* %tv.i,\l... i64 0, i32 1, !dbg !273\l  %11 = load i64, i64* %tv_usec.i, align 8, !dbg !273\l  %mul1.i = mul i64 %11, 1000, !dbg !274\l  %add.i35 = add i64 %mul1.i, %mul.i34, !dbg !275\l  call void @llvm.lifetime.end.p0i8(i64 16, i8* nonnull %9) #19, !dbg !276\l  br i1 %cmp6, label %cond.true7, label %return, !dbg !265, !prof !266\l|{<s0>T|<s1>F}}"];
+	Node0x55757a79cd60:s0 -> Node0x55757a79d5f0;
+	Node0x55757a79cd60:s1 -> Node0x55757a84c940;
+	Node0x55757a79d5f0 [shape=record,penwidth=3.0, color="red",label="{cond.true7:                                       \l  %call9 = tail call i64 @cpu_get_icount_raw() #19, !dbg !265\l  %call10 = tail call i64 @replay_save_clock(i32 0, i64 %add.i35, i64 %call9)\l... #19, !dbg !265\l  br label %return, !dbg !265\l}"];
+	Node0x55757a79d5f0 -> Node0x55757a84c940;
+	Node0x55757a84ff50 [shape=record,penwidth=3.0, color="red",label="{sw.bb15:                                          \l  %12 = load i32, i32* @replay_mode, align 4, !dbg !277\l  %cmp16 = icmp eq i32 %12, 2, !dbg !277\l  br i1 %cmp16, label %cond.true17, label %cond.false19, !dbg !277\l|{<s0>T|<s1>F}}"];
+	Node0x55757a84ff50:s0 -> Node0x55757a79d2b0;
+	Node0x55757a84ff50:s1 -> Node0x55757a84ce60;
+	Node0x55757a79d2b0 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#6a8bef70",label="{cond.true17:                                      \l  %call18 = tail call i64 @replay_read_clock(i32 1) #19, !dbg !277\l  br label %return, !dbg !277\l}"];
+	Node0x55757a79d2b0 -> Node0x55757a84c940;
+	Node0x55757a84ce60 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#6a8bef70",label="{cond.false19:                                     \l  %cmp20 = icmp eq i32 %12, 1, !dbg !277\l  %call22 = tail call i64 @cpu_get_clock() #19, !dbg !277\l  br i1 %cmp20, label %cond.true21, label %return, !dbg !277\l|{<s0>T|<s1>F}}"];
+	Node0x55757a84ce60:s0 -> Node0x55757a762f40;
+	Node0x55757a84ce60:s1 -> Node0x55757a84c940;
+	Node0x55757a762f40 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#6282ea70",label="{cond.true21:                                      \l  %call23 = tail call i64 @cpu_get_icount_raw() #19, !dbg !277\l  %call24 = tail call i64 @replay_save_clock(i32 1, i64 %call22, i64 %call23)\l... #19, !dbg !277\l  br label %return, !dbg !277\l}"];
+	Node0x55757a762f40 -> Node0x55757a84c940;
+	Node0x55757a84c940 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{return:                                           \l  %retval.0 = phi i64 [ %call2, %if.then ], [ %call3, %if.else ], [ %call5,\l... %cond.true ], [ %call10, %cond.true7 ], [ %add.i35, %cond.false ], [ %call18,\l... %cond.true17 ], [ %call24, %cond.true21 ], [ %call22, %cond.false19 ], [\l... %add.i, %if.then.i ], [ %add.i.i, %if.else.i ], !dbg !278\l  ret i64 %retval.0, !dbg !279\l}"];
+}

@@ -1,0 +1,10 @@
+digraph "CFG for 'trace_init_file' function" {
+	label="CFG for 'trace_init_file' function";
+
+	Node0x55aedd035e60 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  call void @llvm.dbg.value(metadata i8* %file, metadata !150, metadata\l... !DIExpression()), !dbg !152\l  %tobool = icmp eq i8* %file, null, !dbg !153\l  br i1 %tobool, label %if.end, label %if.then, !dbg !155, !prof !156\l|{<s0>T|<s1>F}}"];
+	Node0x55aedd035e60:s0 -> Node0x55aedd045e20;
+	Node0x55aedd035e60:s1 -> Node0x55aedd036790;
+	Node0x55aedd036790 [shape=record,penwidth=3.0, color="red",label="{if.then:                                          \l  tail call void @qemu_set_log_filename(i8* nonnull %file, %struct.Error**\l... nonnull @error_fatal) #17, !dbg !157\l  br label %if.end, !dbg !159\l}"];
+	Node0x55aedd036790 -> Node0x55aedd045e20;
+	Node0x55aedd045e20 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.end:                                           \l  ret void, !dbg !160\l}"];
+}

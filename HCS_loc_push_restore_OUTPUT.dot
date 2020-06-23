@@ -1,0 +1,9 @@
+digraph "CFG for 'loc_push_restore' function" {
+	label="CFG for 'loc_push_restore' function";
+
+	Node0x55915b5b3300 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  call void @llvm.dbg.value(metadata %struct.Location* %loc, metadata !100,\l... metadata !DIExpression()), !dbg !102\l  %prev = getelementptr inbounds %struct.Location, %struct.Location* %loc, i64\l... 0, i32 3, !dbg !103\l  %0 = load %struct.Location*, %struct.Location** %prev, align 8, !dbg !103\l  %tobool = icmp eq %struct.Location* %0, null, !dbg !103\l  br i1 %tobool, label %if.end, label %if.else, !dbg !106, !prof !107\l|{<s0>T|<s1>F}}"];
+	Node0x55915b5b3300:s0 -> Node0x55915b5b5300;
+	Node0x55915b5b3300:s1 -> Node0x55915b5b5350;
+	Node0x55915b5b5350 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.else:                                          \l  tail call void @__assert_fail(i8* getelementptr inbounds ([11 x i8], [11 x\l... i8]* @.str, i64 0, i64 0), i8* getelementptr inbounds ([18 x i8], [18 x i8]*\l... @.str.1, i64 0, i64 0), i32 64, i8* getelementptr inbounds ([39 x i8], [39 x\l... i8]* @__PRETTY_FUNCTION__.loc_push_restore, i64 0, i64 0)) #12, !dbg !103\l  unreachable, !dbg !103\l}"];
+	Node0x55915b5b5300 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.end:                                           \l  %1 = load i64, i64* bitcast (%struct.Location** @cur_loc to i64*), align 8,\l... !dbg !108\l  %2 = bitcast %struct.Location** %prev to i64*, !dbg !109\l  store i64 %1, i64* %2, align 8, !dbg !109\l  store %struct.Location* %loc, %struct.Location** @cur_loc, align 8, !dbg !110\l  ret %struct.Location* %loc, !dbg !111\l}"];
+}

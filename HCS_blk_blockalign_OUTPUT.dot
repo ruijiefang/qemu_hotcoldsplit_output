@@ -1,0 +1,13 @@
+digraph "CFG for 'blk_blockalign' function" {
+	label="CFG for 'blk_blockalign' function";
+
+	Node0x55d70fc4aa00 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  call void @llvm.dbg.value(metadata %struct.BlockBackend* %blk, metadata\l... !3090, metadata !DIExpression()), !dbg !3093\l  call void @llvm.dbg.value(metadata i64 %size, metadata !3091, metadata\l... !DIExpression()), !dbg !3093\l  %tobool = icmp eq %struct.BlockBackend* %blk, null, !dbg !3094\l  br i1 %tobool, label %cond.end, label %cond.true, !dbg !3094, !prof !3095\l|{<s0>T|<s1>F}}"];
+	Node0x55d70fc4aa00:s0 -> Node0x55d70fd34230;
+	Node0x55d70fc4aa00:s1 -> Node0x55d70fd34160;
+	Node0x55d70fd34160 [shape=record,penwidth=3.0, color="red",label="{cond.true:                                        \l  call void @llvm.dbg.value(metadata %struct.BlockBackend* %blk, metadata\l... !3096, metadata !DIExpression()), !dbg !3101\l  %root.i = getelementptr inbounds %struct.BlockBackend, %struct.BlockBackend*\l... %blk, i64 0, i32 2, !dbg !3103\l  %0 = load %struct.BdrvChild*, %struct.BdrvChild** %root.i, align 8, !dbg\l... !3103\l  %tobool.i = icmp eq %struct.BdrvChild* %0, null, !dbg !3104\l  br i1 %tobool.i, label %cond.end, label %cond.true.i, !dbg !3104\l|{<s0>T|<s1>F}}"];
+	Node0x55d70fd34160:s0 -> Node0x55d70fd34230;
+	Node0x55d70fd34160:s1 -> Node0x55d70fd8ead0;
+	Node0x55d70fd8ead0 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#5977e370",label="{cond.true.i:                                      \l  %bs.i = getelementptr inbounds %struct.BdrvChild, %struct.BdrvChild* %0, i64\l... 0, i32 0, !dbg !3105\l  %1 = load %struct.BlockDriverState*, %struct.BlockDriverState** %bs.i, align\l... 8, !dbg !3105\l  br label %cond.end, !dbg !3104\l}"];
+	Node0x55d70fd8ead0 -> Node0x55d70fd34230;
+	Node0x55d70fd34230 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{cond.end:                                         \l  %cond = phi %struct.BlockDriverState* [ null, %entry ], [ %1, %cond.true.i\l... ], [ null, %cond.true ], !dbg !3094\l  %call1 = tail call i8* @qemu_blockalign(%struct.BlockDriverState* %cond, i64\l... %size) #26, !dbg !3106\l  ret i8* %call1, !dbg !3107\l}"];
+}

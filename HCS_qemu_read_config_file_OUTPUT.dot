@@ -1,0 +1,12 @@
+digraph "CFG for 'qemu_read_config_file' function" {
+	label="CFG for 'qemu_read_config_file' function";
+
+	Node0x563636a80e20 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  call void @llvm.dbg.value(metadata i8* %filename, metadata !178, metadata\l... !DIExpression()), !dbg !238\l  %call = tail call %struct._IO_FILE* @fopen64(i8* %filename, i8*\l... getelementptr inbounds ([2 x i8], [2 x i8]* @.str.18, i64 0, i64 0)), !dbg\l... !239\l  call void @llvm.dbg.value(metadata %struct._IO_FILE* %call, metadata !179,\l... metadata !DIExpression()), !dbg !238\l  %cmp = icmp eq %struct._IO_FILE* %call, null, !dbg !240\l  br i1 %cmp, label %if.then, label %if.end, !dbg !242, !prof !243\l|{<s0>T|<s1>F}}"];
+	Node0x563636a80e20:s0 -> Node0x563636a9b5a0;
+	Node0x563636a80e20:s1 -> Node0x563636a9b610;
+	Node0x563636a9b5a0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.then:                                          \l  %call1 = tail call i32* @__errno_location() #14, !dbg !244\l  %0 = load i32, i32* %call1, align 4, !dbg !244\l  %sub = sub i32 0, %0, !dbg !246\l  br label %cleanup, !dbg !247\l}"];
+	Node0x563636a9b5a0 -> Node0x563636a9c8d0;
+	Node0x563636a9b610 [shape=record,penwidth=3.0, color="red",label="{if.end:                                           \l  %call2 = tail call i32 @qemu_config_parse(%struct._IO_FILE* nonnull %call,\l... %struct.QemuOptsList** getelementptr inbounds ([48 x %struct.QemuOptsList*],\l... [48 x %struct.QemuOptsList*]* @vm_config_groups, i64 0, i64 0), i8*\l... %filename), !dbg !248\l  call void @llvm.dbg.value(metadata i32 %call2, metadata !236, metadata\l... !DIExpression()), !dbg !238\l  %call3 = tail call i32 @fclose(%struct._IO_FILE* nonnull %call), !dbg !249\l  br label %cleanup, !dbg !250\l}"];
+	Node0x563636a9b610 -> Node0x563636a9c8d0;
+	Node0x563636a9c8d0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{cleanup:                                          \l  %retval.0 = phi i32 [ %sub, %if.then ], [ %call2, %if.end ], !dbg !238\l  ret i32 %retval.0, !dbg !251\l}"];
+}

@@ -1,0 +1,35 @@
+digraph "CFG for 'rtl8139_set_next_tctr_time' function" {
+	label="CFG for 'rtl8139_set_next_tctr_time' function";
+
+	Node0x563122a46070 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  call void @llvm.dbg.value(metadata %struct.RTL8139State* %s, metadata !1498,\l... metadata !DIExpression()), !dbg !1506\l  call void @llvm.dbg.value(metadata i64 128849018880, metadata !1499,\l... metadata !DIExpression()), !dbg !1506\l  %TCTR_base = getelementptr inbounds %struct.RTL8139State,\l... %struct.RTL8139State* %s, i64 0, i32 42, !dbg !1507\l  %0 = load i64, i64* %TCTR_base, align 8, !dbg !1507\l  %add26 = add i64 %0, 128849018880, !dbg !1508\l  %call127 = tail call i64 @qemu_clock_get_ns(i32 1) #11, !dbg !1509\l  %cmp28 = icmp ugt i64 %add26, %call127, !dbg !1510\l  br i1 %cmp28, label %while.end, label %while.body.preheader, !dbg !1511,\l... !prof !1512\l|{<s0>T|<s1>F}}"];
+	Node0x563122a46070:s0 -> Node0x5631231a4c70;
+	Node0x563122a46070:s1 -> Node0x563123455c70;
+	Node0x563123455c70 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{while.body.preheader:                             \l  br label %while.body.peel.begin, !dbg !1511\l}"];
+	Node0x563123455c70 -> Node0x563123136c30;
+	Node0x563123136c30 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{while.body.peel.begin:                            \l  br label %while.body.peel, !dbg !1511\l}"];
+	Node0x563123136c30 -> Node0x563123361ee0;
+	Node0x563123361ee0 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{while.body.peel:                                  \l  %1 = load i64, i64* %TCTR_base, align 8, !dbg !1513\l  %add3.peel = add i64 %1, 128849018880, !dbg !1513\l  store i64 %add3.peel, i64* %TCTR_base, align 8, !dbg !1513\l  %add.peel = add i64 %1, 257698037760, !dbg !1508\l  %call1.peel = tail call i64 @qemu_clock_get_ns(i32 1) #11, !dbg !1509\l  %cmp.peel = icmp ugt i64 %add.peel, %call1.peel, !dbg !1510\l  br i1 %cmp.peel, label %while.end.loopexit, label %while.body.peel.next,\l... !dbg !1511, !prof !1512\l|{<s0>T|<s1>F}}"];
+	Node0x563123361ee0:s0 -> Node0x5631233bed40;
+	Node0x563123361ee0:s1 -> Node0x563123318310;
+	Node0x563123318310 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{while.body.peel.next:                             \l  br label %while.body.peel.next29, !dbg !1511\l}"];
+	Node0x563123318310 -> Node0x563123450d80;
+	Node0x563123450d80 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{while.body.peel.next29:                           \l  br label %while.body.preheader.peel.newph, !dbg !1511\l}"];
+	Node0x563123450d80 -> Node0x5631233181d0;
+	Node0x5631233181d0 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{while.body.preheader.peel.newph:                  \l  br label %while.body, !dbg !1511\l}"];
+	Node0x5631233181d0 -> Node0x5631231a5260;
+	Node0x5631231a5260 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{while.body:                                       \l  %2 = load i64, i64* %TCTR_base, align 8, !dbg !1513\l  %add3 = add i64 %2, 128849018880, !dbg !1513\l  store i64 %add3, i64* %TCTR_base, align 8, !dbg !1513\l  %add = add i64 %2, 257698037760, !dbg !1508\l  %call1 = tail call i64 @qemu_clock_get_ns(i32 1) #11, !dbg !1509\l  %cmp = icmp ugt i64 %add, %call1, !dbg !1510\l  br i1 %cmp, label %while.end.loopexit.loopexit, label %while.body, !dbg\l... !1511, !prof !1512, !llvm.loop !1515\l|{<s0>T|<s1>F}}"];
+	Node0x5631231a5260:s0 -> Node0x5631230c6590;
+	Node0x5631231a5260:s1 -> Node0x5631231a5260;
+	Node0x5631230c6590 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{while.end.loopexit.loopexit:                      \l  br label %while.end.loopexit, !dbg !1519\l}"];
+	Node0x5631230c6590 -> Node0x5631233bed40;
+	Node0x5631233bed40 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{while.end.loopexit:                               \l  br label %while.end, !dbg !1519\l}"];
+	Node0x5631233bed40 -> Node0x5631231a4c70;
+	Node0x5631231a4c70 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{while.end:                                        \l  %TimerInt = getelementptr inbounds %struct.RTL8139State,\l... %struct.RTL8139State* %s, i64 0, i32 41, !dbg !1519\l  %3 = load i32, i32* %TimerInt, align 16, !dbg !1519\l  %tobool = icmp eq i32 %3, 0, !dbg !1520\l  br i1 %tobool, label %if.then, label %if.else, !dbg !1521, !prof !1512\l|{<s0>T|<s1>F}}"];
+	Node0x5631231a4c70:s0 -> Node0x5631231a5ba0;
+	Node0x5631231a4c70:s1 -> Node0x5631231a5c40;
+	Node0x5631231a5ba0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.then:                                          \l  %timer = getelementptr inbounds %struct.RTL8139State, %struct.RTL8139State*\l... %s, i64 0, i32 47, !dbg !1522\l  %4 = load %struct.QEMUTimer*, %struct.QEMUTimer** %timer, align 16, !dbg\l... !1522\l  tail call void @timer_del(%struct.QEMUTimer* %4) #11, !dbg !1524\l  br label %if.end15, !dbg !1525\l}"];
+	Node0x5631231a5ba0 -> Node0x5631231a5bf0;
+	Node0x5631231a5c40 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.else:                                          \l  %conv = zext i32 %3 to i64, !dbg !1526\l  %mul = mul nuw nsw i64 %conv, 30, !dbg !1527\l  call void @llvm.dbg.value(metadata i64 %mul, metadata !1501, metadata\l... !DIExpression()), !dbg !1528\l  %5 = load i64, i64* %TCTR_base, align 8, !dbg !1529\l  %add6 = add i64 %5, %mul, !dbg !1531\l  %call7 = tail call i64 @qemu_clock_get_ns(i32 1) #11, !dbg !1532\l  %cmp8 = icmp ugt i64 %add6, %call7, !dbg !1533\l  %add11 = add nuw nsw i64 %mul, 128849018880, !dbg !1534\l  %spec.select = select i1 %cmp8, i64 %mul, i64 %add11, !dbg !1536\l  call void @llvm.dbg.value(metadata i64 %spec.select, metadata !1501,\l... metadata !DIExpression()), !dbg !1528\l  %timer12 = getelementptr inbounds %struct.RTL8139State,\l... %struct.RTL8139State* %s, i64 0, i32 47, !dbg !1537\l  %6 = load %struct.QEMUTimer*, %struct.QEMUTimer** %timer12, align 16, !dbg\l... !1537\l  %7 = load i64, i64* %TCTR_base, align 8, !dbg !1538\l  %add14 = add i64 %7, %spec.select, !dbg !1539\l  tail call void @timer_mod(%struct.QEMUTimer* %6, i64 %add14) #11, !dbg !1540\l  br label %if.end15\l}"];
+	Node0x5631231a5c40 -> Node0x5631231a5bf0;
+	Node0x5631231a5bf0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.end15:                                         \l  ret void, !dbg !1541\l}"];
+}

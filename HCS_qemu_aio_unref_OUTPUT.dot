@@ -1,0 +1,14 @@
+digraph "CFG for 'qemu_aio_unref' function" {
+	label="CFG for 'qemu_aio_unref' function";
+
+	Node0x5558d90e38e0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  call void @llvm.dbg.value(metadata i8* %p, metadata !44, metadata\l... !DIExpression()), !dbg !317\l  call void @llvm.dbg.value(metadata i8* %p, metadata !45, metadata\l... !DIExpression()), !dbg !317\l  %refcnt = getelementptr inbounds i8, i8* %p, i64 32, !dbg !318\l  %0 = bitcast i8* %refcnt to i32*, !dbg !318\l  %1 = load i32, i32* %0, align 8, !dbg !318\l  %cmp = icmp sgt i32 %1, 0, !dbg !318\l  br i1 %cmp, label %if.end, label %if.else, !dbg !321, !prof !322\l|{<s0>T|<s1>F}}"];
+	Node0x5558d90e38e0:s0 -> Node0x5558d90e5770;
+	Node0x5558d90e38e0:s1 -> Node0x5558d90e57c0;
+	Node0x5558d90e57c0 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.else:                                          \l  tail call void @__assert_fail(i8* getelementptr inbounds ([16 x i8], [16 x\l... i8]* @.str, i64 0, i64 0), i8* getelementptr inbounds ([13 x i8], [13 x i8]*\l... @.str.1, i64 0, i64 0), i32 51, i8* getelementptr inbounds ([28 x i8], [28 x\l... i8]* @__PRETTY_FUNCTION__.qemu_aio_unref, i64 0, i64 0)) #6, !dbg !318\l  unreachable, !dbg !318\l}"];
+	Node0x5558d90e5770 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.end:                                           \l  %dec = add nsw i32 %1, -1, !dbg !323\l  store i32 %dec, i32* %0, align 8, !dbg !323\l  %cmp2 = icmp eq i32 %dec, 0, !dbg !325\l  br i1 %cmp2, label %if.then3, label %if.end4, !dbg !326, !prof !322\l|{<s0>T|<s1>F}}"];
+	Node0x5558d90e5770:s0 -> Node0x5558d90e79c0;
+	Node0x5558d90e5770:s1 -> Node0x5558d90e7a80;
+	Node0x5558d90e79c0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.then3:                                         \l  tail call void @g_free(i8* nonnull %p) #7, !dbg !327\l  br label %if.end4, !dbg !329\l}"];
+	Node0x5558d90e79c0 -> Node0x5558d90e7a80;
+	Node0x5558d90e7a80 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.end4:                                          \l  ret void, !dbg !330\l}"];
+}

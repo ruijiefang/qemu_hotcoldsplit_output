@@ -1,0 +1,9 @@
+digraph "CFG for 'object_set_machine_compat_props' function" {
+	label="CFG for 'object_set_machine_compat_props' function";
+
+	Node0x55ee22524ab0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  call void @llvm.dbg.value(metadata %struct._GPtrArray* %compat_props,\l... metadata !345, metadata !DIExpression()), !dbg !347\l  %0 = load %struct._GPtrArray*, %struct._GPtrArray** @object_compat_props.1,\l... align 16, !dbg !348\l  %tobool = icmp eq %struct._GPtrArray* %0, null, !dbg !348\l  br i1 %tobool, label %if.end, label %if.else, !dbg !351, !prof !352\l|{<s0>T|<s1>F}}"];
+	Node0x55ee22524ab0:s0 -> Node0x55ee22524e90;
+	Node0x55ee22524ab0:s1 -> Node0x55ee22524a10;
+	Node0x55ee22524a10 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.else:                                          \l  tail call void @__assert_fail(i8* getelementptr inbounds ([24 x i8], [24 x\l... i8]* @.str.4, i64 0, i64 0), i8* getelementptr inbounds ([13 x i8], [13 x\l... i8]* @.str.1, i64 0, i64 0), i32 460, i8* getelementptr inbounds ([50 x i8],\l... [50 x i8]* @__PRETTY_FUNCTION__.object_set_machine_compat_props, i64 0, i64\l... 0)) #22, !dbg !348\l  unreachable, !dbg !348\l}"];
+	Node0x55ee22524e90 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.end:                                           \l  store %struct._GPtrArray* %compat_props, %struct._GPtrArray**\l... @object_compat_props.1, align 16, !dbg !353\l  ret void, !dbg !354\l}"];
+}

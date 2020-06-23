@@ -1,0 +1,27 @@
+digraph "CFG for 'sysbus_mmio_map_common' function" {
+	label="CFG for 'sysbus_mmio_map_common' function";
+
+	Node0x56031ed5cf70 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  call void @llvm.dbg.value(metadata %struct.SysBusDevice* %dev, metadata\l... !596, metadata !DIExpression()), !dbg !603\l  call void @llvm.dbg.value(metadata i32 %n, metadata !597, metadata\l... !DIExpression()), !dbg !603\l  call void @llvm.dbg.value(metadata i64 %addr, metadata !598, metadata\l... !DIExpression()), !dbg !603\l  call void @llvm.dbg.value(metadata i1 %may_overlap, metadata !599, metadata\l... !DIExpression(DW_OP_LLVM_convert, 1, DW_ATE_unsigned, DW_OP_LLVM_convert, 8,\l... DW_ATE_unsigned, DW_OP_stack_value)), !dbg !603\l  call void @llvm.dbg.value(metadata i32 %priority, metadata !600, metadata\l... !DIExpression()), !dbg !603\l  %cmp = icmp sgt i32 %n, -1, !dbg !604\l  br i1 %cmp, label %land.lhs.true, label %if.else, !dbg !604, !prof !607\l|{<s0>T|<s1>F}}"];
+	Node0x56031ed5cf70:s0 -> Node0x56031ed5e970;
+	Node0x56031ed5cf70:s1 -> Node0x56031ed5e900;
+	Node0x56031ed5e970 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{land.lhs.true:                                    \l  %num_mmio = getelementptr inbounds %struct.SysBusDevice,\l... %struct.SysBusDevice* %dev, i64 0, i32 1, !dbg !604\l  %0 = load i32, i32* %num_mmio, align 8, !dbg !604\l  %cmp1 = icmp sgt i32 %0, %n, !dbg !604\l  br i1 %cmp1, label %if.end, label %if.else, !dbg !608, !prof !607\l|{<s0>T|<s1>F}}"];
+	Node0x56031ed5e970:s0 -> Node0x56031ed5e8b0;
+	Node0x56031ed5e970:s1 -> Node0x56031ed5e900;
+	Node0x56031ed5e900 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.else:                                          \l  tail call void @__assert_fail(i8* getelementptr inbounds ([28 x i8], [28 x\l... i8]* @.str.7, i64 0, i64 0), i8* getelementptr inbounds ([17 x i8], [17 x\l... i8]* @.str.5, i64 0, i64 0), i32 133, i8* getelementptr inbounds ([69 x i8],\l... [69 x i8]* @__PRETTY_FUNCTION__.sysbus_mmio_map_common, i64 0, i64 0)) #13,\l... !dbg !604\l  unreachable, !dbg !604\l}"];
+	Node0x56031ed5e8b0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.end:                                           \l  %idxprom46 = zext i32 %n to i64, !dbg !609\l  %addr2 = getelementptr %struct.SysBusDevice, %struct.SysBusDevice* %dev, i64\l... 0, i32 2, i64 %idxprom46, i32 0, !dbg !611\l  %1 = load i64, i64* %addr2, align 8, !dbg !611\l  %cmp3 = icmp eq i64 %1, %addr, !dbg !612\l  br i1 %cmp3, label %if.end32, label %if.end5, !dbg !613, !prof !614\l|{<s0>T|<s1>F}}"];
+	Node0x56031ed5e8b0:s0 -> Node0x56031ed325f0;
+	Node0x56031ed5e8b0:s1 -> Node0x56031ed5f4e0;
+	Node0x56031ed5f4e0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.end5:                                          \l  %cmp10 = icmp eq i64 %1, -1, !dbg !615\l  br i1 %cmp10, label %if.end15, label %if.then11, !dbg !617, !prof !607\l|{<s0>T|<s1>F}}"];
+	Node0x56031ed5f4e0:s0 -> Node0x56031ed602d0;
+	Node0x56031ed5f4e0:s1 -> Node0x56031ed60280;
+	Node0x56031ed60280 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.then11:                                        \l  %call = tail call %struct.MemoryRegion* @get_system_memory() #9, !dbg !618\l  %memory = getelementptr %struct.SysBusDevice, %struct.SysBusDevice* %dev,\l... i64 0, i32 2, i64 %idxprom46, i32 1, !dbg !620\l  %2 = load %struct.MemoryRegion*, %struct.MemoryRegion** %memory, align 8,\l... !dbg !620\l  tail call void @memory_region_del_subregion(%struct.MemoryRegion* %call,\l... %struct.MemoryRegion* %2) #9, !dbg !621\l  br label %if.end15, !dbg !622\l}"];
+	Node0x56031ed60280 -> Node0x56031ed602d0;
+	Node0x56031ed602d0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.end15:                                         \l  store i64 %addr, i64* %addr2, align 8, !dbg !623\l  %call21 = tail call %struct.MemoryRegion* @get_system_memory() #9, !dbg !624\l  %memory25 = getelementptr %struct.SysBusDevice, %struct.SysBusDevice* %dev,\l... i64 0, i32 2, i64 %idxprom46, i32 1, !dbg !624\l  %3 = load %struct.MemoryRegion*, %struct.MemoryRegion** %memory25, align 8,\l... !dbg !624\l  br i1 %may_overlap, label %if.then20, label %if.else26, !dbg !626, !prof !614\l|{<s0>T|<s1>F}}"];
+	Node0x56031ed602d0:s0 -> Node0x56031ed32580;
+	Node0x56031ed602d0:s1 -> Node0x56031ed32660;
+	Node0x56031ed32580 [shape=record,penwidth=3.0, color="red",label="{if.then20:                                        \l  tail call void @memory_region_add_subregion_overlap(%struct.MemoryRegion*\l... %call21, i64 %addr, %struct.MemoryRegion* %3, i32 %priority) #9, !dbg !627\l  br label %if.end32, !dbg !629\l}"];
+	Node0x56031ed32580 -> Node0x56031ed325f0;
+	Node0x56031ed32660 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.else26:                                        \l  tail call void @memory_region_add_subregion(%struct.MemoryRegion* %call21,\l... i64 %addr, %struct.MemoryRegion* %3) #9, !dbg !630\l  br label %if.end32\l}"];
+	Node0x56031ed32660 -> Node0x56031ed325f0;
+	Node0x56031ed325f0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.end32:                                         \l  ret void, !dbg !632\l}"];
+}

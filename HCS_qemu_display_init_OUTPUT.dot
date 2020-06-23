@@ -1,0 +1,18 @@
+digraph "CFG for 'qemu_display_init' function" {
+	label="CFG for 'qemu_display_init' function";
+
+	Node0x564187ee9ef0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  call void @llvm.dbg.value(metadata %struct.DisplayState* %ds, metadata\l... !1540, metadata !DIExpression()), !dbg !1543\l  call void @llvm.dbg.value(metadata %struct.DisplayOptions* %opts, metadata\l... !1541, metadata !DIExpression()), !dbg !1543\l  %type = getelementptr inbounds %struct.DisplayOptions,\l... %struct.DisplayOptions* %opts, i64 0, i32 0, !dbg !1544\l  %0 = load i32, i32* %type, align 8, !dbg !1544\l  %cmp = icmp ult i32 %0, 8, !dbg !1544\l  br i1 %cmp, label %if.end, label %if.else, !dbg !1547, !prof !1548\l|{<s0>T|<s1>F}}"];
+	Node0x564187ee9ef0:s0 -> Node0x564187ef1440;
+	Node0x564187ee9ef0:s1 -> Node0x564187ef1490;
+	Node0x564187ef1490 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.else:                                          \l  tail call void @__assert_fail(i8* getelementptr inbounds ([31 x i8], [31 x\l... i8]* @.str.24, i64 0, i64 0), i8* getelementptr inbounds ([13 x i8], [13 x\l... i8]* @.str.1, i64 0, i64 0), i32 2327, i8* getelementptr inbounds ([57 x i8],\l... [57 x i8]* @__PRETTY_FUNCTION__.qemu_display_init, i64 0, i64 0)) #20, !dbg\l... !1544\l  unreachable, !dbg !1544\l}"];
+	Node0x564187ef1440 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.end:                                           \l  %cmp2 = icmp eq i32 %0, 1, !dbg !1549\l  br i1 %cmp2, label %return, label %if.end4, !dbg !1551, !prof !1548\l|{<s0>T|<s1>F}}"];
+	Node0x564187ef1440:s0 -> Node0x564187ee9f40;
+	Node0x564187ef1440:s1 -> Node0x564187ef1be0;
+	Node0x564187ef1be0 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.end4:                                          \l  %idxprom = zext i32 %0 to i64, !dbg !1552\l  %arrayidx = getelementptr [8 x %struct.QemuDisplay*], [8 x\l... %struct.QemuDisplay*]* @dpys, i64 0, i64 %idxprom, !dbg !1552\l  %1 = load %struct.QemuDisplay*, %struct.QemuDisplay** %arrayidx, align 8,\l... !dbg !1552\l  %cmp6 = icmp eq %struct.QemuDisplay* %1, null, !dbg !1552\l  br i1 %cmp6, label %if.else8, label %if.end9, !dbg !1555\l|{<s0>T|<s1>F}}"];
+	Node0x564187ef1be0:s0 -> Node0x564187ef24d0;
+	Node0x564187ef1be0:s1 -> Node0x564187ef2480;
+	Node0x564187ef24d0 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.else8:                                         \l  tail call void @__assert_fail(i8* getelementptr inbounds ([25 x i8], [25 x\l... i8]* @.str.26, i64 0, i64 0), i8* getelementptr inbounds ([13 x i8], [13 x\l... i8]* @.str.1, i64 0, i64 0), i32 2331, i8* getelementptr inbounds ([57 x i8],\l... [57 x i8]* @__PRETTY_FUNCTION__.qemu_display_init, i64 0, i64 0)) #20, !dbg\l... !1552\l  unreachable, !dbg !1552\l}"];
+	Node0x564187ef2480 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.end9:                                          \l  %init = getelementptr inbounds %struct.QemuDisplay, %struct.QemuDisplay* %1,\l... i64 0, i32 2, !dbg !1556\l  %2 = load void (%struct.DisplayState*, %struct.DisplayOptions*)*, void\l... (%struct.DisplayState*, %struct.DisplayOptions*)** %init, align 8, !dbg !1556\l  tail call void %2(%struct.DisplayState* %ds, %struct.DisplayOptions* nonnull\l... %opts) #21, !dbg !1557\l  br label %return, !dbg !1558\l}"];
+	Node0x564187ef2480 -> Node0x564187ee9f40;
+	Node0x564187ee9f40 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{return:                                           \l  ret void, !dbg !1558\l}"];
+}

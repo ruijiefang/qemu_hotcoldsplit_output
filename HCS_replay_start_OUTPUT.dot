@@ -1,0 +1,18 @@
+digraph "CFG for 'replay_start' function" {
+	label="CFG for 'replay_start' function";
+
+	Node0x55a8035396e0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  %0 = load i32, i32* @replay_mode, align 4, !dbg !197\l  %cmp = icmp eq i32 %0, 0, !dbg !199\l  br i1 %cmp, label %return, label %if.end, !dbg !200, !prof !201\l|{<s0>T|<s1>F}}"];
+	Node0x55a8035396e0:s0 -> Node0x55a8034cb2e0;
+	Node0x55a8035396e0:s1 -> Node0x55a8034fc620;
+	Node0x55a8034fc620 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.end:                                           \l  %1 = load %struct._GSList*, %struct._GSList** @replay_blockers, align 8,\l... !dbg !202\l  %tobool = icmp eq %struct._GSList* %1, null, !dbg !202\l  br i1 %tobool, label %if.end2, label %if.then1, !dbg !204\l|{<s0>T|<s1>F}}"];
+	Node0x55a8034fc620:s0 -> Node0x55a8034fca60;
+	Node0x55a8034fc620:s1 -> Node0x55a8034fca10;
+	Node0x55a8034fca10 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.then1:                                         \l  %2 = bitcast %struct._GSList* %1 to %struct.Error**, !dbg !205\l  %3 = load %struct.Error*, %struct.Error** %2, align 8, !dbg !205\l  tail call void (%struct.Error*, i8*, ...) @error_reportf_err(%struct.Error*\l... %3, i8* getelementptr inbounds ([16 x i8], [16 x i8]* @.str.12, i64 0, i64\l... 0)) #16, !dbg !207\l  tail call void @exit(i32 1) #17, !dbg !208\l  unreachable, !dbg !208\l}"];
+	Node0x55a8034fca60 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.end2:                                          \l  %4 = load i32, i32* @use_icount, align 4, !dbg !209\l  %tobool3 = icmp eq i32 %4, 0, !dbg !209\l  br i1 %tobool3, label %if.then4, label %if.end5, !dbg !211\l|{<s0>T|<s1>F}}"];
+	Node0x55a8034fca60:s0 -> Node0x55a803532e60;
+	Node0x55a8034fca60:s1 -> Node0x55a8034caf70;
+	Node0x55a803532e60 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.then4:                                         \l  tail call void (i8*, ...) @error_report(i8* getelementptr inbounds ([42 x\l... i8], [42 x i8]* @.str.13, i64 0, i64 0)) #16, !dbg !212\l  tail call void @exit(i32 1) #17, !dbg !214\l  unreachable, !dbg !214\l}"];
+	Node0x55a8034caf70 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.end5:                                          \l  tail call void @replay_enable_events() #16, !dbg !215\l  br label %return, !dbg !216\l}"];
+	Node0x55a8034caf70 -> Node0x55a8034cb2e0;
+	Node0x55a8034cb2e0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{return:                                           \l  ret void, !dbg !216\l}"];
+}

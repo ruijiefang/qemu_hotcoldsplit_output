@@ -1,0 +1,28 @@
+digraph "CFG for 'qemu_event_wait' function" {
+	label="CFG for 'qemu_event_wait' function";
+
+	Node0x5613f1a8aef0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  call void @llvm.dbg.value(metadata %struct.QemuEvent* %ev, metadata !138,\l... metadata !DIExpression()), !dbg !149\l  %initialized = getelementptr inbounds %struct.QemuEvent, %struct.QemuEvent*\l... %ev, i64 0, i32 1, !dbg !150\l  %0 = load i8, i8* %initialized, align 4, !dbg !150, !range !153\l  %tobool = icmp eq i8 %0, 0, !dbg !150\l  br i1 %tobool, label %if.else, label %if.end, !dbg !154, !prof !155\l|{<s0>T|<s1>F}}"];
+	Node0x5613f1a8aef0:s0 -> Node0x5613f1a8ec70;
+	Node0x5613f1a8aef0:s1 -> Node0x5613f1a8ec20;
+	Node0x5613f1a8ec70 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.else:                                          \l  tail call void @__assert_fail(i8* getelementptr inbounds ([16 x i8], [16 x\l... i8]* @.str.4, i64 0, i64 0), i8* getelementptr inbounds ([25 x i8], [25 x\l... i8]* @.str.1, i64 0, i64 0), i32 445, i8* getelementptr inbounds ([34 x i8],\l... [34 x i8]* @__PRETTY_FUNCTION__.qemu_event_wait, i64 0, i64 0)) #22, !dbg !150\l  unreachable, !dbg !150\l}"];
+	Node0x5613f1a8ec20 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.end:                                           \l  %value1 = getelementptr inbounds %struct.QemuEvent, %struct.QemuEvent* %ev,\l... i64 0, i32 0, !dbg !156\l  %1 = load atomic i32, i32* %value1 monotonic, align 4, !dbg !156\l  call void @llvm.dbg.value(metadata i32 %1, metadata !139, metadata\l... !DIExpression()), !dbg !149\l  tail call void asm sideeffect \"\", \"~\{memory\},~\{dirflag\},~\{fpsr\},~\{flags\}\"()\l... #23, !dbg !158, !srcloc !161\l  fence acquire, !dbg !162\l  switch i32 %1, label %while.cond.i.preheader [\l    i32 0, label %cleanup\l    i32 1, label %if.then4\l  ], !dbg !163, !prof !164\l|{<s0>def|<s1>0|<s2>1}}"];
+	Node0x5613f1a8ec20:s0 -> Node0x5613f19e7840;
+	Node0x5613f1a8ec20:s1 -> Node0x5613f1a99100;
+	Node0x5613f1a8ec20:s2 -> Node0x5613f1a97060;
+	Node0x5613f1a97060 [shape=record,color="#b70d28ff", style=filled, fillcolor="#bb1b2c70",label="{if.then4:                                         \l  call void @llvm.dbg.value(metadata i32 1, metadata !140, metadata\l... !DIExpression()), !dbg !165\l  %2 = cmpxchg i32* %value1, i32 1, i32 -1 seq_cst seq_cst, !dbg !166\l  %3 = extractvalue \{ i32, i1 \} %2, 1, !dbg !166\l  %4 = extractvalue \{ i32, i1 \} %2, 0, !dbg !166\l  %phitmp = icmp eq i32 %4, 0, !dbg !166\l  %not. = xor i1 %3, true, !dbg !166\l  %_old.0 = and i1 %phitmp, %not., !dbg !166\l  call void @llvm.dbg.value(metadata i32 undef, metadata !140, metadata\l... !DIExpression()), !dbg !165\l  br i1 %_old.0, label %cleanup, label %while.cond.i.preheader, !dbg !167,\l... !prof !168\l|{<s0>T|<s1>F}}"];
+	Node0x5613f1a97060:s0 -> Node0x5613f1a99100;
+	Node0x5613f1a97060:s1 -> Node0x5613f19e7840;
+	Node0x5613f19e7840 [shape=record,color="#b70d28ff", style=filled, fillcolor="#bb1b2c70",label="{while.cond.i.preheader:                           \l  br label %while.cond.i, !dbg !169\l}"];
+	Node0x5613f19e7840 -> Node0x5613f19d9730;
+	Node0x5613f19d9730 [shape=record,color="#b70d28ff", style=filled, fillcolor="#bb1b2c70",label="{while.cond.i:                                     \l  %call.i = tail call i64 (i64, ...) @syscall(i64 202, %struct.QemuEvent* %ev,\l... i32 0, i32 -1, i8* null, i8* null, i32 0) #23, !dbg !178\l  %tobool.i = icmp eq i64 %call.i, 0, !dbg !169\l  br i1 %tobool.i, label %cleanup.loopexit, label %while.body.i, !dbg !169,\l... !prof !179\l|{<s0>T|<s1>F}}"];
+	Node0x5613f19d9730:s0 -> Node0x5613f1a970b0;
+	Node0x5613f19d9730:s1 -> Node0x5613f1a17840;
+	Node0x5613f1a17840 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#cc403a70",label="{while.body.i:                                     \l  %call1.i = tail call i32* @__errno_location() #24, !dbg !180\l  %5 = load i32, i32* %call1.i, align 4, !dbg !180\l  switch i32 %5, label %sw.default.i [\l    i32 11, label %cleanup.loopexit\l    i32 4, label %while.cond.i\l  ], !dbg !182, !prof !183, !llvm.loop !184\l|{<s0>def|<s1>11|<s2>4}}"];
+	Node0x5613f1a17840:s0 -> Node0x5613f1a7ad10;
+	Node0x5613f1a17840:s1 -> Node0x5613f1a970b0;
+	Node0x5613f1a17840:s2 -> Node0x5613f19d9730;
+	Node0x5613f1a7ad10 [shape=record,penwidth=3.0, color="red",label="{sw.default.i:                                     \l  tail call void @abort() #22, !dbg !186\l  unreachable, !dbg !186\l}"];
+	Node0x5613f1a970b0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#bb1b2c70",label="{cleanup.loopexit:                                 \l  br label %cleanup, !dbg !188\l}"];
+	Node0x5613f1a970b0 -> Node0x5613f1a99100;
+	Node0x5613f1a99100 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{cleanup:                                          \l  ret void, !dbg !188\l}"];
+}

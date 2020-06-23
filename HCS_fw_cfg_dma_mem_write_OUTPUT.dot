@@ -1,0 +1,21 @@
+digraph "CFG for 'fw_cfg_dma_mem_write' function" {
+	label="CFG for 'fw_cfg_dma_mem_write' function";
+
+	Node0x5610757598d0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  call void @llvm.dbg.value(metadata i8* %opaque, metadata !1239, metadata\l... !DIExpression()), !dbg !1246\l  call void @llvm.dbg.value(metadata i64 %addr, metadata !1240, metadata\l... !DIExpression()), !dbg !1246\l  call void @llvm.dbg.value(metadata i64 %value, metadata !1241, metadata\l... !DIExpression()), !dbg !1246\l  call void @llvm.dbg.value(metadata i32 %size, metadata !1242, metadata\l... !DIExpression()), !dbg !1246\l  %0 = bitcast i8* %opaque to %struct.FWCfgState*, !dbg !1247\l  call void @llvm.dbg.value(metadata %struct.FWCfgState* %0, metadata !1243,\l... metadata !DIExpression()), !dbg !1246\l  %cmp = icmp eq i32 %size, 4, !dbg !1248\l  br i1 %cmp, label %if.then, label %if.else7, !dbg !1250, !prof !1251\l|{<s0>T|<s1>F}}"];
+	Node0x5610757598d0:s0 -> Node0x561075e3e0b0;
+	Node0x5610757598d0:s1 -> Node0x561075e3e150;
+	Node0x561075e3e0b0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.then:                                          \l  switch i64 %addr, label %if.end13 [\l    i64 0, label %if.then2\l    i64 4, label %if.then4\l  ], !dbg !1252, !prof !1254\l|{<s0>def|<s1>0|<s2>4}}"];
+	Node0x561075e3e0b0:s0 -> Node0x561075e3e100;
+	Node0x561075e3e0b0:s1 -> Node0x561075e3e720;
+	Node0x561075e3e0b0:s2 -> Node0x561075e3f080;
+	Node0x561075e3e720 [shape=record,penwidth=3.0, color="red",label="{if.then2:                                         \l  %shl = shl i64 %value, 32, !dbg !1255\l  %dma_addr = getelementptr inbounds i8, i8* %opaque, i64 872, !dbg !1258\l  %1 = bitcast i8* %dma_addr to i64*, !dbg !1258\l  store i64 %shl, i64* %1, align 8, !dbg !1259\l  br label %if.end13, !dbg !1260\l}"];
+	Node0x561075e3e720 -> Node0x561075e3e100;
+	Node0x561075e3f080 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.then4:                                         \l  %dma_addr5 = getelementptr inbounds i8, i8* %opaque, i64 872, !dbg !1261\l  %2 = bitcast i8* %dma_addr5 to i64*, !dbg !1261\l  %3 = load i64, i64* %2, align 8, !dbg !1264\l  %or = or i64 %3, %value, !dbg !1264\l  store i64 %or, i64* %2, align 8, !dbg !1264\l  tail call fastcc void @fw_cfg_dma_transfer(%struct.FWCfgState* %0), !dbg\l... !1265\l  br label %if.end13, !dbg !1266\l}"];
+	Node0x561075e3f080 -> Node0x561075e3e100;
+	Node0x561075e3e150 [shape=record,penwidth=3.0, color="red",label="{if.else7:                                         \l  %cmp8 = icmp eq i32 %size, 8, !dbg !1267\l  %cmp9 = icmp eq i64 %addr, 0, !dbg !1269\l  %or.cond = and i1 %cmp9, %cmp8, !dbg !1270\l  br i1 %or.cond, label %if.then10, label %if.end13, !dbg !1270\l|{<s0>T|<s1>F}}"];
+	Node0x561075e3e150:s0 -> Node0x561075c38820;
+	Node0x561075e3e150:s1 -> Node0x561075e3e100;
+	Node0x561075c38820 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#5572df70",label="{if.then10:                                        \l  %dma_addr11 = getelementptr inbounds i8, i8* %opaque, i64 872, !dbg !1271\l  %4 = bitcast i8* %dma_addr11 to i64*, !dbg !1271\l  store i64 %value, i64* %4, align 8, !dbg !1273\l  tail call fastcc void @fw_cfg_dma_transfer(%struct.FWCfgState* %0), !dbg\l... !1274\l  br label %if.end13, !dbg !1275\l}"];
+	Node0x561075c38820 -> Node0x561075e3e100;
+	Node0x561075e3e100 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.end13:                                         \l  ret void, !dbg !1276\l}"];
+}

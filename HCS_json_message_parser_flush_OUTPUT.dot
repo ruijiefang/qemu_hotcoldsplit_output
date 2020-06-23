@@ -1,0 +1,9 @@
+digraph "CFG for 'json_message_parser_flush' function" {
+	label="CFG for 'json_message_parser_flush' function";
+
+	Node0x555a14bcf140 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  call void @llvm.dbg.value(metadata %struct.JSONMessageParser* %parser,\l... metadata !148, metadata !DIExpression()), !dbg !150\l  %lexer = getelementptr inbounds %struct.JSONMessageParser,\l... %struct.JSONMessageParser* %parser, i64 0, i32 3, !dbg !151\l  tail call void @json_lexer_flush(%struct.JSONLexer* nonnull %lexer) #6, !dbg\l... !152\l  %tokens = getelementptr inbounds %struct.JSONMessageParser,\l... %struct.JSONMessageParser* %parser, i64 0, i32 6, !dbg !153\l  %call = tail call i32 @g_queue_is_empty(%struct._GQueue* nonnull %tokens)\l... #6, !dbg !153\l  %tobool = icmp eq i32 %call, 0, !dbg !153\l  br i1 %tobool, label %if.else, label %if.end, !dbg !156, !prof !157\l|{<s0>T|<s1>F}}"];
+	Node0x555a14bcf140:s0 -> Node0x555a14bd1dc0;
+	Node0x555a14bcf140:s1 -> Node0x555a14bd1d70;
+	Node0x555a14bd1dc0 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.else:                                          \l  tail call void @__assert_fail(i8* getelementptr inbounds ([34 x i8], [34 x\l... i8]* @.str.5, i64 0, i64 0), i8* getelementptr inbounds ([24 x i8], [24 x\l... i8]* @.str, i64 0, i64 0), i32 127, i8* getelementptr inbounds ([52 x i8],\l... [52 x i8]* @__PRETTY_FUNCTION__.json_message_parser_flush, i64 0, i64 0)) #7,\l... !dbg !153\l  unreachable, !dbg !153\l}"];
+	Node0x555a14bd1d70 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.end:                                           \l  ret void, !dbg !158\l}"];
+}

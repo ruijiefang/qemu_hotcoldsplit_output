@@ -1,0 +1,9 @@
+digraph "CFG for 'qemu_opts_set_defaults' function" {
+	label="CFG for 'qemu_opts_set_defaults' function";
+
+	Node0x55ef4226b850 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  call void @llvm.dbg.value(metadata %struct.QemuOptsList* %list, metadata\l... !225, metadata !DIExpression()), !dbg !230\l  call void @llvm.dbg.value(metadata i8* %params, metadata !226, metadata\l... !DIExpression()), !dbg !230\l  call void @llvm.dbg.value(metadata i32 %permit_abbrev, metadata !227,\l... metadata !DIExpression()), !dbg !230\l  %tobool = icmp ne i32 %permit_abbrev, 0, !dbg !231\l  %call = tail call fastcc %struct.QemuOpts* @opts_parse(%struct.QemuOptsList*\l... %list, i8* %params, i1 zeroext %tobool, i1 zeroext true, i8* null,\l... %struct.Error** null), !dbg !232\l  call void @llvm.dbg.value(metadata %struct.QemuOpts* %call, metadata !228,\l... metadata !DIExpression()), !dbg !230\l  %tobool1 = icmp eq %struct.QemuOpts* %call, null, !dbg !233\l  br i1 %tobool1, label %if.else, label %if.end, !dbg !236, !prof !237\l|{<s0>T|<s1>F}}"];
+	Node0x55ef4226b850:s0 -> Node0x55ef4226f460;
+	Node0x55ef4226b850:s1 -> Node0x55ef4226f3f0;
+	Node0x55ef4226f460 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.else:                                          \l  tail call void @__assert_fail(i8* getelementptr inbounds ([5 x i8], [5 x\l... i8]* @.str.29, i64 0, i64 0), i8* getelementptr inbounds ([19 x i8], [19 x\l... i8]* @.str, i64 0, i64 0), i32 965, i8* getelementptr inbounds ([63 x i8],\l... [63 x i8]* @__PRETTY_FUNCTION__.qemu_opts_set_defaults, i64 0, i64 0)) #22,\l... !dbg !233\l  unreachable, !dbg !233\l}"];
+	Node0x55ef4226f3f0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.end:                                           \l  ret void, !dbg !238\l}"];
+}

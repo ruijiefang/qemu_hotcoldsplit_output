@@ -1,0 +1,44 @@
+digraph "CFG for 'blk_root_drained_end' function" {
+	label="CFG for 'blk_root_drained_end' function";
+
+	Node0x55d70fdd1d60 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  call void @llvm.dbg.value(metadata %struct.BdrvChild* %child, metadata\l... !3088, metadata !DIExpression()), !dbg !3093\l  call void @llvm.dbg.value(metadata i32* %drained_end_counter, metadata\l... !3089, metadata !DIExpression()), !dbg !3093\l  %opaque = getelementptr inbounds %struct.BdrvChild, %struct.BdrvChild*\l... %child, i64 0, i32 4, !dbg !3094\l  %0 = bitcast i8** %opaque to %struct.BlockBackend**, !dbg !3094\l  %1 = load %struct.BlockBackend*, %struct.BlockBackend** %0, align 8, !dbg\l... !3094\l  call void @llvm.dbg.value(metadata %struct.BlockBackend* %1, metadata !3090,\l... metadata !DIExpression()), !dbg !3093\l  %quiesce_counter = getelementptr inbounds %struct.BlockBackend,\l... %struct.BlockBackend* %1, i64 0, i32 27, !dbg !3095\l  %2 = load i32, i32* %quiesce_counter, align 8, !dbg !3095\l  %tobool = icmp eq i32 %2, 0, !dbg !3095\l  br i1 %tobool, label %if.else, label %if.end, !dbg !3098, !prof !3099\l|{<s0>T|<s1>F}}"];
+	Node0x55d70fdd1d60:s0 -> Node0x55d70fca56c0;
+	Node0x55d70fdd1d60:s1 -> Node0x55d70fca5670;
+	Node0x55d70fca56c0 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.else:                                          \l  tail call void @__assert_fail(i8* getelementptr inbounds ([21 x i8], [21 x\l... i8]* @.str.25, i64 0, i64 0), i8* getelementptr inbounds ([22 x i8], [22 x\l... i8]* @.str.2, i64 0, i64 0), i32 2361, i8* getelementptr inbounds ([46 x i8],\l... [46 x i8]* @__PRETTY_FUNCTION__.blk_root_drained_end, i64 0, i64 0)) #24,\l... !dbg !3095\l  unreachable, !dbg !3095\l}"];
+	Node0x55d70fca5670 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.end:                                           \l  %io_limits_disabled = getelementptr inbounds %struct.BlockBackend,\l... %struct.BlockBackend* %1, i64 0, i32 7, i32 0, i32 3, !dbg !3100\l  %3 = load i32, i32* %io_limits_disabled, align 8, !dbg !3100\l  %tobool1 = icmp eq i32 %3, 0, !dbg !3100\l  br i1 %tobool1, label %if.else3, label %if.end4, !dbg !3103, !prof !3099\l|{<s0>T|<s1>F}}"];
+	Node0x55d70fca5670:s0 -> Node0x55d70fa73ac0;
+	Node0x55d70fca5670:s1 -> Node0x55d70fa73a50;
+	Node0x55d70fa73ac0 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.else3:                                         \l  tail call void @__assert_fail(i8* getelementptr inbounds ([53 x i8], [53 x\l... i8]* @.str.26, i64 0, i64 0), i8* getelementptr inbounds ([22 x i8], [22 x\l... i8]* @.str.2, i64 0, i64 0), i32 2363, i8* getelementptr inbounds ([46 x i8],\l... [46 x i8]* @__PRETTY_FUNCTION__.blk_root_drained_end, i64 0, i64 0)) #24,\l... !dbg !3100\l  unreachable, !dbg !3100\l}"];
+	Node0x55d70fa73a50 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.end4:                                          \l  %4 = atomicrmw sub i32* %io_limits_disabled, i32 1 seq_cst, !dbg !3104\l  %5 = load i32, i32* %quiesce_counter, align 8, !dbg !3105\l  %dec = add i32 %5, -1, !dbg !3105\l  store i32 %dec, i32* %quiesce_counter, align 8, !dbg !3105\l  %cmp = icmp eq i32 %dec, 0, !dbg !3107\l  br i1 %cmp, label %if.then9, label %if.end18, !dbg !3108, !prof !3109\l|{<s0>T|<s1>F}}"];
+	Node0x55d70fa73a50:s0 -> Node0x55d70fcc2930;
+	Node0x55d70fa73a50:s1 -> Node0x55d70fcc3280;
+	Node0x55d70fcc2930 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#c32e3170",label="{if.then9:                                         \l  %dev_ops = getelementptr inbounds %struct.BlockBackend,\l... %struct.BlockBackend* %1, i64 0, i32 9, !dbg !3110\l  %6 = load %struct.BlockDevOps*, %struct.BlockDevOps** %dev_ops, align 8,\l... !dbg !3110\l  %tobool10 = icmp eq %struct.BlockDevOps* %6, null, !dbg !3113\l  br i1 %tobool10, label %if.end16, label %land.lhs.true, !dbg !3114, !prof\l... !3115\l|{<s0>T|<s1>F}}"];
+	Node0x55d70fcc2930:s0 -> Node0x55d70fcc3a70;
+	Node0x55d70fcc2930:s1 -> Node0x55d70fcc3ac0;
+	Node0x55d70fcc3ac0 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#d0473d70",label="{land.lhs.true:                                    \l  %drained_end = getelementptr inbounds %struct.BlockDevOps,\l... %struct.BlockDevOps* %6, i64 0, i32 6, !dbg !3116\l  %7 = load void (i8*)*, void (i8*)** %drained_end, align 8, !dbg !3116\l  %tobool12 = icmp eq void (i8*)* %7, null, !dbg !3117\l  br i1 %tobool12, label %if.end16, label %if.then13, !dbg !3118, !prof !3119\l|{<s0>T|<s1>F}}"];
+	Node0x55d70fcc3ac0:s0 -> Node0x55d70fcc3a70;
+	Node0x55d70fcc3ac0:s1 -> Node0x55d70fcc3a20;
+	Node0x55d70fcc3a20 [shape=record,penwidth=3.0, color="red",label="{if.then13:                                        \l  %dev_opaque = getelementptr inbounds %struct.BlockBackend,\l... %struct.BlockBackend* %1, i64 0, i32 10, !dbg !3120\l  %8 = load i8*, i8** %dev_opaque, align 8, !dbg !3120\l  tail call void %7(i8* %8) #25, !dbg !3122\l  br label %if.end16, !dbg !3123\l}"];
+	Node0x55d70fcc3a20 -> Node0x55d70fcc3a70;
+	Node0x55d70fcc3a70 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#c32e3170",label="{if.end16:                                         \l  %queued_requests = getelementptr inbounds %struct.BlockBackend,\l... %struct.BlockBackend* %1, i64 0, i32 28, !dbg !3124\l  br label %while.cond.peel.begin, !dbg !3125\l}"];
+	Node0x55d70fcc3a70 -> Node0x55d70fd13210;
+	Node0x55d70fd13210 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#c32e3170",label="{while.cond.peel.begin:                            \l  br label %while.cond.peel, !dbg !3125\l}"];
+	Node0x55d70fd13210 -> Node0x55d70f9402b0;
+	Node0x55d70f9402b0 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#c32e3170",label="{while.cond.peel:                                  \l  %call17.peel = tail call zeroext i1\l... @qemu_co_enter_next_impl(%struct.CoQueue* nonnull %queued_requests,\l... %struct.QemuLockable* null) #25, !dbg !3126\l  br i1 %call17.peel, label %while.cond.peel.next, label %if.end18.loopexit,\l... !dbg !3125, !prof !3127\l|{<s0>T|<s1>F}}"];
+	Node0x55d70f9402b0:s0 -> Node0x55d70fcdbaa0;
+	Node0x55d70f9402b0:s1 -> Node0x55d70fea5380;
+	Node0x55d70fcdbaa0 [shape=record,penwidth=3.0, color="red",label="{while.cond.peel.next:                             \l  br label %while.cond.peel.next29, !dbg !3125\l}"];
+	Node0x55d70fcdbaa0 -> Node0x55d70fc35120;
+	Node0x55d70fc35120 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#6282ea70",label="{while.cond.peel.next29:                           \l  br label %if.end16.peel.newph, !dbg !3125\l}"];
+	Node0x55d70fc35120 -> Node0x55d70fdf6db0;
+	Node0x55d70fdf6db0 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#6282ea70",label="{if.end16.peel.newph:                              \l  br label %while.cond, !dbg !3125\l}"];
+	Node0x55d70fdf6db0 -> Node0x55d70fcc4c50;
+	Node0x55d70fcc4c50 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#6282ea70",label="{while.cond:                                       \l  %call17 = tail call zeroext i1 @qemu_co_enter_next_impl(%struct.CoQueue*\l... nonnull %queued_requests, %struct.QemuLockable* null) #25, !dbg !3126\l  br i1 %call17, label %while.cond, label %if.end18.loopexit.loopexit, !dbg\l... !3125, !prof !3127, !llvm.loop !3128\l|{<s0>T|<s1>F}}"];
+	Node0x55d70fcc4c50:s0 -> Node0x55d70fcc4c50;
+	Node0x55d70fcc4c50:s1 -> Node0x55d710033fa0;
+	Node0x55d710033fa0 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#6282ea70",label="{if.end18.loopexit.loopexit:                       \l  br label %if.end18.loopexit, !dbg !3132\l}"];
+	Node0x55d710033fa0 -> Node0x55d70fea5380;
+	Node0x55d70fea5380 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#c32e3170",label="{if.end18.loopexit:                                \l  br label %if.end18, !dbg !3132\l}"];
+	Node0x55d70fea5380 -> Node0x55d70fcc3280;
+	Node0x55d70fcc3280 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.end18:                                         \l  ret void, !dbg !3132\l}"];
+}

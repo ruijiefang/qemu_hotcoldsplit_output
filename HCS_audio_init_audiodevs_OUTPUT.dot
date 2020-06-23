@@ -1,0 +1,28 @@
+digraph "CFG for 'audio_init_audiodevs' function" {
+	label="CFG for 'audio_init_audiodevs' function";
+
+	Node0x56226e483930 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  call void @llvm.dbg.value(metadata %struct.AudiodevListEntry* undef,\l... metadata !946, metadata !DIExpression()), !dbg !948\l  %e.04 = load %struct.AudiodevListEntry*, %struct.AudiodevListEntry**\l... getelementptr inbounds (%struct.AudiodevListHead, %struct.AudiodevListHead*\l... @audiodevs, i64 0, i32 0), align 8, !dbg !949\l  call void @llvm.dbg.value(metadata %struct.AudiodevListEntry* %e.04,\l... metadata !946, metadata !DIExpression()), !dbg !948\l  %tobool5 = icmp eq %struct.AudiodevListEntry* %e.04, null, !dbg !951\l  br i1 %tobool5, label %for.end, label %for.body.preheader, !dbg !951, !prof\l... !952\l|{<s0>T|<s1>F}}"];
+	Node0x56226e483930:s0 -> Node0x56226e8898f0;
+	Node0x56226e483930:s1 -> Node0x56226ea570c0;
+	Node0x56226ea570c0 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{for.body.preheader:                               \l  br label %for.body.peel.begin, !dbg !951\l}"];
+	Node0x56226ea570c0 -> Node0x56226e8d2550;
+	Node0x56226e8d2550 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{for.body.peel.begin:                              \l  br label %for.body.peel, !dbg !951\l}"];
+	Node0x56226e8d2550 -> Node0x56226ea7b740;
+	Node0x56226ea7b740 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{for.body.peel:                                    \l  %dev.peel = getelementptr inbounds %struct.AudiodevListEntry,\l... %struct.AudiodevListEntry* %e.04, i64 0, i32 0, !dbg !953\l  %0 = load %struct.Audiodev*, %struct.Audiodev** %dev.peel, align 8, !dbg !953\l  %call.peel = tail call fastcc %struct.AudioState*\l... @audio_init(%struct.Audiodev* %0, i8* null), !dbg !956\l  %sqe_next.peel = getelementptr inbounds %struct.AudiodevListEntry,\l... %struct.AudiodevListEntry* %e.04, i64 0, i32 1, i32 0, !dbg !957\l  call void @llvm.dbg.value(metadata %struct.AudiodevListEntry* undef,\l... metadata !946, metadata !DIExpression()), !dbg !948\l  %e.0.peel = load %struct.AudiodevListEntry*, %struct.AudiodevListEntry**\l... %sqe_next.peel, align 8, !dbg !949\l  call void @llvm.dbg.value(metadata %struct.AudiodevListEntry* %e.0.peel,\l... metadata !946, metadata !DIExpression()), !dbg !948\l  %tobool.peel = icmp eq %struct.AudiodevListEntry* %e.0.peel, null, !dbg !951\l  br i1 %tobool.peel, label %for.end.loopexit, label %for.body.peel.next, !dbg\l... !951, !prof !952\l|{<s0>T|<s1>F}}"];
+	Node0x56226ea7b740:s0 -> Node0x56226e8b8a00;
+	Node0x56226ea7b740:s1 -> Node0x56226ea2a940;
+	Node0x56226ea2a940 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{for.body.peel.next:                               \l  br label %for.body.peel.next7, !dbg !951\l}"];
+	Node0x56226ea2a940 -> Node0x56226e9e69d0;
+	Node0x56226e9e69d0 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{for.body.peel.next7:                              \l  br label %for.body.preheader.peel.newph, !dbg !951\l}"];
+	Node0x56226e9e69d0 -> Node0x56226ea2a8f0;
+	Node0x56226ea2a8f0 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{for.body.preheader.peel.newph:                    \l  br label %for.body, !dbg !951\l}"];
+	Node0x56226ea2a8f0 -> Node0x56226e892f30;
+	Node0x56226e892f30 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{for.body:                                         \l  %e.06 = phi %struct.AudiodevListEntry* [ %e.0, %for.body ], [ %e.0.peel,\l... %for.body.preheader.peel.newph ]\l  %dev = getelementptr inbounds %struct.AudiodevListEntry,\l... %struct.AudiodevListEntry* %e.06, i64 0, i32 0, !dbg !953\l  %1 = load %struct.Audiodev*, %struct.Audiodev** %dev, align 8, !dbg !953\l  %call = tail call fastcc %struct.AudioState* @audio_init(%struct.Audiodev*\l... %1, i8* null), !dbg !956\l  %sqe_next = getelementptr inbounds %struct.AudiodevListEntry,\l... %struct.AudiodevListEntry* %e.06, i64 0, i32 1, i32 0, !dbg !957\l  call void @llvm.dbg.value(metadata %struct.AudiodevListEntry* undef,\l... metadata !946, metadata !DIExpression()), !dbg !948\l  %e.0 = load %struct.AudiodevListEntry*, %struct.AudiodevListEntry**\l... %sqe_next, align 8, !dbg !949\l  call void @llvm.dbg.value(metadata %struct.AudiodevListEntry* %e.0, metadata\l... !946, metadata !DIExpression()), !dbg !948\l  %tobool = icmp eq %struct.AudiodevListEntry* %e.0, null, !dbg !951\l  br i1 %tobool, label %for.end.loopexit.loopexit, label %for.body, !dbg !951,\l... !prof !952, !llvm.loop !958\l|{<s0>T|<s1>F}}"];
+	Node0x56226e892f30:s0 -> Node0x56226e8c1a90;
+	Node0x56226e892f30:s1 -> Node0x56226e892f30;
+	Node0x56226e8c1a90 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{for.end.loopexit.loopexit:                        \l  br label %for.end.loopexit, !dbg !962\l}"];
+	Node0x56226e8c1a90 -> Node0x56226e8b8a00;
+	Node0x56226e8b8a00 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{for.end.loopexit:                                 \l  br label %for.end, !dbg !962\l}"];
+	Node0x56226e8b8a00 -> Node0x56226e8898f0;
+	Node0x56226e8898f0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{for.end:                                          \l  ret void, !dbg !962\l}"];
+}

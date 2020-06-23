@@ -1,0 +1,9 @@
+digraph "CFG for 'qemu_iovec_reset' function" {
+	label="CFG for 'qemu_iovec_reset' function";
+
+	Node0x5602bac61050 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  call void @llvm.dbg.value(metadata %struct.QEMUIOVector* %qiov, metadata\l... !89, metadata !DIExpression()), !dbg !91\l  %nalloc = getelementptr inbounds %struct.QEMUIOVector, %struct.QEMUIOVector*\l... %qiov, i64 0, i32 2, i32 0, i32 0, !dbg !92\l  %0 = load i32, i32* %nalloc, align 8, !dbg !92\l  %cmp = icmp eq i32 %0, -1, !dbg !92\l  br i1 %cmp, label %if.else, label %if.end, !dbg !95, !prof !96\l|{<s0>T|<s1>F}}"];
+	Node0x5602bac61050:s0 -> Node0x5602bac62d50;
+	Node0x5602bac61050:s1 -> Node0x5602bac62140;
+	Node0x5602bac62d50 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.else:                                          \l  tail call void @__assert_fail(i8* getelementptr inbounds ([19 x i8], [19 x\l... i8]* @.str.5, i64 0, i64 0), i8* getelementptr inbounds ([11 x i8], [11 x\l... i8]* @.str.1, i64 0, i64 0), i32 509, i8* getelementptr inbounds ([38 x i8],\l... [38 x i8]* @__PRETTY_FUNCTION__.qemu_iovec_reset, i64 0, i64 0)) #17, !dbg !92\l  unreachable, !dbg !92\l}"];
+	Node0x5602bac62140 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.end:                                           \l  %niov = getelementptr inbounds %struct.QEMUIOVector, %struct.QEMUIOVector*\l... %qiov, i64 0, i32 1, !dbg !97\l  store i32 0, i32* %niov, align 8, !dbg !98\l  %1 = getelementptr inbounds %struct.QEMUIOVector, %struct.QEMUIOVector*\l... %qiov, i64 0, i32 2, i32 0, i32 1, i32 1, !dbg !99\l  store i64 0, i64* %1, align 8, !dbg !100\l  ret void, !dbg !101\l}"];
+}

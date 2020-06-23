@@ -1,0 +1,48 @@
+digraph "CFG for 'ide_drive_get' function" {
+	label="CFG for 'ide_drive_get' function";
+
+	Node0x565092c20430 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  call void @llvm.dbg.value(metadata %struct.DriveInfo** %hd, metadata !3484,\l... metadata !DIExpression()), !dbg !3488\l  call void @llvm.dbg.value(metadata i32 %n, metadata !3485, metadata\l... !DIExpression()), !dbg !3488\l  call void @llvm.dbg.value(metadata i32 0, metadata !3486, metadata\l... !DIExpression()), !dbg !3488\l  %cmp5 = icmp sgt i32 %n, 0, !dbg !3489\l  br i1 %cmp5, label %for.body.preheader, label %for.end, !dbg !3492, !prof\l... !3493\l|{<s0>T|<s1>F}}"];
+	Node0x565092c20430:s0 -> Node0x565092b39390;
+	Node0x565092c20430:s1 -> Node0x565092c78470;
+	Node0x565092b39390 [shape=record,color="#b70d28ff", style=filled, fillcolor="#ca3b3770",label="{for.body.preheader:                               \l  %wide.trip.count = zext i32 %n to i64, !dbg !3489\l  br label %for.body.peel.begin, !dbg !3492\l}"];
+	Node0x565092b39390 -> Node0x565092b0d140;
+	Node0x565092b0d140 [shape=record,color="#b70d28ff", style=filled, fillcolor="#ca3b3770",label="{for.body.peel.begin:                              \l  br label %for.body.peel, !dbg !3492\l}"];
+	Node0x565092b0d140 -> Node0x56509306f670;
+	Node0x56509306f670 [shape=record,color="#b70d28ff", style=filled, fillcolor="#ca3b3770",label="{for.body.peel:                                    \l  call void @llvm.dbg.value(metadata i64 0, metadata !3486, metadata\l... !DIExpression()), !dbg !3488\l  %call.peel = tail call %struct.DriveInfo* @drive_get_by_index(i32 1, i32 0)\l... #23, !dbg !3494\l  store %struct.DriveInfo* %call.peel, %struct.DriveInfo** %hd, align 8, !dbg\l... !3496\l  call void @llvm.dbg.value(metadata i64 1, metadata !3486, metadata\l... !DIExpression()), !dbg !3488\l  %exitcond.peel = icmp eq i32 %n, 1, !dbg !3489\l  br i1 %exitcond.peel, label %for.end.loopexit, label %for.body.peel.next,\l... !dbg !3492, !prof !3497\l|{<s0>T|<s1>F}}"];
+	Node0x56509306f670:s0 -> Node0x5650930b5440;
+	Node0x56509306f670:s1 -> Node0x565092d72df0;
+	Node0x565092d72df0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#d8564670",label="{for.body.peel.next:                               \l  br label %for.body.peel8, !dbg !3492\l}"];
+	Node0x565092d72df0 -> Node0x565092e92610;
+	Node0x565092e92610 [shape=record,color="#b70d28ff", style=filled, fillcolor="#d8564670",label="{for.body.peel8:                                   \l  call void @llvm.dbg.value(metadata i64 1, metadata !3486, metadata\l... !DIExpression()), !dbg !3488\l  %call.peel9 = tail call %struct.DriveInfo* @drive_get_by_index(i32 1, i32 1)\l... #23, !dbg !3494\l  %arrayidx.peel10 = getelementptr %struct.DriveInfo*, %struct.DriveInfo**\l... %hd, i64 1, !dbg !3498\l  store %struct.DriveInfo* %call.peel9, %struct.DriveInfo** %arrayidx.peel10,\l... align 8, !dbg !3496\l  call void @llvm.dbg.value(metadata i64 2, metadata !3486, metadata\l... !DIExpression()), !dbg !3488\l  %exitcond.peel12 = icmp eq i32 %n, 2, !dbg !3489\l  br i1 %exitcond.peel12, label %for.end.loopexit, label %for.body.peel.next7,\l... !dbg !3492, !prof !3499\l|{<s0>T|<s1>F}}"];
+	Node0x565092e92610:s0 -> Node0x5650930b5440;
+	Node0x565092e92610:s1 -> Node0x5650930083b0;
+	Node0x5650930083b0 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{for.body.peel.next7:                              \l  br label %for.body.peel14, !dbg !3492\l}"];
+	Node0x5650930083b0 -> Node0x5650930902b0;
+	Node0x5650930902b0 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{for.body.peel14:                                  \l  call void @llvm.dbg.value(metadata i64 2, metadata !3486, metadata\l... !DIExpression()), !dbg !3488\l  %call.peel15 = tail call %struct.DriveInfo* @drive_get_by_index(i32 1, i32\l... 2) #23, !dbg !3494\l  %arrayidx.peel16 = getelementptr %struct.DriveInfo*, %struct.DriveInfo**\l... %hd, i64 2, !dbg !3498\l  store %struct.DriveInfo* %call.peel15, %struct.DriveInfo** %arrayidx.peel16,\l... align 8, !dbg !3496\l  call void @llvm.dbg.value(metadata i64 3, metadata !3486, metadata\l... !DIExpression()), !dbg !3488\l  %exitcond.peel18 = icmp eq i32 %n, 3, !dbg !3489\l  br i1 %exitcond.peel18, label %for.end.loopexit, label\l... %for.body.peel.next13, !dbg !3492, !prof !3500\l|{<s0>T|<s1>F}}"];
+	Node0x5650930902b0:s0 -> Node0x5650930b5440;
+	Node0x5650930902b0:s1 -> Node0x5650930c62e0;
+	Node0x5650930c62e0 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{for.body.peel.next13:                             \l  br label %for.body.peel20, !dbg !3492\l}"];
+	Node0x5650930c62e0 -> Node0x56509306b670;
+	Node0x56509306b670 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{for.body.peel20:                                  \l  call void @llvm.dbg.value(metadata i64 3, metadata !3486, metadata\l... !DIExpression()), !dbg !3488\l  %call.peel21 = tail call %struct.DriveInfo* @drive_get_by_index(i32 1, i32\l... 3) #23, !dbg !3494\l  %arrayidx.peel22 = getelementptr %struct.DriveInfo*, %struct.DriveInfo**\l... %hd, i64 3, !dbg !3498\l  store %struct.DriveInfo* %call.peel21, %struct.DriveInfo** %arrayidx.peel22,\l... align 8, !dbg !3496\l  call void @llvm.dbg.value(metadata i64 4, metadata !3486, metadata\l... !DIExpression()), !dbg !3488\l  %exitcond.peel24 = icmp eq i32 %n, 4, !dbg !3489\l  br i1 %exitcond.peel24, label %for.end.loopexit, label\l... %for.body.peel.next19, !dbg !3492, !prof !3501\l|{<s0>T|<s1>F}}"];
+	Node0x56509306b670:s0 -> Node0x5650930b5440;
+	Node0x56509306b670:s1 -> Node0x5650930e5db0;
+	Node0x5650930e5db0 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{for.body.peel.next19:                             \l  br label %for.body.peel26, !dbg !3492\l}"];
+	Node0x5650930e5db0 -> Node0x56509309b1d0;
+	Node0x56509309b1d0 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{for.body.peel26:                                  \l  call void @llvm.dbg.value(metadata i64 4, metadata !3486, metadata\l... !DIExpression()), !dbg !3488\l  %call.peel27 = tail call %struct.DriveInfo* @drive_get_by_index(i32 1, i32\l... 4) #23, !dbg !3494\l  %arrayidx.peel28 = getelementptr %struct.DriveInfo*, %struct.DriveInfo**\l... %hd, i64 4, !dbg !3498\l  store %struct.DriveInfo* %call.peel27, %struct.DriveInfo** %arrayidx.peel28,\l... align 8, !dbg !3496\l  call void @llvm.dbg.value(metadata i64 5, metadata !3486, metadata\l... !DIExpression()), !dbg !3488\l  %exitcond.peel30 = icmp eq i32 %n, 5, !dbg !3489\l  br i1 %exitcond.peel30, label %for.end.loopexit, label\l... %for.body.peel.next25, !dbg !3492, !prof !3501\l|{<s0>T|<s1>F}}"];
+	Node0x56509309b1d0:s0 -> Node0x5650930b5440;
+	Node0x56509309b1d0:s1 -> Node0x5650930adb50;
+	Node0x5650930adb50 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{for.body.peel.next25:                             \l  br label %for.body.peel.next31, !dbg !3492\l}"];
+	Node0x5650930adb50 -> Node0x565092e686d0;
+	Node0x565092e686d0 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{for.body.peel.next31:                             \l  br label %for.body.preheader.peel.newph, !dbg !3492\l}"];
+	Node0x565092e686d0 -> Node0x565093073750;
+	Node0x565093073750 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{for.body.preheader.peel.newph:                    \l  br label %for.body, !dbg !3492\l}"];
+	Node0x565093073750 -> Node0x565092c788d0;
+	Node0x565092c788d0 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{for.body:                                         \l  %indvars.iv = phi i64 [ 5, %for.body.preheader.peel.newph ], [\l... %indvars.iv.next, %for.body ]\l  call void @llvm.dbg.value(metadata i64 %indvars.iv, metadata !3486, metadata\l... !DIExpression()), !dbg !3488\l  %0 = trunc i64 %indvars.iv to i32, !dbg !3494\l  %call = tail call %struct.DriveInfo* @drive_get_by_index(i32 1, i32 %0) #23,\l... !dbg !3494\l  %arrayidx = getelementptr %struct.DriveInfo*, %struct.DriveInfo** %hd, i64\l... %indvars.iv, !dbg !3498\l  store %struct.DriveInfo* %call, %struct.DriveInfo** %arrayidx, align 8, !dbg\l... !3496\l  %indvars.iv.next = add nuw nsw i64 %indvars.iv, 1, !dbg !3502\l  call void @llvm.dbg.value(metadata i64 %indvars.iv.next, metadata !3486,\l... metadata !DIExpression()), !dbg !3488\l  %exitcond = icmp eq i64 %indvars.iv.next, %wide.trip.count, !dbg !3489\l  br i1 %exitcond, label %for.end.loopexit.loopexit, label %for.body, !dbg\l... !3492, !prof !3501, !llvm.loop !3503\l|{<s0>T|<s1>F}}"];
+	Node0x565092c788d0:s0 -> Node0x565092d0b180;
+	Node0x565092c788d0:s1 -> Node0x565092c788d0;
+	Node0x565092d0b180 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{for.end.loopexit.loopexit:                        \l  br label %for.end.loopexit, !dbg !3507\l}"];
+	Node0x565092d0b180 -> Node0x5650930b5440;
+	Node0x5650930b5440 [shape=record,color="#b70d28ff", style=filled, fillcolor="#ca3b3770",label="{for.end.loopexit:                                 \l  br label %for.end, !dbg !3507\l}"];
+	Node0x5650930b5440 -> Node0x565092c78470;
+	Node0x565092c78470 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{for.end:                                          \l  ret void, !dbg !3507\l}"];
+}

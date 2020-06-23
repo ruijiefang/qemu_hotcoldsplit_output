@@ -1,0 +1,14 @@
+digraph "CFG for 'event_notifier_set' function" {
+	label="CFG for 'event_notifier_set' function";
+
+	Node0x560a52992820 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  call void @llvm.dbg.value(metadata %struct.EventNotifier* %e, metadata !27,\l... metadata !DIExpression()), !dbg !75\l  %wfd = getelementptr inbounds %struct.EventNotifier, %struct.EventNotifier*\l... %e, i64 0, i32 1, !dbg !76\l  br label %do.body, !dbg !78\l}"];
+	Node0x560a52992820 -> Node0x560a529964c0;
+	Node0x560a529964c0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{do.body:                                          \l  %0 = load i32, i32* %wfd, align 4, !dbg !79\l  %call = tail call i64 @write(i32 %0, i8* bitcast (i64*\l... @event_notifier_set.value to i8*), i64 8) #13, !dbg !80\l  call void @llvm.dbg.value(metadata i64 %call, metadata !28, metadata\l... !DIExpression()), !dbg !75\l  %cmp = icmp slt i64 %call, 0, !dbg !81\l  br i1 %cmp, label %land.rhs, label %cleanup, !dbg !82, !prof !83\l|{<s0>T|<s1>F}}"];
+	Node0x560a529964c0:s0 -> Node0x560a52996880;
+	Node0x560a529964c0:s1 -> Node0x560a52999d60;
+	Node0x560a52996880 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{land.rhs:                                         \l  %call1 = tail call i32* @__errno_location() #14, !dbg !84\l  %1 = load i32, i32* %call1, align 4, !dbg !84\l  %cmp2 = icmp eq i32 %1, 4, !dbg !85\l  br i1 %cmp2, label %do.body, label %land.lhs.true, !dbg !86, !llvm.loop !87\l|{<s0>T|<s1>F}}"];
+	Node0x560a52996880:s0 -> Node0x560a529964c0;
+	Node0x560a52996880:s1 -> Node0x560a52999450;
+	Node0x560a52999450 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{land.lhs.true:                                    \l  %.lcssa = phi i32 [ %1, %land.rhs ], !dbg !84\l  %cmp5 = icmp eq i32 %.lcssa, 11, !dbg !89\l  %sub = sub i32 0, %.lcssa, !dbg !91\l  %spec.select = select i1 %cmp5, i32 0, i32 %sub, !dbg !93\l  ret i32 %spec.select, !dbg !93\l}"];
+	Node0x560a52999d60 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{cleanup:                                          \l  ret i32 0, !dbg !94\l}"];
+}

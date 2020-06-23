@@ -1,0 +1,23 @@
+digraph "CFG for 'qcrypto_random_init' function" {
+	label="CFG for 'qcrypto_random_init' function";
+
+	Node0x55b5bc16b6d0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  call void @llvm.dbg.value(metadata %struct.Error** %errp, metadata !54,\l... metadata !DIExpression()), !dbg !56\l  %call = tail call i64 @getrandom(i8* null, i64 0, i32 0) #6, !dbg !57\l  %cmp = icmp eq i64 %call, 0, !dbg !59\l  br i1 %cmp, label %if.then, label %if.end, !dbg !60, !prof !61\l|{<s0>T|<s1>F}}"];
+	Node0x55b5bc16b6d0:s0 -> Node0x55b5bc2026c0;
+	Node0x55b5bc16b6d0:s1 -> Node0x55b5bc202710;
+	Node0x55b5bc2026c0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.then:                                          \l  store i32 -1, i32* @fd, align 4, !dbg !62\l  br label %return, !dbg !64\l}"];
+	Node0x55b5bc2026c0 -> Node0x55b5bc16a340;
+	Node0x55b5bc202710 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.end:                                           \l  %call1 = tail call i32 (i8*, i32, ...) @open64(i8* getelementptr inbounds\l... ([13 x i8], [13 x i8]* @.str, i64 0, i64 0), i32 524288) #6, !dbg !65\l  store i32 %call1, i32* @fd, align 4, !dbg !66\l  %cmp2 = icmp eq i32 %call1, -1, !dbg !67\l  br i1 %cmp2, label %land.lhs.true, label %if.end7, !dbg !69\l|{<s0>T|<s1>F}}"];
+	Node0x55b5bc202710:s0 -> Node0x55b5bc205340;
+	Node0x55b5bc202710:s1 -> Node0x55b5bc2052f0;
+	Node0x55b5bc205340 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{land.lhs.true:                                    \l  %call3 = tail call i32* @__errno_location() #7, !dbg !70\l  %0 = load i32, i32* %call3, align 4, !dbg !70\l  %cmp4 = icmp eq i32 %0, 2, !dbg !71\l  br i1 %cmp4, label %if.then5, label %if.then9, !dbg !72\l|{<s0>T|<s1>F}}"];
+	Node0x55b5bc205340:s0 -> Node0x55b5bc2052a0;
+	Node0x55b5bc205340:s1 -> Node0x55b5bc204220;
+	Node0x55b5bc2052a0 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.then5:                                         \l  %call6 = tail call i32 (i8*, i32, ...) @open64(i8* getelementptr inbounds\l... ([12 x i8], [12 x i8]* @.str.1, i64 0, i64 0), i32 524288) #6, !dbg !73\l  store i32 %call6, i32* @fd, align 4, !dbg !75\l  br label %if.end7, !dbg !76\l}"];
+	Node0x55b5bc2052a0 -> Node0x55b5bc2052f0;
+	Node0x55b5bc2052f0 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.end7:                                          \l  %1 = phi i32 [ %call6, %if.then5 ], [ %call1, %if.end ], !dbg !77\l  %cmp8 = icmp slt i32 %1, 0, !dbg !79\l  br i1 %cmp8, label %if.then9, label %return, !dbg !80\l|{<s0>T|<s1>F}}"];
+	Node0x55b5bc2052f0:s0 -> Node0x55b5bc204220;
+	Node0x55b5bc2052f0:s1 -> Node0x55b5bc16a340;
+	Node0x55b5bc204220 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.then9:                                         \l  %call10 = tail call i32* @__errno_location() #7, !dbg !81\l  %2 = load i32, i32* %call10, align 4, !dbg !81\l  tail call void (%struct.Error**, i8*, i32, i8*, i32, i8*, ...)\l... @error_setg_errno_internal(%struct.Error** %errp, i8* getelementptr inbounds\l... ([25 x i8], [25 x i8]* @.str.2, i64 0, i64 0), i32 60, i8* getelementptr\l... inbounds ([20 x i8], [20 x i8]* @__func__.qcrypto_random_init, i64 0, i64 0),\l... i32 %2, i8* getelementptr inbounds ([31 x i8], [31 x i8]* @.str.3, i64 0, i64\l... 0)) #6, !dbg !81\l  br label %return, !dbg !83\l}"];
+	Node0x55b5bc204220 -> Node0x55b5bc16a340;
+	Node0x55b5bc16a340 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{return:                                           \l  %retval.0 = phi i32 [ 0, %if.then ], [ -1, %if.then9 ], [ 0, %if.end7 ],\l... !dbg !56\l  ret i32 %retval.0, !dbg !84\l}"];
+}

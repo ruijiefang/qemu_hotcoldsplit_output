@@ -1,0 +1,23 @@
+digraph "CFG for 'error_propagate' function" {
+	label="CFG for 'error_propagate' function";
+
+	Node0x55bf8ec23690 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  call void @llvm.dbg.value(metadata %struct.Error** %dst_errp, metadata !91,\l... metadata !DIExpression()), !dbg !94\l  call void @llvm.dbg.value(metadata %struct.Error* %local_err, metadata !92,\l... metadata !DIExpression()), !dbg !94\l  %tobool = icmp eq %struct.Error* %local_err, null, !dbg !95\l  br i1 %tobool, label %if.end4, label %if.end, !dbg !97, !prof !98\l|{<s0>T|<s1>F}}"];
+	Node0x55bf8ec23690:s0 -> Node0x55bf8ec25250;
+	Node0x55bf8ec23690:s1 -> Node0x55bf8ec24a50;
+	Node0x55bf8ec24a50 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#de614d70",label="{if.end:                                           \l  tail call fastcc void @error_handle_fatal(%struct.Error** %dst_errp,\l... %struct.Error* nonnull %local_err), !dbg !99\l  %tobool1 = icmp eq %struct.Error** %dst_errp, null, !dbg !100\l  br i1 %tobool1, label %if.then.i, label %land.lhs.true, !dbg !102, !prof !103\l|{<s0>T|<s1>F}}"];
+	Node0x55bf8ec24a50:s0 -> Node0x55bf8ed2f950;
+	Node0x55bf8ec24a50:s1 -> Node0x55bf8ec228d0;
+	Node0x55bf8ec228d0 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#e1675170",label="{land.lhs.true:                                    \l  %0 = load %struct.Error*, %struct.Error** %dst_errp, align 8, !dbg !104\l  %tobool2 = icmp eq %struct.Error* %0, null, !dbg !104\l  br i1 %tobool2, label %if.then3, label %if.then.i, !dbg !105, !prof !106\l|{<s0>T|<s1>F}}"];
+	Node0x55bf8ec228d0:s0 -> Node0x55bf8eb3f910;
+	Node0x55bf8ec228d0:s1 -> Node0x55bf8ed2f950;
+	Node0x55bf8eb3f910 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#e1675170",label="{if.then3:                                         \l  store %struct.Error* %local_err, %struct.Error** %dst_errp, align 8, !dbg\l... !107\l  br label %if.end4, !dbg !109\l}"];
+	Node0x55bf8eb3f910 -> Node0x55bf8ec25250;
+	Node0x55bf8ed2f950 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#e5705870",label="{if.then.i:                                        \l  call void @llvm.dbg.value(metadata %struct.Error* %local_err, metadata !110,\l... metadata !DIExpression()) #3, !dbg !115\l  %msg.i = getelementptr inbounds %struct.Error, %struct.Error* %local_err,\l... i64 0, i32 0, !dbg !118\l  %1 = load i8*, i8** %msg.i, align 8, !dbg !118\l  tail call void @g_free(i8* %1) #3, !dbg !121\l  %hint.i = getelementptr inbounds %struct.Error, %struct.Error* %local_err,\l... i64 0, i32 5, !dbg !122\l  %2 = load %struct._GString*, %struct._GString** %hint.i, align 8, !dbg !122\l  %tobool1.i = icmp eq %struct._GString* %2, null, !dbg !124\l  br i1 %tobool1.i, label %error_free.exit, label %if.then2.i, !dbg !125,\l... !prof !126\l|{<s0>T|<s1>F}}"];
+	Node0x55bf8ed2f950:s0 -> Node0x55bf8ec104c0;
+	Node0x55bf8ed2f950:s1 -> Node0x55bf8ec20120;
+	Node0x55bf8ec20120 [shape=record,penwidth=3.0, color="red",label="{if.then2.i:                                       \l  %call.i = tail call i8* @g_string_free(%struct._GString* nonnull %2, i32 1)\l... #3, !dbg !127\l  br label %error_free.exit, !dbg !129\l}"];
+	Node0x55bf8ec20120 -> Node0x55bf8ec104c0;
+	Node0x55bf8ec104c0 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#e5705870",label="{error_free.exit:                                  \l  %3 = bitcast %struct.Error* %local_err to i8*, !dbg !130\l  tail call void @g_free(i8* nonnull %3) #3, !dbg !131\l  br label %if.end4\l}"];
+	Node0x55bf8ec104c0 -> Node0x55bf8ec25250;
+	Node0x55bf8ec25250 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.end4:                                          \l  ret void, !dbg !132\l}"];
+}

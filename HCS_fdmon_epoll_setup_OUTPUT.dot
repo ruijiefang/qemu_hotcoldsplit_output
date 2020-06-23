@@ -1,0 +1,10 @@
+digraph "CFG for 'fdmon_epoll_setup' function" {
+	label="CFG for 'fdmon_epoll_setup' function";
+
+	Node0x5639d5fa76d0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  call void @llvm.dbg.value(metadata %struct.AioContext* %ctx, metadata !364,\l... metadata !DIExpression()), !dbg !366\l  %call = tail call i32 @epoll_create1(i32 524288) #9, !dbg !367\l  %epollfd = getelementptr inbounds %struct.AioContext, %struct.AioContext*\l... %ctx, i64 0, i32 22, !dbg !368\l  store i32 %call, i32* %epollfd, align 4, !dbg !369\l  %cmp = icmp eq i32 %call, -1, !dbg !370\l  br i1 %cmp, label %if.then, label %if.end, !dbg !372, !prof !373\l|{<s0>T|<s1>F}}"];
+	Node0x5639d5fa76d0:s0 -> Node0x5639d60589f0;
+	Node0x5639d5fa76d0:s1 -> Node0x5639d6058a40;
+	Node0x5639d60589f0 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.then:                                          \l  %0 = load %struct._IO_FILE*, %struct._IO_FILE** @stderr, align 8, !dbg !374\l  %call2 = tail call i32* @__errno_location() #10, !dbg !376\l  %1 = load i32, i32* %call2, align 4, !dbg !376\l  %call3 = tail call i8* @strerror(i32 %1) #9, !dbg !377\l  %call4 = tail call i32 (%struct._IO_FILE*, i8*, ...)\l... @fprintf(%struct._IO_FILE* %0, i8* getelementptr inbounds ([36 x i8], [36 x\l... i8]* @.str, i64 0, i64 0), i8* %call3) #11, !dbg !378\l  br label %if.end, !dbg !379\l}"];
+	Node0x5639d60589f0 -> Node0x5639d6058a40;
+	Node0x5639d6058a40 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.end:                                           \l  ret void, !dbg !380\l}"];
+}

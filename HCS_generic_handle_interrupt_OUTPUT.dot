@@ -1,0 +1,10 @@
+digraph "CFG for 'generic_handle_interrupt' function" {
+	label="CFG for 'generic_handle_interrupt' function";
+
+	Node0x55d078abec50 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  call void @llvm.dbg.value(metadata %struct.CPUState* %cpu, metadata !1669,\l... metadata !DIExpression()), !dbg !1673\l  call void @llvm.dbg.value(metadata i32 %mask, metadata !1670, metadata\l... !DIExpression()), !dbg !1673\l  %interrupt_request = getelementptr inbounds %struct.CPUState,\l... %struct.CPUState* %cpu, i64 0, i32 17, !dbg !1674\l  %0 = load i32, i32* %interrupt_request, align 4, !dbg !1675\l  %or = or i32 %0, %mask, !dbg !1675\l  store i32 %or, i32* %interrupt_request, align 4, !dbg !1675\l  %call = tail call zeroext i1 @qemu_cpu_is_self(%struct.CPUState* %cpu) #12,\l... !dbg !1676\l  br i1 %call, label %if.end, label %if.then, !dbg !1678, !prof !1679\l|{<s0>T|<s1>F}}"];
+	Node0x55d078abec50:s0 -> Node0x55d0786c2a00;
+	Node0x55d078abec50:s1 -> Node0x55d0786c29b0;
+	Node0x55d0786c29b0 [shape=record,penwidth=3.0, color="red",label="{if.then:                                          \l  tail call void @qemu_cpu_kick(%struct.CPUState* nonnull %cpu) #12, !dbg !1680\l  br label %if.end, !dbg !1682\l}"];
+	Node0x55d0786c29b0 -> Node0x55d0786c2a00;
+	Node0x55d0786c2a00 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.end:                                           \l  ret void, !dbg !1683\l}"];
+}

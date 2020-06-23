@@ -1,0 +1,10 @@
+digraph "CFG for 'qemu_guest_random_seed_thread_part1' function" {
+	label="CFG for 'qemu_guest_random_seed_thread_part1' function";
+
+	Node0x55d63c77ba90 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  %ret = alloca i64, align 8\l  %.b1 = load i1, i1* @deterministic, align 1, !dbg !83\l  br i1 %.b1, label %if.then, label %return, !dbg !84, !prof !85\l|{<s0>T|<s1>F}}"];
+	Node0x55d63c77ba90:s0 -> Node0x55d63c77b960;
+	Node0x55d63c77ba90:s1 -> Node0x55d63c77cef0;
+	Node0x55d63c77b960 [shape=record,penwidth=3.0, color="red",label="{if.then:                                          \l  %0 = bitcast i64* %ret to i8*, !dbg !86\l  call void @llvm.lifetime.start.p0i8(i64 8, i8* nonnull %0) #7, !dbg !86\l  call void @llvm.dbg.value(metadata i64* %ret, metadata !79, metadata\l... !DIExpression(DW_OP_deref)), !dbg !87\l  call fastcc void @glib_random_bytes(i8* nonnull %0, i64 8), !dbg !88\l  %1 = load i64, i64* %ret, align 8, !dbg !89\l  call void @llvm.dbg.value(metadata i64 %1, metadata !79, metadata\l... !DIExpression()), !dbg !87\l  call void @llvm.lifetime.end.p0i8(i64 8, i8* nonnull %0) #7, !dbg !90\l  br label %return\l}"];
+	Node0x55d63c77b960 -> Node0x55d63c77cef0;
+	Node0x55d63c77cef0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{return:                                           \l  %retval.0 = phi i64 [ %1, %if.then ], [ 0, %entry ], !dbg !91\l  ret i64 %retval.0, !dbg !92\l}"];
+}

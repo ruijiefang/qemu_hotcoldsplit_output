@@ -1,0 +1,24 @@
+digraph "CFG for 'trace_event_iter_next' function" {
+	label="CFG for 'trace_event_iter_next' function";
+
+	Node0x55aedd03ae30 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  call void @llvm.dbg.value(metadata %struct.TraceEventIter* %iter, metadata\l... !158, metadata !DIExpression()), !dbg !162\l  %group = getelementptr inbounds %struct.TraceEventIter,\l... %struct.TraceEventIter* %iter, i64 0, i32 1, !dbg !162\l  %event = getelementptr inbounds %struct.TraceEventIter,\l... %struct.TraceEventIter* %iter, i64 0, i32 0, !dbg !162\l  %pattern = getelementptr inbounds %struct.TraceEventIter,\l... %struct.TraceEventIter* %iter, i64 0, i32 2, !dbg !163\l  br label %while.cond, !dbg !165\l}"];
+	Node0x55aedd03ae30 -> Node0x55aedd027a10;
+	Node0x55aedd027a10 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{while.cond:                                       \l  %0 = load i64, i64* %group, align 8, !dbg !166\l  %1 = load i64, i64* @nevent_groups, align 8, !dbg !167\l  %cmp = icmp ult i64 %0, %1, !dbg !168\l  br i1 %cmp, label %land.rhs, label %return, !dbg !169, !prof !170\l|{<s0>T|<s1>F}}"];
+	Node0x55aedd027a10:s0 -> Node0x55aedd03cb70;
+	Node0x55aedd027a10:s1 -> Node0x55aedd03a2b0;
+	Node0x55aedd03cb70 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{land.rhs:                                         \l  %2 = load %struct.TraceEventGroup*, %struct.TraceEventGroup** @event_groups,\l... align 8, !dbg !171\l  %events = getelementptr %struct.TraceEventGroup, %struct.TraceEventGroup*\l... %2, i64 %0, i32 0, !dbg !172\l  %3 = load %struct.TraceEvent**, %struct.TraceEvent*** %events, align 8, !dbg\l... !172\l  %4 = load i64, i64* %event, align 8, !dbg !173\l  %arrayidx2 = getelementptr %struct.TraceEvent*, %struct.TraceEvent** %3, i64\l... %4, !dbg !171\l  %5 = load %struct.TraceEvent*, %struct.TraceEvent** %arrayidx2, align 8,\l... !dbg !171\l  %cmp3 = icmp eq %struct.TraceEvent* %5, null, !dbg !174\l  br i1 %cmp3, label %return, label %while.body, !dbg !165, !prof !175\l|{<s0>T|<s1>F}}"];
+	Node0x55aedd03cb70:s0 -> Node0x55aedd03a2b0;
+	Node0x55aedd03cb70:s1 -> Node0x55aedd03dc50;
+	Node0x55aedd03dc50 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{while.body:                                       \l  call void @llvm.dbg.value(metadata %struct.TraceEvent* %5, metadata !159,\l... metadata !DIExpression()), !dbg !176\l  %inc = add i64 %4, 1, !dbg !177\l  store i64 %inc, i64* %event, align 8, !dbg !177\l  %6 = load %struct.TraceEvent**, %struct.TraceEvent*** %events, align 8, !dbg\l... !178\l  %arrayidx14 = getelementptr %struct.TraceEvent*, %struct.TraceEvent** %6,\l... i64 %inc, !dbg !180\l  %7 = load %struct.TraceEvent*, %struct.TraceEvent** %arrayidx14, align 8,\l... !dbg !180\l  %cmp15 = icmp eq %struct.TraceEvent* %7, null, !dbg !181\l  br i1 %cmp15, label %if.then, label %if.end, !dbg !182, !prof !183\l|{<s0>T|<s1>F}}"];
+	Node0x55aedd03dc50:s0 -> Node0x55aedd03f4c0;
+	Node0x55aedd03dc50:s1 -> Node0x55aedd03f530;
+	Node0x55aedd03f4c0 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#ec7f6370",label="{if.then:                                          \l  store i64 0, i64* %event, align 8, !dbg !184\l  %inc18 = add nuw i64 %0, 1, !dbg !186\l  store i64 %inc18, i64* %group, align 8, !dbg !186\l  br label %if.end, !dbg !187\l}"];
+	Node0x55aedd03f4c0 -> Node0x55aedd03f530;
+	Node0x55aedd03f530 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.end:                                           \l  %8 = load i8*, i8** %pattern, align 8, !dbg !188\l  %tobool = icmp eq i8* %8, null, !dbg !189\l  br i1 %tobool, label %return, label %cleanup, !dbg !190, !prof !191\l|{<s0>T|<s1>F}}"];
+	Node0x55aedd03f530:s0 -> Node0x55aedd03a2b0;
+	Node0x55aedd03f530:s1 -> Node0x55aedd040f60;
+	Node0x55aedd040f60 [shape=record,penwidth=3.0, color="red",label="{cleanup:                                          \l  call void @llvm.dbg.value(metadata %struct.TraceEvent* %5, metadata !192,\l... metadata !DIExpression()) #17, !dbg !198\l  %name.i = getelementptr inbounds %struct.TraceEvent, %struct.TraceEvent* %5,\l... i64 0, i32 2, !dbg !200\l  %9 = load i8*, i8** %name.i, align 8, !dbg !200\l  %call20 = tail call i32 @g_pattern_match_simple(i8* nonnull %8, i8* %9) #17,\l... !dbg !201\l  %tobool21 = icmp eq i32 %call20, 0, !dbg !201\l  br i1 %tobool21, label %while.cond, label %return, !prof !202, !llvm.loop\l... !203\l|{<s0>T|<s1>F}}"];
+	Node0x55aedd040f60:s0 -> Node0x55aedd027a10;
+	Node0x55aedd040f60:s1 -> Node0x55aedd03a2b0;
+	Node0x55aedd03a2b0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{return:                                           \l  %retval.2 = phi %struct.TraceEvent* [ null, %land.rhs ], [ null, %while.cond\l... ], [ %5, %cleanup ], [ %5, %if.end ], !dbg !162\l  ret %struct.TraceEvent* %retval.2, !dbg !205\l}"];
+}

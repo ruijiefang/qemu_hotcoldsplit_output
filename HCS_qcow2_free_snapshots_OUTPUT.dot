@@ -1,0 +1,28 @@
+digraph "CFG for 'qcow2_free_snapshots' function" {
+	label="CFG for 'qcow2_free_snapshots' function";
+
+	Node0x55596f88ed00 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  call void @llvm.dbg.value(metadata %struct.BlockDriverState* %bs, metadata\l... !2564, metadata !DIExpression()), !dbg !2747\l  %opaque = getelementptr inbounds %struct.BlockDriverState,\l... %struct.BlockDriverState* %bs, i64 0, i32 8, !dbg !2748\l  %0 = bitcast i8** %opaque to %struct.BDRVQcow2State**, !dbg !2748\l  %1 = load %struct.BDRVQcow2State*, %struct.BDRVQcow2State** %0, align 8,\l... !dbg !2748\l  call void @llvm.dbg.value(metadata %struct.BDRVQcow2State* %1, metadata\l... !2565, metadata !DIExpression()), !dbg !2747\l  call void @llvm.dbg.value(metadata i32 0, metadata !2745, metadata\l... !DIExpression()), !dbg !2747\l  %nb_snapshots = getelementptr inbounds %struct.BDRVQcow2State,\l... %struct.BDRVQcow2State* %1, i64 0, i32 33, !dbg !2749\l  %2 = load i32, i32* %nb_snapshots, align 4, !dbg !2749\l  %cmp11 = icmp eq i32 %2, 0, !dbg !2752\l  br i1 %cmp11, label %for.end, label %for.body.preheader, !dbg !2753, !prof\l... !2754\l|{<s0>T|<s1>F}}"];
+	Node0x55596f88ed00:s0 -> Node0x55596f8cabb0;
+	Node0x55596f88ed00:s1 -> Node0x55596f98fec0;
+	Node0x55596f98fec0 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{for.body.preheader:                               \l  br label %for.body.peel.begin, !dbg !2753\l}"];
+	Node0x55596f98fec0 -> Node0x55596fa571e0;
+	Node0x55596fa571e0 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{for.body.peel.begin:                              \l  br label %for.body.peel, !dbg !2753\l}"];
+	Node0x55596fa571e0 -> Node0x55596fa24770;
+	Node0x55596fa24770 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{for.body.peel:                                    \l  call void @llvm.dbg.value(metadata i32 0, metadata !2745, metadata\l... !DIExpression()), !dbg !2747\l  tail call fastcc void @qcow2_free_single_snapshot(%struct.BlockDriverState*\l... %bs, i32 0), !dbg !2755\l  call void @llvm.dbg.value(metadata i32 1, metadata !2745, metadata\l... !DIExpression()), !dbg !2747\l  %3 = load i32, i32* %nb_snapshots, align 4, !dbg !2749\l  %cmp.peel = icmp ugt i32 %3, 1, !dbg !2752\l  br i1 %cmp.peel, label %for.body.peel.next, label %for.end.loopexit, !dbg\l... !2753, !prof !2757\l|{<s0>T|<s1>F}}"];
+	Node0x55596fa24770:s0 -> Node0x55596f9eaae0;
+	Node0x55596fa24770:s1 -> Node0x55596fa70b50;
+	Node0x55596f9eaae0 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{for.body.peel.next:                               \l  br label %for.body.peel.next13, !dbg !2753\l}"];
+	Node0x55596f9eaae0 -> Node0x55596fbb3370;
+	Node0x55596fbb3370 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{for.body.peel.next13:                             \l  br label %for.body.preheader.peel.newph, !dbg !2753\l}"];
+	Node0x55596fbb3370 -> Node0x55596fa57d50;
+	Node0x55596fa57d50 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{for.body.preheader.peel.newph:                    \l  br label %for.body, !dbg !2753\l}"];
+	Node0x55596fa57d50 -> Node0x55596f8cb010;
+	Node0x55596f8cb010 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{for.body:                                         \l  %i.012 = phi i32 [ %inc, %for.body ], [ 1, %for.body.preheader.peel.newph ]\l  call void @llvm.dbg.value(metadata i32 %i.012, metadata !2745, metadata\l... !DIExpression()), !dbg !2747\l  tail call fastcc void @qcow2_free_single_snapshot(%struct.BlockDriverState*\l... %bs, i32 %i.012), !dbg !2755\l  %inc = add nuw i32 %i.012, 1, !dbg !2758\l  call void @llvm.dbg.value(metadata i32 %inc, metadata !2745, metadata\l... !DIExpression()), !dbg !2747\l  %4 = load i32, i32* %nb_snapshots, align 4, !dbg !2749\l  %cmp = icmp ult i32 %inc, %4, !dbg !2752\l  br i1 %cmp, label %for.body, label %for.end.loopexit.loopexit, !dbg !2753,\l... !prof !2757, !llvm.loop !2759\l|{<s0>T|<s1>F}}"];
+	Node0x55596f8cb010:s0 -> Node0x55596f8cb010;
+	Node0x55596f8cb010:s1 -> Node0x55596fbe46e0;
+	Node0x55596fbe46e0 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{for.end.loopexit.loopexit:                        \l  br label %for.end.loopexit, !dbg !2763\l}"];
+	Node0x55596fbe46e0 -> Node0x55596fa70b50;
+	Node0x55596fa70b50 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{for.end.loopexit:                                 \l  br label %for.end, !dbg !2763\l}"];
+	Node0x55596fa70b50 -> Node0x55596f8cabb0;
+	Node0x55596f8cabb0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{for.end:                                          \l  %snapshots = getelementptr inbounds %struct.BDRVQcow2State,\l... %struct.BDRVQcow2State* %1, i64 0, i32 34, !dbg !2763\l  %5 = bitcast %struct.QCowSnapshot** %snapshots to i8**, !dbg !2763\l  %6 = load i8*, i8** %5, align 8, !dbg !2763\l  tail call void @g_free(i8* %6) #14, !dbg !2764\l  store %struct.QCowSnapshot* null, %struct.QCowSnapshot** %snapshots, align\l... 8, !dbg !2765\l  store i32 0, i32* %nb_snapshots, align 4, !dbg !2766\l  ret void, !dbg !2767\l}"];
+}

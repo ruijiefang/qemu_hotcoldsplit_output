@@ -1,0 +1,13 @@
+digraph "CFG for 'blk_lock_medium' function" {
+	label="CFG for 'blk_lock_medium' function";
+
+	Node0x55d70fd18ef0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  call void @llvm.dbg.value(metadata %struct.BlockBackend* %blk, metadata\l... !3090, metadata !DIExpression()), !dbg !3094\l  call void @llvm.dbg.value(metadata i1 %locked, metadata !3091, metadata\l... !DIExpression(DW_OP_LLVM_convert, 1, DW_ATE_unsigned, DW_OP_LLVM_convert, 8,\l... DW_ATE_unsigned, DW_OP_stack_value)), !dbg !3094\l  call void @llvm.dbg.value(metadata %struct.BlockBackend* %blk, metadata\l... !3095, metadata !DIExpression()), !dbg !3100\l  %root.i = getelementptr inbounds %struct.BlockBackend, %struct.BlockBackend*\l... %blk, i64 0, i32 2, !dbg !3102\l  %0 = load %struct.BdrvChild*, %struct.BdrvChild** %root.i, align 8, !dbg\l... !3102\l  %tobool.i = icmp eq %struct.BdrvChild* %0, null, !dbg !3103\l  br i1 %tobool.i, label %if.end, label %blk_bs.exit, !dbg !3103, !prof !3104\l|{<s0>T|<s1>F}}"];
+	Node0x55d70fd18ef0:s0 -> Node0x55d70fd1acc0;
+	Node0x55d70fd18ef0:s1 -> Node0x55d70fe1ca60;
+	Node0x55d70fe1ca60 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{blk_bs.exit:                                      \l  %bs.i = getelementptr inbounds %struct.BdrvChild, %struct.BdrvChild* %0, i64\l... 0, i32 0, !dbg !3105\l  %1 = load %struct.BlockDriverState*, %struct.BlockDriverState** %bs.i, align\l... 8, !dbg !3105\l  call void @llvm.dbg.value(metadata %struct.BlockDriverState* %1, metadata\l... !3092, metadata !DIExpression()), !dbg !3094\l  %tobool = icmp eq %struct.BlockDriverState* %1, null, !dbg !3106\l  br i1 %tobool, label %if.end, label %if.then, !dbg !3108, !prof !3109\l|{<s0>T|<s1>F}}"];
+	Node0x55d70fe1ca60:s0 -> Node0x55d70fd1acc0;
+	Node0x55d70fe1ca60:s1 -> Node0x55d70fd1ac70;
+	Node0x55d70fd1ac70 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.then:                                          \l  tail call void @bdrv_lock_medium(%struct.BlockDriverState* nonnull %1, i1\l... zeroext %locked) #26, !dbg !3110\l  br label %if.end, !dbg !3112\l}"];
+	Node0x55d70fd1ac70 -> Node0x55d70fd1acc0;
+	Node0x55d70fd1acc0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.end:                                           \l  ret void, !dbg !3113\l}"];
+}

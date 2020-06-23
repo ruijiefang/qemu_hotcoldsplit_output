@@ -1,0 +1,9 @@
+digraph "CFG for 'blk_ref' function" {
+	label="CFG for 'blk_ref' function";
+
+	Node0x55d70fb92d30 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  call void @llvm.dbg.value(metadata %struct.BlockBackend* %blk, metadata\l... !3090, metadata !DIExpression()), !dbg !3092\l  %refcnt = getelementptr inbounds %struct.BlockBackend, %struct.BlockBackend*\l... %blk, i64 0, i32 1, !dbg !3093\l  %0 = load i32, i32* %refcnt, align 8, !dbg !3093\l  %cmp = icmp sgt i32 %0, 0, !dbg !3093\l  br i1 %cmp, label %if.end, label %if.else, !dbg !3096, !prof !3097\l|{<s0>T|<s1>F}}"];
+	Node0x55d70fb92d30:s0 -> Node0x55d70fb9d910;
+	Node0x55d70fb92d30:s1 -> Node0x55d70fb9e6f0;
+	Node0x55d70fb9e6f0 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.else:                                          \l  tail call void @__assert_fail(i8* getelementptr inbounds ([16 x i8], [16 x\l... i8]* @.str.1, i64 0, i64 0), i8* getelementptr inbounds ([22 x i8], [22 x\l... i8]* @.str.2, i64 0, i64 0), i32 482, i8* getelementptr inbounds ([29 x i8],\l... [29 x i8]* @__PRETTY_FUNCTION__.blk_ref, i64 0, i64 0)) #25, !dbg !3093\l  unreachable, !dbg !3093\l}"];
+	Node0x55d70fb9d910 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.end:                                           \l  %inc = add nuw i32 %0, 1, !dbg !3098\l  store i32 %inc, i32* %refcnt, align 8, !dbg !3098\l  ret void, !dbg !3099\l}"];
+}

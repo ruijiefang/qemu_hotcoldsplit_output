@@ -1,0 +1,10 @@
+digraph "CFG for 'qapi_free_MigrationCapabilityStatusList' function" {
+	label="CFG for 'qapi_free_MigrationCapabilityStatusList' function";
+
+	Node0x55655f60e270 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  %obj.addr = alloca %struct.MigrationCapabilityStatusList*, align 8\l  call void @llvm.dbg.value(metadata %struct.MigrationCapabilityStatusList*\l... %obj, metadata !166, metadata !DIExpression()), !dbg !173\l  store %struct.MigrationCapabilityStatusList* %obj,\l... %struct.MigrationCapabilityStatusList** %obj.addr, align 8\l  %tobool = icmp eq %struct.MigrationCapabilityStatusList* %obj, null, !dbg\l... !174\l  br i1 %tobool, label %cleanup, label %if.end, !dbg !176, !prof !177\l|{<s0>T|<s1>F}}"];
+	Node0x55655f60e270:s0 -> Node0x55655f6133a0;
+	Node0x55655f60e270:s1 -> Node0x55655f613080;
+	Node0x55655f613080 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.end:                                           \l  %call = tail call %struct.Visitor* @qapi_dealloc_visitor_new() #5, !dbg !178\l  call void @llvm.dbg.value(metadata %struct.Visitor* %call, metadata !167,\l... metadata !DIExpression()), !dbg !173\l  call void @llvm.dbg.value(metadata %struct.MigrationCapabilityStatusList**\l... %obj.addr, metadata !166, metadata !DIExpression(DW_OP_deref)), !dbg !173\l  call void @visit_type_MigrationCapabilityStatusList(%struct.Visitor* %call,\l... i8* null, %struct.MigrationCapabilityStatusList** nonnull %obj.addr,\l... %struct.Error** null) #5, !dbg !179\l  call void @visit_free(%struct.Visitor* %call) #5, !dbg !180\l  br label %cleanup, !dbg !181\l}"];
+	Node0x55655f613080 -> Node0x55655f6133a0;
+	Node0x55655f6133a0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{cleanup:                                          \l  ret void, !dbg !181\l}"];
+}

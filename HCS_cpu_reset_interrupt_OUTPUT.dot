@@ -1,0 +1,12 @@
+digraph "CFG for 'cpu_reset_interrupt' function" {
+	label="CFG for 'cpu_reset_interrupt' function";
+
+	Node0x55d078a74610 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  call void @llvm.dbg.value(metadata %struct.CPUState* %cpu, metadata !1669,\l... metadata !DIExpression()), !dbg !1673\l  call void @llvm.dbg.value(metadata i32 %mask, metadata !1670, metadata\l... !DIExpression()), !dbg !1673\l  %call = tail call zeroext i1 @qemu_mutex_iothread_locked() #12, !dbg !1674\l  call void @llvm.dbg.value(metadata i1 %call, metadata !1671, metadata\l... !DIExpression(DW_OP_constu, 18446744073709551615, DW_OP_xor,\l... DW_OP_LLVM_convert, 1, DW_ATE_unsigned, DW_OP_LLVM_convert, 8,\l... DW_ATE_unsigned, DW_OP_stack_value)), !dbg !1673\l  br i1 %call, label %if.end3.critedge, label %if.then, !dbg !1675, !prof !1676\l|{<s0>T|<s1>F}}"];
+	Node0x55d078a74610:s0 -> Node0x55d078a5f700;
+	Node0x55d078a74610:s1 -> Node0x55d078a76810;
+	Node0x55d078a76810 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.then:                                          \l  tail call void @qemu_mutex_lock_iothread_impl(i8* getelementptr inbounds\l... ([14 x i8], [14 x i8]* @.str.1, i64 0, i64 0), i32 105) #12, !dbg !1677\l  %neg = xor i32 %mask, -1, !dbg !1680\l  %interrupt_request = getelementptr inbounds %struct.CPUState,\l... %struct.CPUState* %cpu, i64 0, i32 17, !dbg !1681\l  %0 = load i32, i32* %interrupt_request, align 4, !dbg !1682\l  %and = and i32 %0, %neg, !dbg !1682\l  store i32 %and, i32* %interrupt_request, align 4, !dbg !1682\l  tail call void @qemu_mutex_unlock_iothread() #12, !dbg !1683\l  br label %if.end3, !dbg !1686\l}"];
+	Node0x55d078a76810 -> Node0x55d078a77d80;
+	Node0x55d078a5f700 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.end3.critedge:                                 \l  %neg.c = xor i32 %mask, -1, !dbg !1680\l  %interrupt_request.c = getelementptr inbounds %struct.CPUState,\l... %struct.CPUState* %cpu, i64 0, i32 17, !dbg !1681\l  %1 = load i32, i32* %interrupt_request.c, align 4, !dbg !1682\l  %and.c = and i32 %1, %neg.c, !dbg !1682\l  store i32 %and.c, i32* %interrupt_request.c, align 4, !dbg !1682\l  br label %if.end3, !dbg !1687\l}"];
+	Node0x55d078a5f700 -> Node0x55d078a77d80;
+	Node0x55d078a77d80 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.end3:                                          \l  ret void, !dbg !1688\l}"];
+}

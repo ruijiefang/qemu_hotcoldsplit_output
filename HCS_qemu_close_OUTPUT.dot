@@ -1,0 +1,10 @@
+digraph "CFG for 'qemu_close' function" {
+	label="CFG for 'qemu_close' function";
+
+	Node0x558452737d50 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  call void @llvm.dbg.value(metadata i32 %fd, metadata !107, metadata\l... !DIExpression()), !dbg !118\l  %call = tail call i64 @monitor_fdset_dup_fd_find(i32 %fd) #7, !dbg !119\l  call void @llvm.dbg.value(metadata i64 %call, metadata !108, metadata\l... !DIExpression()), !dbg !118\l  %cmp = icmp ne i64 %call, -1, !dbg !120\l  %call5 = tail call i32 @close(i32 %fd) #7, !dbg !118\l  %cmp2 = icmp eq i32 %call5, 0, !dbg !121\l  %or.cond = and i1 %cmp, %cmp2, !dbg !123\l  call void @llvm.dbg.value(metadata i32 %call5, metadata !114, metadata\l... !DIExpression()), !dbg !124\l  br i1 %or.cond, label %if.then3, label %cleanup, !dbg !123, !prof !125\l|{<s0>T|<s1>F}}"];
+	Node0x558452737d50:s0 -> Node0x55845274d9e0;
+	Node0x558452737d50:s1 -> Node0x55845274e9e0;
+	Node0x55845274d9e0 [shape=record,penwidth=3.0, color="red",label="{if.then3:                                         \l  tail call void @monitor_fdset_dup_fd_remove(i32 %fd) #7, !dbg !126\l  br label %cleanup, !dbg !128\l}"];
+	Node0x55845274d9e0 -> Node0x55845274e9e0;
+	Node0x55845274e9e0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{cleanup:                                          \l  ret i32 %call5, !dbg !129\l}"];
+}

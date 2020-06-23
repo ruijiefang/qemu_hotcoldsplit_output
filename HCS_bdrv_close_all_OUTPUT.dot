@@ -1,0 +1,13 @@
+digraph "CFG for 'bdrv_close_all' function" {
+	label="CFG for 'bdrv_close_all' function";
+
+	Node0x55906e4cc460 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  %call = tail call %struct.Job* @job_next(%struct.Job* null) #30, !dbg !2833\l  %cmp = icmp eq %struct.Job* %call, null, !dbg !2833\l  br i1 %cmp, label %if.end, label %if.else, !dbg !2836, !prof !2837\l|{<s0>T|<s1>F}}"];
+	Node0x55906e4cc460:s0 -> Node0x55906e4d8290;
+	Node0x55906e4cc460:s1 -> Node0x55906e4d82e0;
+	Node0x55906e4d82e0 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.else:                                          \l  tail call void @__assert_fail(i8* getelementptr inbounds ([23 x i8], [23 x\l... i8]* @.str.92, i64 0, i64 0), i8* getelementptr inbounds ([8 x i8], [8 x i8]*\l... @.str.2, i64 0, i64 0), i32 4413, i8* getelementptr inbounds ([26 x i8], [26\l... x i8]* @__PRETTY_FUNCTION__.bdrv_close_all, i64 0, i64 0)) #31, !dbg !2833\l  unreachable, !dbg !2833\l}"];
+	Node0x55906e4d8290 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.end:                                           \l  tail call void @nbd_export_close_all() #30, !dbg !2838\l  tail call void @bdrv_drain_all() #30, !dbg !2839\l  tail call void @blk_remove_all_bs() #30, !dbg !2840\l  tail call void @blockdev_close_all_bdrv_states() #30, !dbg !2841\l  %0 = load %struct.BlockDriverState*, %struct.BlockDriverState** bitcast\l... (%union.anon.40* @all_bdrv_states to %struct.BlockDriverState**), align 8,\l... !dbg !2842\l  %cmp1 = icmp eq %struct.BlockDriverState* %0, null, !dbg !2842\l  br i1 %cmp1, label %if.end4, label %if.else3, !dbg !2845, !prof !2837\l|{<s0>T|<s1>F}}"];
+	Node0x55906e4d8290:s0 -> Node0x55906e4ec7e0;
+	Node0x55906e4d8290:s1 -> Node0x55906e4ec830;
+	Node0x55906e4ec830 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.else3:                                         \l  tail call void @__assert_fail(i8* getelementptr inbounds ([31 x i8], [31 x\l... i8]* @.str.93, i64 0, i64 0), i8* getelementptr inbounds ([8 x i8], [8 x i8]*\l... @.str.2, i64 0, i64 0), i32 4423, i8* getelementptr inbounds ([26 x i8], [26\l... x i8]* @__PRETTY_FUNCTION__.bdrv_close_all, i64 0, i64 0)) #31, !dbg !2842\l  unreachable, !dbg !2842\l}"];
+	Node0x55906e4ec7e0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.end4:                                          \l  ret void, !dbg !2846\l}"];
+}

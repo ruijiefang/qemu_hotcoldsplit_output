@@ -1,0 +1,31 @@
+digraph "CFG for 'qemu_strtod' function" {
+	label="CFG for 'qemu_strtod' function";
+
+	Node0x5557ed89f200 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  %ep = alloca i8*, align 8\l  call void @llvm.dbg.value(metadata i8* %nptr, metadata !117, metadata\l... !DIExpression()), !dbg !122\l  call void @llvm.dbg.value(metadata i8** %endptr, metadata !118, metadata\l... !DIExpression()), !dbg !122\l  call void @llvm.dbg.value(metadata double* %result, metadata !119, metadata\l... !DIExpression()), !dbg !122\l  %0 = bitcast i8** %ep to i8*, !dbg !123\l  call void @llvm.lifetime.start.p0i8(i64 8, i8* nonnull %0) #23, !dbg !123\l  %tobool = icmp eq i8* %nptr, null, !dbg !124\l  br i1 %tobool, label %if.then, label %if.end3, !dbg !126, !prof !127\l|{<s0>T|<s1>F}}"];
+	Node0x5557ed89f200:s0 -> Node0x5557ed8a6920;
+	Node0x5557ed89f200:s1 -> Node0x5557ed8a6970;
+	Node0x5557ed8a6920 [shape=record,penwidth=3.0, color="red",label="{if.then:                                          \l  %tobool1 = icmp eq i8** %endptr, null, !dbg !128\l  br i1 %tobool1, label %cleanup, label %if.then2, !dbg !131\l|{<s0>T|<s1>F}}"];
+	Node0x5557ed8a6920:s0 -> Node0x5557ed8a77d0;
+	Node0x5557ed8a6920:s1 -> Node0x5557ed8a6cf0;
+	Node0x5557ed8a6cf0 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#5977e370",label="{if.then2:                                         \l  store i8* null, i8** %endptr, align 8, !dbg !132\l  br label %cleanup, !dbg !134\l}"];
+	Node0x5557ed8a6cf0 -> Node0x5557ed8a77d0;
+	Node0x5557ed8a6970 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.end3:                                          \l  %call = tail call i32* @__errno_location() #24, !dbg !135\l  store i32 0, i32* %call, align 4, !dbg !136\l  call void @llvm.dbg.value(metadata i8** %ep, metadata !120, metadata\l... !DIExpression(DW_OP_deref)), !dbg !122\l  %call4 = call double @strtod(i8* nonnull %nptr, i8** nonnull %ep) #23, !dbg\l... !137\l  store double %call4, double* %result, align 8, !dbg !138\l  %1 = load i8*, i8** %ep, align 8, !dbg !139\l  call void @llvm.dbg.value(metadata i8* %1, metadata !120, metadata\l... !DIExpression()), !dbg !122\l  %2 = load i32, i32* %call, align 4, !dbg !140\l  call void @llvm.dbg.value(metadata i8* %nptr, metadata !141, metadata\l... !DIExpression()) #23, !dbg !149\l  call void @llvm.dbg.value(metadata i8* %1, metadata !146, metadata\l... !DIExpression()) #23, !dbg !149\l  call void @llvm.dbg.value(metadata i8** %endptr, metadata !147, metadata\l... !DIExpression()) #23, !dbg !149\l  call void @llvm.dbg.value(metadata i32 %2, metadata !148, metadata\l... !DIExpression()) #23, !dbg !149\l  %cmp.i = icmp ult i8* %1, %nptr, !dbg !151\l  br i1 %cmp.i, label %if.else.i, label %if.end.i, !dbg !154, !prof !127\l|{<s0>T|<s1>F}}"];
+	Node0x5557ed8a6970:s0 -> Node0x5557ed8cb720;
+	Node0x5557ed8a6970:s1 -> Node0x5557ed8bfa10;
+	Node0x5557ed8cb720 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.else.i:                                        \l  tail call void @__assert_fail(i8* getelementptr inbounds ([11 x i8], [11 x\l... i8]* @.str.14, i64 0, i64 0), i8* getelementptr inbounds ([14 x i8], [14 x\l... i8]* @.str.1, i64 0, i64 0), i32 323, i8* getelementptr inbounds ([65 x i8],\l... [65 x i8]* @__PRETTY_FUNCTION__.check_strtox_error, i64 0, i64 0)) #25, !dbg\l... !151\l  unreachable, !dbg !151\l}"];
+	Node0x5557ed8bfa10 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.end.i:                                         \l  %tobool.i = icmp eq i8** %endptr, null, !dbg !155\l  br i1 %tobool.i, label %if.end2.i.thread, label %if.end2.i, !dbg !157, !prof\l... !127\l|{<s0>T|<s1>F}}"];
+	Node0x5557ed8bfa10:s0 -> Node0x5557ed832320;
+	Node0x5557ed8bfa10:s1 -> Node0x5557ed882dc0;
+	Node0x5557ed882dc0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.end2.i:                                        \l  store i8* %1, i8** %endptr, align 8, !dbg !158\l  %cmp3.i = icmp eq i32 %2, 0, !dbg !160\l  %cmp4.i = icmp eq i8* %1, %nptr, !dbg !162\l  %or.cond.i = and i1 %cmp4.i, %cmp3.i, !dbg !163\l  br i1 %or.cond.i, label %cleanup, label %if.end11.i, !dbg !163, !prof !127\l|{<s0>T|<s1>F}}"];
+	Node0x5557ed882dc0:s0 -> Node0x5557ed8a77d0;
+	Node0x5557ed882dc0:s1 -> Node0x5557ed8fe540;
+	Node0x5557ed832320 [shape=record,penwidth=3.0, color="red",label="{if.end2.i.thread:                                 \l  %cmp3.i12 = icmp eq i32 %2, 0, !dbg !160\l  %cmp4.i13 = icmp eq i8* %1, %nptr, !dbg !162\l  %or.cond.i14 = and i1 %cmp4.i13, %cmp3.i12, !dbg !163\l  br i1 %or.cond.i14, label %cleanup, label %land.lhs.true8.i, !dbg !163,\l... !prof !127\l|{<s0>T|<s1>F}}"];
+	Node0x5557ed832320:s0 -> Node0x5557ed8a77d0;
+	Node0x5557ed832320:s1 -> Node0x5557ed683870;
+	Node0x5557ed683870 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#5b7ae570",label="{land.lhs.true8.i:                                 \l  %3 = load i8, i8* %1, align 1, !dbg !164\l  %tobool9.i = icmp eq i8 %3, 0, !dbg !164\l  br i1 %tobool9.i, label %if.end11.i, label %cleanup, !dbg !166\l|{<s0>T|<s1>F}}"];
+	Node0x5557ed683870:s0 -> Node0x5557ed8fe540;
+	Node0x5557ed683870:s1 -> Node0x5557ed8a77d0;
+	Node0x5557ed8fe540 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.end11.i:                                       \l  %sub.i = sub i32 0, %2, !dbg !167\l  br label %cleanup, !dbg !168\l}"];
+	Node0x5557ed8fe540 -> Node0x5557ed8a77d0;
+	Node0x5557ed8a77d0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{cleanup:                                          \l  %retval.0 = phi i32 [ -22, %if.then ], [ -22, %if.then2 ], [ %sub.i,\l... %if.end11.i ], [ -22, %if.end2.i ], [ -22, %land.lhs.true8.i ], [ -22,\l... %if.end2.i.thread ], !dbg !122\l  call void @llvm.lifetime.end.p0i8(i64 8, i8* nonnull %0) #23, !dbg !169\l  ret i32 %retval.0, !dbg !169\l}"];
+}

@@ -1,0 +1,15 @@
+digraph "CFG for 'acpi_pm1_cnt_update' function" {
+	label="CFG for 'acpi_pm1_cnt_update' function";
+
+	Node0x561dc782f8c0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  call void @llvm.dbg.value(metadata %struct.ACPIREGS* %ar, metadata !453,\l... metadata !DIExpression()), !dbg !457\l  call void @llvm.dbg.value(metadata i1 %sci_enable, metadata !454, metadata\l... !DIExpression(DW_OP_LLVM_convert, 1, DW_ATE_unsigned, DW_OP_LLVM_convert, 8,\l... DW_ATE_unsigned, DW_OP_stack_value)), !dbg !457\l  call void @llvm.dbg.value(metadata i1 %sci_disable, metadata !455, metadata\l... !DIExpression(DW_OP_LLVM_convert, 1, DW_ATE_unsigned, DW_OP_LLVM_convert, 8,\l... DW_ATE_unsigned, DW_OP_stack_value)), !dbg !457\l  br i1 %sci_enable, label %if.then, label %if.else, !dbg !458, !prof !459\l|{<s0>T|<s1>F}}"];
+	Node0x561dc782f8c0:s0 -> Node0x561dc7832550;
+	Node0x561dc782f8c0:s1 -> Node0x561dc78325f0;
+	Node0x561dc7832550 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#d8564670",label="{if.then:                                          \l  %cnt2 = getelementptr inbounds %struct.ACPIREGS, %struct.ACPIREGS* %ar, i64\l... 0, i32 3, i32 1, i32 1, !dbg !460\l  %0 = load i16, i16* %cnt2, align 16, !dbg !463\l  %1 = or i16 %0, 1, !dbg !463\l  store i16 %1, i16* %cnt2, align 16, !dbg !463\l  br label %if.end11, !dbg !464\l}"];
+	Node0x561dc7832550 -> Node0x561dc78325a0;
+	Node0x561dc78325f0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.else:                                          \l  br i1 %sci_disable, label %if.then5, label %if.end11, !dbg !465, !prof !466\l|{<s0>T|<s1>F}}"];
+	Node0x561dc78325f0:s0 -> Node0x561dc78331f0;
+	Node0x561dc78325f0:s1 -> Node0x561dc78325a0;
+	Node0x561dc78331f0 [shape=record,penwidth=3.0, color="red",label="{if.then5:                                         \l  %cnt8 = getelementptr inbounds %struct.ACPIREGS, %struct.ACPIREGS* %ar, i64\l... 0, i32 3, i32 1, i32 1, !dbg !467\l  %2 = load i16, i16* %cnt8, align 16, !dbg !470\l  %3 = and i16 %2, -2, !dbg !470\l  store i16 %3, i16* %cnt8, align 16, !dbg !470\l  br label %if.end11, !dbg !471\l}"];
+	Node0x561dc78331f0 -> Node0x561dc78325a0;
+	Node0x561dc78325a0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.end11:                                         \l  ret void, !dbg !472\l}"];
+}

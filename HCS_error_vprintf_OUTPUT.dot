@@ -1,0 +1,18 @@
+digraph "CFG for 'error_vprintf' function" {
+	label="CFG for 'error_vprintf' function";
+
+	Node0x562cc5489ad0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  call void @llvm.dbg.value(metadata i8* %fmt, metadata !56, metadata\l... !DIExpression()), !dbg !63\l  call void @llvm.dbg.value(metadata %struct.__va_list_tag* %ap, metadata !57,\l... metadata !DIExpression()), !dbg !63\l  %0 = load %struct.GTestConfig*, %struct.GTestConfig** @g_test_config_vars,\l... align 8, !dbg !64\l  %test_initialized = getelementptr inbounds %struct.GTestConfig,\l... %struct.GTestConfig* %0, i64 0, i32 0, !dbg !64\l  %1 = load i32, i32* %test_initialized, align 4, !dbg !64\l  %tobool = icmp eq i32 %1, 0, !dbg !64\l  br i1 %tobool, label %if.end, label %land.lhs.true, !dbg !65\l|{<s0>T|<s1>F}}"];
+	Node0x562cc5489ad0:s0 -> Node0x562cc5b1f140;
+	Node0x562cc5489ad0:s1 -> Node0x562cc5b1f260;
+	Node0x562cc5b1f260 [shape=record,color="#b70d28ff", style=filled, fillcolor="#be242e70",label="{land.lhs.true:                                    \l  %call = tail call i32 @g_test_subprocess() #6, !dbg !66\l  %tobool1 = icmp eq i32 %call, 0, !dbg !66\l  br i1 %tobool1, label %land.lhs.true2, label %if.end, !dbg !67\l|{<s0>T|<s1>F}}"];
+	Node0x562cc5b1f260:s0 -> Node0x562cc5b1f1b0;
+	Node0x562cc5b1f260:s1 -> Node0x562cc5b1f140;
+	Node0x562cc5b1f1b0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#c32e3170",label="{land.lhs.true2:                                   \l  %call3 = tail call i8* @getenv(i8* getelementptr inbounds ([20 x i8], [20 x\l... i8]* @.str, i64 0, i64 0)) #6, !dbg !68\l  %tobool4 = icmp eq i8* %call3, null, !dbg !68\l  br i1 %tobool4, label %if.end, label %if.then, !dbg !69\l|{<s0>T|<s1>F}}"];
+	Node0x562cc5b1f1b0:s0 -> Node0x562cc5b1f140;
+	Node0x562cc5b1f1b0:s1 -> Node0x562cc5b1f0f0;
+	Node0x562cc5b1f0f0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#ca3b3770",label="{if.then:                                          \l  %call5 = tail call noalias i8* @g_strdup_vprintf(i8* %fmt,\l... %struct.__va_list_tag* %ap) #6, !dbg !70\l  call void @llvm.dbg.value(metadata i8* %call5, metadata !59, metadata\l... !DIExpression()), !dbg !71\l  tail call void (i8*, ...) @g_test_message(i8* getelementptr inbounds ([3 x\l... i8], [3 x i8]* @.str.1, i64 0, i64 0), i8* %call5) #6, !dbg !72\l  %call6 = tail call i64 @strlen(i8* nonnull dereferenceable(1) %call5) #7,\l... !dbg !73\l  %conv = trunc i64 %call6 to i32, !dbg !73\l  call void @llvm.dbg.value(metadata i32 %conv, metadata !58, metadata\l... !DIExpression()), !dbg !63\l  tail call void @g_free(i8* %call5) #6, !dbg !74\l  br label %cleanup\l}"];
+	Node0x562cc5b1f0f0 -> Node0x562cc5a947f0;
+	Node0x562cc5b1f140 [shape=record,penwidth=3.0, color="red",label="{if.end:                                           \l  %2 = load %struct._IO_FILE*, %struct._IO_FILE** @stderr, align 8, !dbg !75\l  %call7 = tail call i32 @vfprintf(%struct._IO_FILE* %2, i8* %fmt,\l... %struct.__va_list_tag* %ap) #8, !dbg !76\l  br label %cleanup, !dbg !77\l}"];
+	Node0x562cc5b1f140 -> Node0x562cc5a947f0;
+	Node0x562cc5a947f0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{cleanup:                                          \l  %retval.0 = phi i32 [ %call7, %if.end ], [ %conv, %if.then ], !dbg !63\l  ret i32 %retval.0, !dbg !78\l}"];
+}

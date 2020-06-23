@@ -1,0 +1,18 @@
+digraph "CFG for 'bdrv_has_readonly_bitmaps' function" {
+	label="CFG for 'bdrv_has_readonly_bitmaps' function";
+
+	Node0x5601c2343c60 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  call void @llvm.dbg.value(metadata %struct.BlockDriverState* %bs, metadata\l... !2586, metadata !DIExpression()), !dbg !2589\l  %lh_first = getelementptr inbounds %struct.BlockDriverState,\l... %struct.BlockDriverState* %bs, i64 0, i32 42, i32 0, !dbg !2590\l  call void @llvm.dbg.value(metadata %struct.BdrvDirtyBitmap* undef, metadata\l... !2587, metadata !DIExpression()), !dbg !2589\l  %bm.05 = load %struct.BdrvDirtyBitmap*, %struct.BdrvDirtyBitmap** %lh_first,\l... align 8, !dbg !2592\l  call void @llvm.dbg.value(metadata %struct.BdrvDirtyBitmap* %bm.05, metadata\l... !2587, metadata !DIExpression()), !dbg !2589\l  %tobool6 = icmp eq %struct.BdrvDirtyBitmap* %bm.05, null, !dbg !2590\l  br i1 %tobool6, label %cleanup, label %for.body.preheader, !dbg !2590, !prof\l... !2593\l|{<s0>T|<s1>F}}"];
+	Node0x5601c2343c60:s0 -> Node0x5601c2346c40;
+	Node0x5601c2343c60:s1 -> Node0x5601c23478d0;
+	Node0x5601c23478d0 [shape=record,penwidth=3.0, color="red",label="{for.body.preheader:                               \l  br label %for.body, !dbg !2590\l}"];
+	Node0x5601c23478d0 -> Node0x5601c2345fe0;
+	Node0x5601c2345dc0 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#5977e370",label="{for.cond:                                         \l  %le_next = getelementptr inbounds %struct.BdrvDirtyBitmap,\l... %struct.BdrvDirtyBitmap* %bm.07, i64 0, i32 12, i32 0, !dbg !2594\l  %bm.0 = load %struct.BdrvDirtyBitmap*, %struct.BdrvDirtyBitmap** %le_next,\l... align 8, !dbg !2592\l  call void @llvm.dbg.value(metadata %struct.BdrvDirtyBitmap* %bm.0, metadata\l... !2587, metadata !DIExpression()), !dbg !2589\l  %tobool = icmp eq %struct.BdrvDirtyBitmap* %bm.0, null, !dbg !2590\l  br i1 %tobool, label %cleanup.loopexit, label %for.body, !dbg !2590, !prof\l... !2593, !llvm.loop !2596\l|{<s0>T|<s1>F}}"];
+	Node0x5601c2345dc0:s0 -> Node0x5601c2343990;
+	Node0x5601c2345dc0:s1 -> Node0x5601c2345fe0;
+	Node0x5601c2345fe0 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#5977e370",label="{for.body:                                         \l  %bm.07 = phi %struct.BdrvDirtyBitmap* [ %bm.0, %for.cond ], [ %bm.05,\l... %for.body.preheader ]\l  %readonly = getelementptr inbounds %struct.BdrvDirtyBitmap,\l... %struct.BdrvDirtyBitmap* %bm.07, i64 0, i32 8, !dbg !2598\l  %0 = load i8, i8* %readonly, align 8, !dbg !2598, !range !2601\l  %tobool1 = icmp eq i8 %0, 0, !dbg !2598\l  call void @llvm.dbg.value(metadata %struct.BdrvDirtyBitmap* undef, metadata\l... !2587, metadata !DIExpression()), !dbg !2589\l  br i1 %tobool1, label %for.cond, label %cleanup.loopexit, !dbg !2602\l|{<s0>T|<s1>F}}"];
+	Node0x5601c2345fe0:s0 -> Node0x5601c2345dc0;
+	Node0x5601c2345fe0:s1 -> Node0x5601c2343990;
+	Node0x5601c2343990 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#5977e370",label="{cleanup.loopexit:                                 \l  %retval.0.ph = phi i1 [ false, %for.cond ], [ true, %for.body ]\l  br label %cleanup, !dbg !2603\l}"];
+	Node0x5601c2343990 -> Node0x5601c2346c40;
+	Node0x5601c2346c40 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{cleanup:                                          \l  %retval.0 = phi i1 [ false, %entry ], [ %retval.0.ph, %cleanup.loopexit ],\l... !dbg !2589\l  ret i1 %retval.0, !dbg !2603\l}"];
+}

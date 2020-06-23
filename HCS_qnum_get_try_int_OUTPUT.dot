@@ -1,0 +1,18 @@
+digraph "CFG for 'qnum_get_try_int' function" {
+	label="CFG for 'qnum_get_try_int' function";
+
+	Node0x55dc935f92f0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  call void @llvm.dbg.value(metadata %struct.QNum* %qn, metadata !108,\l... metadata !DIExpression()), !dbg !111\l  call void @llvm.dbg.value(metadata i64* %val, metadata !109, metadata\l... !DIExpression()), !dbg !111\l  %kind = getelementptr inbounds %struct.QNum, %struct.QNum* %qn, i64 0, i32\l... 1, !dbg !112\l  %0 = load i32, i32* %kind, align 8, !dbg !112\l  switch i32 %0, label %sw.epilog [\l    i32 0, label %sw.bb\l    i32 1, label %sw.bb1\l    i32 2, label %return\l  ], !dbg !113, !prof !114\l|{<s0>def|<s1>0|<s2>1|<s3>2}}"];
+	Node0x55dc935f92f0:s0 -> Node0x55dc935fa360;
+	Node0x55dc935f92f0:s1 -> Node0x55dc935fb130;
+	Node0x55dc935f92f0:s2 -> Node0x55dc935fb760;
+	Node0x55dc935f92f0:s3 -> Node0x55dc935f9810;
+	Node0x55dc935fb130 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{sw.bb:                                            \l  %i64 = getelementptr inbounds %struct.QNum, %struct.QNum* %qn, i64 0, i32 2,\l... i32 0, !dbg !115\l  %1 = load i64, i64* %i64, align 8, !dbg !115\l  store i64 %1, i64* %val, align 8, !dbg !117\l  br label %return, !dbg !118\l}"];
+	Node0x55dc935fb130 -> Node0x55dc935f9810;
+	Node0x55dc935fb760 [shape=record,penwidth=3.0, color="red",label="{sw.bb1:                                           \l  %u64 = getelementptr inbounds %struct.QNum, %struct.QNum* %qn, i64 0, i32 2,\l... i32 0, !dbg !119\l  %2 = load i64, i64* %u64, align 8, !dbg !119\l  %cmp = icmp slt i64 %2, 0, !dbg !121\l  br i1 %cmp, label %return, label %if.end, !dbg !122\l|{<s0>T|<s1>F}}"];
+	Node0x55dc935fb760:s0 -> Node0x55dc935f9810;
+	Node0x55dc935fb760:s1 -> Node0x55dc935fb8e0;
+	Node0x55dc935fb8e0 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#5977e370",label="{if.end:                                           \l  store i64 %2, i64* %val, align 8, !dbg !123\l  br label %return, !dbg !124\l}"];
+	Node0x55dc935fb8e0 -> Node0x55dc935f9810;
+	Node0x55dc935fa360 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{sw.epilog:                                        \l  tail call void @__assert_fail(i8* getelementptr inbounds ([2 x i8], [2 x\l... i8]* @.str, i64 0, i64 0), i8* getelementptr inbounds ([15 x i8], [15 x i8]*\l... @.str.1, i64 0, i64 0), i32 87, i8* getelementptr inbounds ([48 x i8], [48 x\l... i8]* @__PRETTY_FUNCTION__.qnum_get_try_int, i64 0, i64 0)) #8, !dbg !125\l  unreachable, !dbg !125\l}"];
+	Node0x55dc935f9810 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{return:                                           \l  %retval.0 = phi i1 [ true, %if.end ], [ true, %sw.bb ], [ false, %sw.bb1 ],\l... [ false, %entry ], !dbg !128\l  ret i1 %retval.0, !dbg !129\l}"];
+}

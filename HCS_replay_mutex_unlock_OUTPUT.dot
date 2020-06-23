@@ -1,0 +1,14 @@
+digraph "CFG for 'replay_mutex_unlock' function" {
+	label="CFG for 'replay_mutex_unlock' function";
+
+	Node0x55a6865da2e0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  %0 = load i32, i32* @replay_mode, align 4, !dbg !274\l  %cmp = icmp eq i32 %0, 0, !dbg !275\l  br i1 %cmp, label %if.end6, label %do.body, !dbg !276, !prof !277\l|{<s0>T|<s1>F}}"];
+	Node0x55a6865da2e0:s0 -> Node0x55a6865dbb80;
+	Node0x55a6865da2e0:s1 -> Node0x55a6865dbf00;
+	Node0x55a6865dbf00 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{do.body:                                          \l  %.b1.i = load i1, i1* @replay_locked, align 1, !dbg !278\l  call void @llvm.dbg.value(metadata i32 undef, metadata !260, metadata\l... !DIExpression()), !dbg !285\l  br i1 %.b1.i, label %do.end, label %if.else3, !dbg !286, !prof !287,\l... !misexpect !288\l|{<s0>T|<s1>F}}"];
+	Node0x55a6865dbf00:s0 -> Node0x55a6865dbe40;
+	Node0x55a6865dbf00:s1 -> Node0x55a6865dc100;
+	Node0x55a6865dc100 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.else3:                                         \l  tail call void @g_assertion_message_expr(i8* null, i8* getelementptr\l... inbounds ([25 x i8], [25 x i8]* @.str.1, i64 0, i64 0), i32 234, i8*\l... getelementptr inbounds ([20 x i8], [20 x i8]* @__func__.replay_mutex_unlock,\l... i64 0, i64 0), i8* getelementptr inbounds ([22 x i8], [22 x i8]* @.str.7, i64\l... 0, i64 0)) #12, !dbg !289\l  unreachable, !dbg !289\l}"];
+	Node0x55a6865dbe40 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{do.end:                                           \l  %1 = load atomic i64, i64* bitcast (void (%struct.QemuMutex*, i8*, i32)**\l... @qemu_mutex_lock_func to i64*) monotonic, align 8, !dbg !290\l  %2 = inttoptr i64 %1 to void (%struct.QemuMutex*, i8*, i32)*, !dbg !290\l  call void @llvm.dbg.value(metadata void (%struct.QemuMutex*, i8*, i32)* %2,\l... metadata !266, metadata !DIExpression()), !dbg !292\l  tail call void %2(%struct.QemuMutex* nonnull @lock, i8* getelementptr\l... inbounds ([25 x i8], [25 x i8]* @.str.1, i64 0, i64 0), i32 235) #13, !dbg\l... !293\l  %3 = load i64, i64* @mutex_head, align 8, !dbg !294\l  %inc = add i64 %3, 1, !dbg !294\l  store i64 %inc, i64* @mutex_head, align 8, !dbg !294\l  store i1 false, i1* @replay_locked, align 1, !dbg !295\l  tail call void @qemu_cond_broadcast(%struct.QemuCond* nonnull @mutex_cond)\l... #13, !dbg !296\l  tail call void @qemu_mutex_unlock_impl(%struct.QemuMutex* nonnull @lock, i8*\l... getelementptr inbounds ([25 x i8], [25 x i8]* @.str.1, i64 0, i64 0), i32\l... 239) #13, !dbg !297\l  br label %if.end6, !dbg !298\l}"];
+	Node0x55a6865dbe40 -> Node0x55a6865dbb80;
+	Node0x55a6865dbb80 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.end6:                                          \l  ret void, !dbg !299\l}"];
+}

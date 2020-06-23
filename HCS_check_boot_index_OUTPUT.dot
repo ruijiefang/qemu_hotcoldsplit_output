@@ -1,0 +1,23 @@
+digraph "CFG for 'check_boot_index' function" {
+	label="CFG for 'check_boot_index' function";
+
+	Node0x55f536ebefb0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  call void @llvm.dbg.value(metadata i32 %bootindex, metadata !757, metadata\l... !DIExpression()), !dbg !763\l  call void @llvm.dbg.value(metadata %struct.Error** %errp, metadata !758,\l... metadata !DIExpression()), !dbg !763\l  %cmp = icmp sgt i32 %bootindex, -1, !dbg !764\l  br i1 %cmp, label %for.cond.preheader, label %cleanup, !dbg !766, !prof !767\l|{<s0>T|<s1>F}}"];
+	Node0x55f536ebefb0:s0 -> Node0x55f537069990;
+	Node0x55f536ebefb0:s1 -> Node0x55f536ee07b0;
+	Node0x55f537069990 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{for.cond.preheader:                               \l  %i.010 = load %struct.FWBootEntry*, %struct.FWBootEntry** bitcast\l... (%union.anon.7* @fw_boot_order to %struct.FWBootEntry**), align 8, !dbg !768\l  call void @llvm.dbg.value(metadata %struct.FWBootEntry* %i.010, metadata\l... !759, metadata !DIExpression()), !dbg !763\l  %tobool11 = icmp eq %struct.FWBootEntry* %i.010, null, !dbg !771\l  br i1 %tobool11, label %cleanup, label %for.body.preheader, !dbg !771\l|{<s0>T|<s1>F}}"];
+	Node0x55f537069990:s0 -> Node0x55f536ee07b0;
+	Node0x55f537069990:s1 -> Node0x55f5370635f0;
+	Node0x55f5370635f0 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{for.body.preheader:                               \l  br label %for.body, !dbg !771\l}"];
+	Node0x55f5370635f0 -> Node0x55f536ede480;
+	Node0x55f536ede480 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{for.body:                                         \l  %i.012 = phi %struct.FWBootEntry* [ %i.0, %for.inc ], [ %i.010,\l... %for.body.preheader ]\l  %bootindex1 = getelementptr inbounds %struct.FWBootEntry,\l... %struct.FWBootEntry* %i.012, i64 0, i32 1, !dbg !772\l  %0 = load i32, i32* %bootindex1, align 8, !dbg !772\l  %cmp2 = icmp eq i32 %0, %bootindex, !dbg !776\l  br i1 %cmp2, label %if.then3, label %for.inc, !dbg !777\l|{<s0>T|<s1>F}}"];
+	Node0x55f536ede480:s0 -> Node0x55f536ede830;
+	Node0x55f536ede480:s1 -> Node0x55f536ede3d0;
+	Node0x55f536ede830 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.then3:                                         \l  tail call void (%struct.Error**, i8*, i32, i8*, i8*, ...)\l... @error_setg_internal(%struct.Error** %errp, i8* getelementptr inbounds ([13 x\l... i8], [13 x i8]* @.str, i64 0, i64 0), i32 128, i8* getelementptr inbounds\l... ([17 x i8], [17 x i8]* @__func__.check_boot_index, i64 0, i64 0), i8*\l... getelementptr inbounds ([39 x i8], [39 x i8]* @.str.4, i64 0, i64 0), i32\l... %bootindex) #12, !dbg !778\l  br label %cleanup, !dbg !780\l}"];
+	Node0x55f536ede830 -> Node0x55f536ee07b0;
+	Node0x55f536ede3d0 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{for.inc:                                          \l  %tqe_next = bitcast %struct.FWBootEntry* %i.012 to %struct.FWBootEntry**,\l... !dbg !781\l  call void @llvm.dbg.value(metadata %struct.FWBootEntry* undef, metadata\l... !759, metadata !DIExpression()), !dbg !763\l  %i.0 = load %struct.FWBootEntry*, %struct.FWBootEntry** %tqe_next, align 8,\l... !dbg !768\l  call void @llvm.dbg.value(metadata %struct.FWBootEntry* %i.0, metadata !759,\l... metadata !DIExpression()), !dbg !763\l  %tobool = icmp eq %struct.FWBootEntry* %i.0, null, !dbg !771\l  br i1 %tobool, label %cleanup.loopexit, label %for.body, !dbg !771,\l... !llvm.loop !782\l|{<s0>T|<s1>F}}"];
+	Node0x55f536ede3d0:s0 -> Node0x55f536f37a20;
+	Node0x55f536ede3d0:s1 -> Node0x55f536ede480;
+	Node0x55f536f37a20 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{cleanup.loopexit:                                 \l  br label %cleanup, !dbg !784\l}"];
+	Node0x55f536f37a20 -> Node0x55f536ee07b0;
+	Node0x55f536ee07b0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{cleanup:                                          \l  ret void, !dbg !784\l}"];
+}

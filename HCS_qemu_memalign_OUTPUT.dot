@@ -1,0 +1,9 @@
+digraph "CFG for 'qemu_memalign' function" {
+	label="CFG for 'qemu_memalign' function";
+
+	Node0x55834e14fba0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  call void @llvm.dbg.value(metadata i64 %alignment, metadata !461, metadata\l... !DIExpression()), !dbg !464\l  call void @llvm.dbg.value(metadata i64 %size, metadata !462, metadata\l... !DIExpression()), !dbg !464\l  %call = tail call i8* @qemu_try_memalign(i64 %alignment, i64 %size), !dbg\l... !465\l  call void @llvm.dbg.value(metadata i8* %call, metadata !466, metadata\l... !DIExpression()) #17, !dbg !471\l  %cmp.i = icmp eq i8* %call, null, !dbg !473\l  br i1 %cmp.i, label %if.then.i, label %qemu_oom_check.exit, !dbg !475, !prof\l... !476\l|{<s0>T|<s1>F}}"];
+	Node0x55834e14fba0:s0 -> Node0x55834e353b90;
+	Node0x55834e14fba0:s1 -> Node0x55834e131e60;
+	Node0x55834e353b90 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.then.i:                                        \l  %0 = load %struct._IO_FILE*, %struct._IO_FILE** @stderr, align 8, !dbg !477\l  %call.i = tail call i32* @__errno_location() #18, !dbg !479\l  %1 = load i32, i32* %call.i, align 4, !dbg !479\l  %call1.i = tail call i8* @strerror(i32 %1) #17, !dbg !480\l  %call2.i = tail call i32 (%struct._IO_FILE*, i8*, ...)\l... @fprintf(%struct._IO_FILE* %0, i8* getelementptr inbounds ([31 x i8], [31 x\l... i8]* @.str.7, i64 0, i64 0), i8* %call1.i) #19, !dbg !481\l  tail call void @abort() #20, !dbg !482\l  unreachable, !dbg !482\l}"];
+	Node0x55834e131e60 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{qemu_oom_check.exit:                              \l  ret i8* %call, !dbg !483\l}"];
+}

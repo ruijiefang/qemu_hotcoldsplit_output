@@ -1,0 +1,30 @@
+digraph "CFG for 'object_release_link_property' function" {
+	label="CFG for 'object_release_link_property' function";
+
+	Node0x55ee22854420 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  call void @llvm.dbg.value(metadata %struct.Object* %obj, metadata !345,\l... metadata !DIExpression()), !dbg !352\l  call void @llvm.dbg.value(metadata i8* %name, metadata !346, metadata\l... !DIExpression()), !dbg !352\l  call void @llvm.dbg.value(metadata i8* %opaque, metadata !347, metadata\l... !DIExpression()), !dbg !352\l  call void @llvm.dbg.value(metadata i8* %opaque, metadata !348, metadata\l... !DIExpression()), !dbg !352\l  call void @llvm.dbg.value(metadata %struct.Object* %obj, metadata !353,\l... metadata !DIExpression()), !dbg !359\l  call void @llvm.dbg.value(metadata i8* %opaque, metadata !358, metadata\l... !DIExpression()), !dbg !359\l  %flags.i = getelementptr inbounds i8, i8* %opaque, i64 16, !dbg !361\l  %0 = bitcast i8* %flags.i to i32*, !dbg !361\l  %1 = load i32, i32* %0, align 8, !dbg !361\l  %and.i = and i32 %1, 2, !dbg !363\l  %tobool.i = icmp eq i32 %and.i, 0, !dbg !363\l  br i1 %tobool.i, label %if.else.i, label %if.then.i, !dbg !364, !prof !365\l|{<s0>T|<s1>F}}"];
+	Node0x55ee22854420:s0 -> Node0x55ee2277f860;
+	Node0x55ee22854420:s1 -> Node0x55ee228616f0;
+	Node0x55ee228616f0 [shape=record,penwidth=3.0, color="red",label="{if.then.i:                                        \l  %target.i = bitcast i8* %opaque to %struct.Object**, !dbg !366\l  br label %object_link_get_targetp.exit, !dbg !368\l}"];
+	Node0x55ee228616f0 -> Node0x55ee22592ba0;
+	Node0x55ee2277f860 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.else.i:                                        \l  %and2.i = and i32 %1, 4, !dbg !369\l  %tobool3.i = icmp eq i32 %and2.i, 0, !dbg !369\l  br i1 %tobool3.i, label %if.else5.i, label %if.then4.i, !dbg !371, !prof !372\l|{<s0>T|<s1>F}}"];
+	Node0x55ee2277f860:s0 -> Node0x55ee227ecf40;
+	Node0x55ee2277f860:s1 -> Node0x55ee227456a0;
+	Node0x55ee227456a0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.then4.i:                                       \l  %2 = bitcast %struct.Object* %obj to i8*, !dbg !373\l  %offset.i = bitcast i8* %opaque to i64*, !dbg !375\l  %3 = load i64, i64* %offset.i, align 8, !dbg !375\l  %add.ptr.i = getelementptr i8, i8* %2, i64 %3, !dbg !376\l  %4 = bitcast i8* %add.ptr.i to %struct.Object**, !dbg !373\l  br label %object_link_get_targetp.exit, !dbg !377\l}"];
+	Node0x55ee227456a0 -> Node0x55ee22592ba0;
+	Node0x55ee227ecf40 [shape=record,penwidth=3.0, color="red",label="{if.else5.i:                                       \l  %targetp.i = bitcast i8* %opaque to %struct.Object***, !dbg !378\l  %5 = load %struct.Object**, %struct.Object*** %targetp.i, align 8, !dbg !378\l  br label %object_link_get_targetp.exit, !dbg !380\l}"];
+	Node0x55ee227ecf40 -> Node0x55ee22592ba0;
+	Node0x55ee22592ba0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{object_link_get_targetp.exit:                     \l  %retval.0.i = phi %struct.Object** [ %target.i, %if.then.i ], [ %4,\l... %if.then4.i ], [ %5, %if.else5.i ], !dbg !381\l  call void @llvm.dbg.value(metadata %struct.Object** %retval.0.i, metadata\l... !349, metadata !DIExpression()), !dbg !352\l  %and = and i32 %1, 1, !dbg !382\l  %tobool = icmp eq i32 %and, 0, !dbg !382\l  br i1 %tobool, label %if.end, label %land.lhs.true, !dbg !384, !prof !365\l|{<s0>T|<s1>F}}"];
+	Node0x55ee22592ba0:s0 -> Node0x55ee228656c0;
+	Node0x55ee22592ba0:s1 -> Node0x55ee22865730;
+	Node0x55ee22865730 [shape=record,penwidth=3.0, color="red",label="{land.lhs.true:                                    \l  %6 = load %struct.Object*, %struct.Object** %retval.0.i, align 8, !dbg !385\l  %tobool1 = icmp eq %struct.Object* %6, null, !dbg !385\l  br i1 %tobool1, label %if.end, label %if.then, !dbg !386\l|{<s0>T|<s1>F}}"];
+	Node0x55ee22865730:s0 -> Node0x55ee228656c0;
+	Node0x55ee22865730:s1 -> Node0x55ee22865670;
+	Node0x55ee22865670 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#5977e370",label="{if.then:                                          \l  tail call void @object_unref(%struct.Object* nonnull %6), !dbg !387\l  %.pre = load i32, i32* %0, align 8, !dbg !389\l  br label %if.end, !dbg !391\l}"];
+	Node0x55ee22865670 -> Node0x55ee228656c0;
+	Node0x55ee228656c0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.end:                                           \l  %7 = phi i32 [ %1, %land.lhs.true ], [ %1, %object_link_get_targetp.exit ],\l... [ %.pre, %if.then ], !dbg !389\l  %and3 = and i32 %7, 4, !dbg !392\l  %tobool4 = icmp eq i32 %and3, 0, !dbg !392\l  br i1 %tobool4, label %if.then5, label %if.end6, !dbg !393, !prof !372\l|{<s0>T|<s1>F}}"];
+	Node0x55ee228656c0:s0 -> Node0x55ee228664d0;
+	Node0x55ee228656c0:s1 -> Node0x55ee22866540;
+	Node0x55ee228664d0 [shape=record,penwidth=3.0, color="red",label="{if.then5:                                         \l  tail call void @g_free(i8* nonnull %opaque) #9, !dbg !394\l  br label %if.end6, !dbg !396\l}"];
+	Node0x55ee228664d0 -> Node0x55ee22866540;
+	Node0x55ee22866540 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.end6:                                          \l  ret void, !dbg !397\l}"];
+}

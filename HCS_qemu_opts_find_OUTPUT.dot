@@ -1,0 +1,24 @@
+digraph "CFG for 'qemu_opts_find' function" {
+	label="CFG for 'qemu_opts_find' function";
+
+	Node0x55ef42213dd0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  call void @llvm.dbg.value(metadata %struct.QemuOptsList* %list, metadata\l... !225, metadata !DIExpression()), !dbg !229\l  call void @llvm.dbg.value(metadata i8* %id, metadata !226, metadata\l... !DIExpression()), !dbg !229\l  %head = getelementptr inbounds %struct.QemuOptsList, %struct.QemuOptsList*\l... %list, i64 0, i32 3, !dbg !230\l  %tqh_first = bitcast %union.anon* %head to %struct.QemuOpts**, !dbg !230\l  call void @llvm.dbg.value(metadata %struct.QemuOpts* undef, metadata !227,\l... metadata !DIExpression()), !dbg !229\l  %opts.022 = load %struct.QemuOpts*, %struct.QemuOpts** %tqh_first, align 8,\l... !dbg !232\l  call void @llvm.dbg.value(metadata %struct.QemuOpts* %opts.022, metadata\l... !227, metadata !DIExpression()), !dbg !229\l  %tobool23 = icmp eq %struct.QemuOpts* %opts.022, null, !dbg !230\l  br i1 %tobool23, label %cleanup, label %for.body.lr.ph, !dbg !230, !prof !233\l|{<s0>T|<s1>F}}"];
+	Node0x55ef42213dd0:s0 -> Node0x55ef42217000;
+	Node0x55ef42213dd0:s1 -> Node0x55ef42485d10;
+	Node0x55ef42485d10 [shape=record,color="#b70d28ff", style=filled, fillcolor="#bb1b2c70",label="{for.body.lr.ph:                                   \l  %tobool3 = icmp ne i8* %id, null, !dbg !234\l  br label %for.body, !dbg !230\l}"];
+	Node0x55ef42485d10 -> Node0x55ef42216050;
+	Node0x55ef42216050 [shape=record,color="#b70d28ff", style=filled, fillcolor="#bb1b2c70",label="{for.body:                                         \l  %opts.024 = phi %struct.QemuOpts* [ %opts.022, %for.body.lr.ph ], [ %opts.0,\l... %for.inc ]\l  %id1 = getelementptr inbounds %struct.QemuOpts, %struct.QemuOpts* %opts.024,\l... i64 0, i32 0, !dbg !238\l  %0 = load i8*, i8** %id1, align 8, !dbg !238\l  %tobool2 = icmp ne i8* %0, null, !dbg !239\l  %or.cond = or i1 %tobool3, %tobool2, !dbg !240\l  br i1 %or.cond, label %if.end, label %cleanup.loopexit, !dbg !240, !prof !241\l|{<s0>T|<s1>F}}"];
+	Node0x55ef42216050:s0 -> Node0x55ef422165f0;
+	Node0x55ef42216050:s1 -> Node0x55ef42491c30;
+	Node0x55ef422165f0 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#d6524470",label="{if.end:                                           \l  %or.cond13 = and i1 %tobool3, %tobool2, !dbg !242\l  br i1 %or.cond13, label %land.lhs.true8, label %for.inc, !dbg !242, !prof\l... !244\l|{<s0>T|<s1>F}}"];
+	Node0x55ef422165f0:s0 -> Node0x55ef42217320;
+	Node0x55ef422165f0:s1 -> Node0x55ef42215fa0;
+	Node0x55ef42217320 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#d6524470",label="{land.lhs.true8:                                   \l  %call = tail call i32 @strcmp(i8* nonnull %0, i8* nonnull %id) #22, !dbg !245\l  %tobool10 = icmp eq i32 %call, 0, !dbg !245\l  br i1 %tobool10, label %cleanup.loopexit, label %for.inc, !dbg !246, !prof\l... !244\l|{<s0>T|<s1>F}}"];
+	Node0x55ef42217320:s0 -> Node0x55ef42491c30;
+	Node0x55ef42217320:s1 -> Node0x55ef42215fa0;
+	Node0x55ef42215fa0 [shape=record,penwidth=3.0, color="red",label="{for.inc:                                          \l  %next = getelementptr inbounds %struct.QemuOpts, %struct.QemuOpts*\l... %opts.024, i64 0, i32 4, !dbg !247\l  %tqe_next = bitcast %union.anon.3* %next to %struct.QemuOpts**, !dbg !247\l  call void @llvm.dbg.value(metadata %struct.QemuOpts* undef, metadata !227,\l... metadata !DIExpression()), !dbg !229\l  %opts.0 = load %struct.QemuOpts*, %struct.QemuOpts** %tqe_next, align 8,\l... !dbg !232\l  call void @llvm.dbg.value(metadata %struct.QemuOpts* %opts.0, metadata !227,\l... metadata !DIExpression()), !dbg !229\l  %tobool = icmp eq %struct.QemuOpts* %opts.0, null, !dbg !230\l  br i1 %tobool, label %cleanup.loopexit, label %for.body, !dbg !230, !prof\l... !233, !llvm.loop !248\l|{<s0>T|<s1>F}}"];
+	Node0x55ef42215fa0:s0 -> Node0x55ef42491c30;
+	Node0x55ef42215fa0:s1 -> Node0x55ef42216050;
+	Node0x55ef42491c30 [shape=record,color="#b70d28ff", style=filled, fillcolor="#bb1b2c70",label="{cleanup.loopexit:                                 \l  %opts.0.lcssa.ph = phi %struct.QemuOpts* [ null, %for.inc ], [ %opts.024,\l... %land.lhs.true8 ], [ %opts.024, %for.body ]\l  br label %cleanup, !dbg !250\l}"];
+	Node0x55ef42491c30 -> Node0x55ef42217000;
+	Node0x55ef42217000 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{cleanup:                                          \l  %opts.0.lcssa = phi %struct.QemuOpts* [ null, %entry ], [ %opts.0.lcssa.ph,\l... %cleanup.loopexit ], !dbg !232\l  ret %struct.QemuOpts* %opts.0.lcssa, !dbg !250\l}"];
+}

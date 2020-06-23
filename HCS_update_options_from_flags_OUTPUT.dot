@@ -1,0 +1,25 @@
+digraph "CFG for 'update_options_from_flags' function" {
+	label="CFG for 'update_options_from_flags' function";
+
+	Node0x55906e7dcb00 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  call void @llvm.dbg.value(metadata %struct.QDict* %options, metadata !2834,\l... metadata !DIExpression()), !dbg !2838\l  call void @llvm.dbg.value(metadata i32 %flags, metadata !2835, metadata\l... !DIExpression()), !dbg !2838\l  %call = tail call i32 @qdict_haskey(%struct.QDict* %options, i8*\l... getelementptr inbounds ([13 x i8], [13 x i8]* @.str.44, i64 0, i64 0)) #30,\l... !dbg !2839\l  %tobool = icmp eq i32 %call, 0, !dbg !2839\l  br i1 %tobool, label %if.then, label %if.end, !dbg !2841, !prof !2842\l|{<s0>T|<s1>F}}"];
+	Node0x55906e7dcb00:s0 -> Node0x55906e7dbfc0;
+	Node0x55906e7dcb00:s1 -> Node0x55906e7dc010;
+	Node0x55906e7dbfc0 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.then:                                          \l  %and = and i32 %flags, 32, !dbg !2843\l  %tobool1 = icmp ne i32 %and, 0, !dbg !2845\l  tail call void @qdict_put_bool(%struct.QDict* %options, i8* getelementptr\l... inbounds ([13 x i8], [13 x i8]* @.str.44, i64 0, i64 0), i1 zeroext %tobool1)\l... #30, !dbg !2846\l  br label %if.end, !dbg !2847\l}"];
+	Node0x55906e7dbfc0 -> Node0x55906e7dc010;
+	Node0x55906e7dc010 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.end:                                           \l  %call2 = tail call i32 @qdict_haskey(%struct.QDict* %options, i8*\l... getelementptr inbounds ([15 x i8], [15 x i8]* @.str.46, i64 0, i64 0)) #30,\l... !dbg !2848\l  %tobool3 = icmp eq i32 %call2, 0, !dbg !2848\l  br i1 %tobool3, label %if.then4, label %if.end7, !dbg !2850, !prof !2842\l|{<s0>T|<s1>F}}"];
+	Node0x55906e7dc010:s0 -> Node0x55906e7df0c0;
+	Node0x55906e7dc010:s1 -> Node0x55906e7df130;
+	Node0x55906e7df0c0 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.then4:                                         \l  %and5 = and i32 %flags, 512, !dbg !2851\l  %tobool6 = icmp ne i32 %and5, 0, !dbg !2853\l  tail call void @qdict_put_bool(%struct.QDict* %options, i8* getelementptr\l... inbounds ([15 x i8], [15 x i8]* @.str.46, i64 0, i64 0), i1 zeroext %tobool6)\l... #30, !dbg !2854\l  br label %if.end7, !dbg !2855\l}"];
+	Node0x55906e7df0c0 -> Node0x55906e7df130;
+	Node0x55906e7df130 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.end7:                                          \l  %call8 = tail call i32 @qdict_haskey(%struct.QDict* %options, i8*\l... getelementptr inbounds ([10 x i8], [10 x i8]* @.str.48, i64 0, i64 0)) #30,\l... !dbg !2856\l  %tobool9 = icmp eq i32 %call8, 0, !dbg !2856\l  br i1 %tobool9, label %if.then10, label %if.end13, !dbg !2858, !prof !2842\l|{<s0>T|<s1>F}}"];
+	Node0x55906e7df130:s0 -> Node0x55906e7dfc30;
+	Node0x55906e7df130:s1 -> Node0x55906e7dfca0;
+	Node0x55906e7dfc30 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.then10:                                        \l  %and11 = and i32 %flags, 2, !dbg !2859\l  %tobool12 = icmp eq i32 %and11, 0, !dbg !2861\l  tail call void @qdict_put_bool(%struct.QDict* %options, i8* getelementptr\l... inbounds ([10 x i8], [10 x i8]* @.str.48, i64 0, i64 0), i1 zeroext\l... %tobool12) #30, !dbg !2862\l  br label %if.end13, !dbg !2863\l}"];
+	Node0x55906e7dfc30 -> Node0x55906e7dfca0;
+	Node0x55906e7dfca0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.end13:                                         \l  %call14 = tail call i32 @qdict_haskey(%struct.QDict* %options, i8*\l... getelementptr inbounds ([15 x i8], [15 x i8]* @.str.50, i64 0, i64 0)) #30,\l... !dbg !2864\l  %tobool15 = icmp eq i32 %call14, 0, !dbg !2864\l  br i1 %tobool15, label %if.then16, label %if.end19, !dbg !2866, !prof !2842\l|{<s0>T|<s1>F}}"];
+	Node0x55906e7dfca0:s0 -> Node0x55906e7e09b0;
+	Node0x55906e7dfca0:s1 -> Node0x55906e7e0a00;
+	Node0x55906e7e09b0 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.then16:                                        \l  %and17 = and i32 %flags, 131072, !dbg !2867\l  %tobool18 = icmp ne i32 %and17, 0, !dbg !2869\l  tail call void @qdict_put_bool(%struct.QDict* %options, i8* getelementptr\l... inbounds ([15 x i8], [15 x i8]* @.str.50, i64 0, i64 0), i1 zeroext\l... %tobool18) #30, !dbg !2870\l  br label %if.end19, !dbg !2871\l}"];
+	Node0x55906e7e09b0 -> Node0x55906e7e0a00;
+	Node0x55906e7e0a00 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.end19:                                         \l  ret void, !dbg !2872\l}"];
+}

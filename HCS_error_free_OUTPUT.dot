@@ -1,0 +1,15 @@
+digraph "CFG for 'error_free' function" {
+	label="CFG for 'error_free' function";
+
+	Node0x55bf8ec1ff40 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  call void @llvm.dbg.value(metadata %struct.Error* %err, metadata !90,\l... metadata !DIExpression()), !dbg !92\l  %tobool = icmp eq %struct.Error* %err, null, !dbg !93\l  br i1 %tobool, label %if.end4, label %if.then, !dbg !95, !prof !96\l|{<s0>T|<s1>F}}"];
+	Node0x55bf8ec1ff40:s0 -> Node0x55bf8ec1e7b0;
+	Node0x55bf8ec1ff40:s1 -> Node0x55bf8ec1fb20;
+	Node0x55bf8ec1fb20 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.then:                                          \l  %msg = getelementptr inbounds %struct.Error, %struct.Error* %err, i64 0, i32\l... 0, !dbg !97\l  %0 = load i8*, i8** %msg, align 8, !dbg !97\l  tail call void @g_free(i8* %0) #3, !dbg !99\l  %hint = getelementptr inbounds %struct.Error, %struct.Error* %err, i64 0,\l... i32 5, !dbg !100\l  %1 = load %struct._GString*, %struct._GString** %hint, align 8, !dbg !100\l  %tobool1 = icmp eq %struct._GString* %1, null, !dbg !102\l  br i1 %tobool1, label %if.end, label %if.then2, !dbg !103, !prof !104\l|{<s0>T|<s1>F}}"];
+	Node0x55bf8ec1fb20:s0 -> Node0x55bf8ec208e0;
+	Node0x55bf8ec1fb20:s1 -> Node0x55bf8ec20890;
+	Node0x55bf8ec20890 [shape=record,penwidth=3.0, color="red",label="{if.then2:                                         \l  %call = tail call i8* @g_string_free(%struct._GString* nonnull %1, i32 1)\l... #3, !dbg !105\l  br label %if.end, !dbg !107\l}"];
+	Node0x55bf8ec20890 -> Node0x55bf8ec208e0;
+	Node0x55bf8ec208e0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.end:                                           \l  %2 = bitcast %struct.Error* %err to i8*, !dbg !108\l  tail call void @g_free(i8* nonnull %2) #3, !dbg !109\l  br label %if.end4, !dbg !110\l}"];
+	Node0x55bf8ec208e0 -> Node0x55bf8ec1e7b0;
+	Node0x55bf8ec1e7b0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.end4:                                          \l  ret void, !dbg !111\l}"];
+}

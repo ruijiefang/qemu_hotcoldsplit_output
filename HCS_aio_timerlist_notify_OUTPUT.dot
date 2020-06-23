@@ -1,0 +1,10 @@
+digraph "CFG for 'aio_timerlist_notify' function" {
+	label="CFG for 'aio_timerlist_notify' function";
+
+	Node0x55e9b6a9f7c0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  call void @llvm.dbg.value(metadata i8* %opaque, metadata !353, metadata\l... !DIExpression()), !dbg !357\l  call void @llvm.dbg.value(metadata i32 %type, metadata !354, metadata\l... !DIExpression()), !dbg !357\l  call void @llvm.dbg.value(metadata i8* %opaque, metadata !358, metadata\l... !DIExpression()) #15, !dbg !363\l  tail call void asm sideeffect \"\", \"~\{memory\},~\{dirflag\},~\{fpsr\},~\{flags\}\"()\l... #15, !dbg !365, !srcloc !368\l  fence seq_cst, !dbg !369\l  %notify_me.i = getelementptr inbounds i8, i8* %opaque, i64 160, !dbg !370\l  %0 = bitcast i8* %notify_me.i to i32*, !dbg !370\l  %1 = load atomic i32, i32* %0 monotonic, align 8, !dbg !370\l  %tobool.i = icmp eq i32 %1, 0, !dbg !373\l  br i1 %tobool.i, label %aio_notify.exit, label %if.then.i, !dbg !374, !prof\l... !375\l|{<s0>T|<s1>F}}"];
+	Node0x55e9b6a9f7c0:s0 -> Node0x55e9b69295b0;
+	Node0x55e9b6a9f7c0:s1 -> Node0x55e9b6a869d0;
+	Node0x55e9b6a869d0 [shape=record,penwidth=3.0, color="red",label="{if.then.i:                                        \l  call void @llvm.dbg.value(metadata i8* %opaque, metadata !358, metadata\l... !DIExpression()) #15, !dbg !363\l  %notifier.i = getelementptr inbounds i8, i8* %opaque, i64 196, !dbg !376\l  %2 = bitcast i8* %notifier.i to %struct.EventNotifier*, !dbg !376\l  %call.i = tail call i32 @event_notifier_set(%struct.EventNotifier* nonnull\l... %2) #15, !dbg !378\l  %3 = getelementptr inbounds i8, i8* %opaque, i64 192, !dbg !379\l  %4 = atomicrmw xchg i8* %3, i8 1 seq_cst, !dbg !379\l  br label %aio_notify.exit, !dbg !382\l}"];
+	Node0x55e9b6a869d0 -> Node0x55e9b69295b0;
+	Node0x55e9b69295b0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{aio_notify.exit:                                  \l  ret void, !dbg !383\l}"];
+}

@@ -1,0 +1,9 @@
+digraph "CFG for 'isa_get_dma' function" {
+	label="CFG for 'isa_get_dma' function";
+
+	Node0x559cebb8fba0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  call void @llvm.dbg.value(metadata %struct.ISABus* %bus, metadata !637,\l... metadata !DIExpression()), !dbg !640\l  call void @llvm.dbg.value(metadata i32 %nchan, metadata !638, metadata\l... !DIExpression()), !dbg !640\l  %tobool = icmp eq %struct.ISABus* %bus, null, !dbg !641\l  br i1 %tobool, label %if.else, label %if.end, !dbg !644, !prof !645\l|{<s0>T|<s1>F}}"];
+	Node0x559cebb8fba0:s0 -> Node0x559cebb91940;
+	Node0x559cebb8fba0:s1 -> Node0x559cebb918f0;
+	Node0x559cebb91940 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.else:                                          \l  tail call void @__assert_fail(i8* getelementptr inbounds ([4 x i8], [4 x\l... i8]* @.str.11, i64 0, i64 0), i8* getelementptr inbounds ([17 x i8], [17 x\l... i8]* @.str, i64 0, i64 0), i32 122, i8* getelementptr inbounds ([35 x i8],\l... [35 x i8]* @__PRETTY_FUNCTION__.isa_get_dma, i64 0, i64 0)) #11, !dbg !641\l  unreachable, !dbg !641\l}"];
+	Node0x559cebb918f0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.end:                                           \l  %cmp = icmp sgt i32 %nchan, 3, !dbg !646\l  %idxprom = zext i1 %cmp to i64, !dbg !647\l  %arrayidx = getelementptr %struct.ISABus, %struct.ISABus* %bus, i64 0, i32\l... 4, i64 %idxprom, !dbg !647\l  %0 = load %struct.IsaDma*, %struct.IsaDma** %arrayidx, align 8, !dbg !647\l  ret %struct.IsaDma* %0, !dbg !648\l}"];
+}

@@ -1,0 +1,23 @@
+digraph "CFG for 'drive_add' function" {
+	label="CFG for 'drive_add' function";
+
+	Node0x559c35f1a250 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  call void @llvm.dbg.value(metadata i32 %type, metadata !3430, metadata\l... !DIExpression()), !dbg !3436\l  call void @llvm.dbg.value(metadata i32 %index, metadata !3431, metadata\l... !DIExpression()), !dbg !3436\l  call void @llvm.dbg.value(metadata i8* %file, metadata !3432, metadata\l... !DIExpression()), !dbg !3436\l  call void @llvm.dbg.value(metadata i8* %optstr, metadata !3433, metadata\l... !DIExpression()), !dbg !3436\l  call void @llvm.dbg.value(metadata i8* %optstr, metadata !3437, metadata\l... !DIExpression()) #16, !dbg !3442\l  %call.i = tail call %struct.QemuOptsList* @qemu_find_opts(i8* getelementptr\l... inbounds ([6 x i8], [6 x i8]* @.str.2, i64 0, i64 0)) #16, !dbg !3444\l  %call1.i = tail call %struct.QemuOpts*\l... @qemu_opts_parse_noisily(%struct.QemuOptsList* %call.i, i8* %optstr, i1\l... zeroext false) #16, !dbg !3445\l  call void @llvm.dbg.value(metadata %struct.QemuOpts* %call1.i, metadata\l... !3434, metadata !DIExpression()), !dbg !3436\l  %tobool = icmp eq %struct.QemuOpts* %call1.i, null, !dbg !3446\l  br i1 %tobool, label %cleanup, label %if.end, !dbg !3448, !prof !3449\l|{<s0>T|<s1>F}}"];
+	Node0x559c35f1a250:s0 -> Node0x559c35f12760;
+	Node0x559c35f1a250:s1 -> Node0x559c35f1fdc0;
+	Node0x559c35f1fdc0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.end:                                           \l  %cmp = icmp eq i32 %type, -1, !dbg !3450\l  br i1 %cmp, label %if.end2, label %if.then1, !dbg !3452, !prof !3449\l|{<s0>T|<s1>F}}"];
+	Node0x559c35f1fdc0:s0 -> Node0x559c35f12a10;
+	Node0x559c35f1fdc0:s1 -> Node0x559c35f129a0;
+	Node0x559c35f129a0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.then1:                                         \l  %idxprom = sext i32 %type to i64, !dbg !3453\l  %arrayidx = getelementptr [9 x i8*], [9 x i8*]* @if_name, i64 0, i64\l... %idxprom, !dbg !3453\l  %0 = load i8*, i8** %arrayidx, align 8, !dbg !3453\l  tail call void @qemu_opt_set(%struct.QemuOpts* nonnull %call1.i, i8*\l... getelementptr inbounds ([3 x i8], [3 x i8]* @.str.3, i64 0, i64 0), i8* %0,\l... %struct.Error** nonnull @error_abort) #16, !dbg !3455\l  br label %if.end2, !dbg !3456\l}"];
+	Node0x559c35f129a0 -> Node0x559c35f12a10;
+	Node0x559c35f12a10 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.end2:                                          \l  %cmp3 = icmp sgt i32 %index, -1, !dbg !3457\l  br i1 %cmp3, label %if.then4, label %if.end5, !dbg !3459, !prof !3460\l|{<s0>T|<s1>F}}"];
+	Node0x559c35f12a10:s0 -> Node0x559c35f22400;
+	Node0x559c35f12a10:s1 -> Node0x559c35f22450;
+	Node0x559c35f22400 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.then4:                                         \l  %conv17 = zext i32 %index to i64, !dbg !3461\l  tail call void @qemu_opt_set_number(%struct.QemuOpts* nonnull %call1.i, i8*\l... getelementptr inbounds ([6 x i8], [6 x i8]* @.str.4, i64 0, i64 0), i64\l... %conv17, %struct.Error** nonnull @error_abort) #16, !dbg !3463\l  br label %if.end5, !dbg !3464\l}"];
+	Node0x559c35f22400 -> Node0x559c35f22450;
+	Node0x559c35f22450 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.end5:                                          \l  %tobool6 = icmp eq i8* %file, null, !dbg !3465\l  br i1 %tobool6, label %cleanup, label %if.then7, !dbg !3467, !prof !3460\l|{<s0>T|<s1>F}}"];
+	Node0x559c35f22450:s0 -> Node0x559c35f12760;
+	Node0x559c35f22450:s1 -> Node0x559c35f23b60;
+	Node0x559c35f23b60 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.then7:                                         \l  tail call void @qemu_opt_set(%struct.QemuOpts* nonnull %call1.i, i8*\l... getelementptr inbounds ([5 x i8], [5 x i8]* @.str.5, i64 0, i64 0), i8*\l... nonnull %file, %struct.Error** nonnull @error_abort) #16, !dbg !3468\l  br label %cleanup, !dbg !3468\l}"];
+	Node0x559c35f23b60 -> Node0x559c35f12760;
+	Node0x559c35f12760 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{cleanup:                                          \l  ret %struct.QemuOpts* %call1.i, !dbg !3469\l}"];
+}

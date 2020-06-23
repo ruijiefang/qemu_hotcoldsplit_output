@@ -1,0 +1,12 @@
+digraph "CFG for 'qemu_get_current_aio_context' function" {
+	label="CFG for 'qemu_get_current_aio_context' function";
+
+	Node0x55a4bc6bc4c0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  %0 = load %struct.IOThread*, %struct.IOThread** @my_iothread, align 8, !dbg\l... !463\l  %tobool = icmp eq %struct.IOThread* %0, null, !dbg !463\l  br i1 %tobool, label %cond.false, label %cond.true, !dbg !463, !prof !464\l|{<s0>T|<s1>F}}"];
+	Node0x55a4bc6bc4c0:s0 -> Node0x55a4bc6ce7e0;
+	Node0x55a4bc6bc4c0:s1 -> Node0x55a4bc6cb8b0;
+	Node0x55a4bc6cb8b0 [shape=record,penwidth=3.0, color="red",label="{cond.true:                                        \l  %ctx = getelementptr inbounds %struct.IOThread, %struct.IOThread* %0, i64 0,\l... i32 2, !dbg !465\l  %1 = load %struct.AioContext*, %struct.AioContext** %ctx, align 8, !dbg !465\l  br label %cond.end, !dbg !463\l}"];
+	Node0x55a4bc6cb8b0 -> Node0x55a4bc6de2b0;
+	Node0x55a4bc6ce7e0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{cond.false:                                       \l  %call = tail call %struct.AioContext* @qemu_get_aio_context() #8, !dbg !466\l  br label %cond.end, !dbg !463\l}"];
+	Node0x55a4bc6ce7e0 -> Node0x55a4bc6de2b0;
+	Node0x55a4bc6de2b0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{cond.end:                                         \l  %cond = phi %struct.AioContext* [ %1, %cond.true ], [ %call, %cond.false ],\l... !dbg !463\l  ret %struct.AioContext* %cond, !dbg !467\l}"];
+}

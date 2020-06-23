@@ -1,0 +1,9 @@
+digraph "CFG for 'qemu_try_blockalign' function" {
+	label="CFG for 'qemu_try_blockalign' function";
+
+	Node0x55cda44cb9f0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  call void @llvm.dbg.value(metadata %struct.BlockDriverState* %bs, metadata\l... !2553, metadata !DIExpression()), !dbg !2557\l  call void @llvm.dbg.value(metadata i64 %size, metadata !2554, metadata\l... !DIExpression()), !dbg !2557\l  %call = tail call i64 @bdrv_opt_mem_align(%struct.BlockDriverState* %bs)\l... #16, !dbg !2558\l  call void @llvm.dbg.value(metadata i64 %call, metadata !2555, metadata\l... !DIExpression()), !dbg !2557\l  %cmp = icmp eq i64 %call, 0, !dbg !2559\l  br i1 %cmp, label %if.else, label %if.end, !dbg !2562, !prof !2563\l|{<s0>T|<s1>F}}"];
+	Node0x55cda44cb9f0:s0 -> Node0x55cda44cdd50;
+	Node0x55cda44cb9f0:s1 -> Node0x55cda44cdd00;
+	Node0x55cda44cdd50 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.else:                                          \l  tail call void @__assert_fail(i8* getelementptr inbounds ([10 x i8], [10 x\l... i8]* @.str.16, i64 0, i64 0), i8* getelementptr inbounds ([11 x i8], [11 x\l... i8]* @.str.1, i64 0, i64 0), i32 3068, i8* getelementptr inbounds ([54 x i8],\l... [54 x i8]* @__PRETTY_FUNCTION__.qemu_try_blockalign, i64 0, i64 0)) #17, !dbg\l... !2559\l  unreachable, !dbg !2559\l}"];
+	Node0x55cda44cdd00 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.end:                                           \l  %cmp1 = icmp eq i64 %size, 0, !dbg !2564\l  %spec.select = select i1 %cmp1, i64 %call, i64 %size, !dbg !2566, !prof !2563\l  call void @llvm.dbg.value(metadata i64 %spec.select, metadata !2554,\l... metadata !DIExpression()), !dbg !2557\l  %call4 = tail call i8* @qemu_try_memalign(i64 %call, i64 %spec.select) #16,\l... !dbg !2567\l  ret i8* %call4, !dbg !2568\l}"];
+}

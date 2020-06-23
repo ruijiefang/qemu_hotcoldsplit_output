@@ -1,0 +1,14 @@
+digraph "CFG for 'qemu_event_reset' function" {
+	label="CFG for 'qemu_event_reset' function";
+
+	Node0x5613f1a674f0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  call void @llvm.dbg.value(metadata %struct.QemuEvent* %ev, metadata !138,\l... metadata !DIExpression()), !dbg !141\l  %initialized = getelementptr inbounds %struct.QemuEvent, %struct.QemuEvent*\l... %ev, i64 0, i32 1, !dbg !142\l  %0 = load i8, i8* %initialized, align 4, !dbg !142, !range !145\l  %tobool = icmp eq i8 %0, 0, !dbg !142\l  br i1 %tobool, label %if.else, label %if.end, !dbg !146, !prof !147\l|{<s0>T|<s1>F}}"];
+	Node0x5613f1a674f0:s0 -> Node0x5613f1a88b80;
+	Node0x5613f1a674f0:s1 -> Node0x5613f1a88b30;
+	Node0x5613f1a88b80 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.else:                                          \l  tail call void @__assert_fail(i8* getelementptr inbounds ([16 x i8], [16 x\l... i8]* @.str.4, i64 0, i64 0), i8* getelementptr inbounds ([25 x i8], [25 x\l... i8]* @.str.1, i64 0, i64 0), i32 429, i8* getelementptr inbounds ([35 x i8],\l... [35 x i8]* @__PRETTY_FUNCTION__.qemu_event_reset, i64 0, i64 0)) #22, !dbg\l... !142\l  unreachable, !dbg !142\l}"];
+	Node0x5613f1a88b30 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.end:                                           \l  %value1 = getelementptr inbounds %struct.QemuEvent, %struct.QemuEvent* %ev,\l... i64 0, i32 0, !dbg !148\l  %1 = load atomic i32, i32* %value1 monotonic, align 4, !dbg !148\l  call void @llvm.dbg.value(metadata i32 %1, metadata !139, metadata\l... !DIExpression()), !dbg !141\l  tail call void asm sideeffect \"\", \"~\{memory\},~\{dirflag\},~\{fpsr\},~\{flags\}\"()\l... #23, !dbg !150, !srcloc !153\l  fence acquire, !dbg !154\l  %cmp = icmp eq i32 %1, 0, !dbg !155\l  br i1 %cmp, label %if.then2, label %if.end5, !dbg !157, !prof !158\l|{<s0>T|<s1>F}}"];
+	Node0x5613f1a88b30:s0 -> Node0x5613f1a89e40;
+	Node0x5613f1a88b30:s1 -> Node0x5613f1a89eb0;
+	Node0x5613f1a89e40 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.then2:                                         \l  %2 = atomicrmw or i32* %value1, i32 1 seq_cst, !dbg !159\l  br label %if.end5, !dbg !161\l}"];
+	Node0x5613f1a89e40 -> Node0x5613f1a89eb0;
+	Node0x5613f1a89eb0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.end5:                                          \l  ret void, !dbg !162\l}"];
+}

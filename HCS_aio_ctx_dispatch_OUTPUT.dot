@@ -1,0 +1,9 @@
+digraph "CFG for 'aio_ctx_dispatch' function" {
+	label="CFG for 'aio_ctx_dispatch' function";
+
+	Node0x55e9b6a6d360 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  call void @llvm.dbg.value(metadata %struct._GSource* %source, metadata !350,\l... metadata !DIExpression()), !dbg !356\l  call void @llvm.dbg.value(metadata i32 (i8*)* %callback, metadata !351,\l... metadata !DIExpression()), !dbg !356\l  call void @llvm.dbg.value(metadata i8* %user_data, metadata !352, metadata\l... !DIExpression()), !dbg !356\l  call void @llvm.dbg.value(metadata %struct._GSource* %source, metadata !353,\l... metadata !DIExpression()), !dbg !356\l  %cmp = icmp eq i32 (i8*)* %callback, null, !dbg !357\l  br i1 %cmp, label %if.end, label %if.else, !dbg !360, !prof !361\l|{<s0>T|<s1>F}}"];
+	Node0x55e9b6a6d360:s0 -> Node0x55e9b6a7d750;
+	Node0x55e9b6a6d360:s1 -> Node0x55e9b6a7d7a0;
+	Node0x55e9b6a7d7a0 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.else:                                          \l  tail call void @__assert_fail(i8* getelementptr inbounds ([17 x i8], [17 x\l... i8]* @.str.4, i64 0, i64 0), i8* getelementptr inbounds ([13 x i8], [13 x\l... i8]* @.str, i64 0, i64 0), i32 305, i8* getelementptr inbounds ([60 x i8],\l... [60 x i8]* @__PRETTY_FUNCTION__.aio_ctx_dispatch, i64 0, i64 0)) #15, !dbg\l... !357\l  unreachable, !dbg !357\l}"];
+	Node0x55e9b6a7d750 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.end:                                           \l  %0 = bitcast %struct._GSource* %source to %struct.AioContext*, !dbg !362\l  call void @llvm.dbg.value(metadata %struct.AioContext* %0, metadata !353,\l... metadata !DIExpression()), !dbg !356\l  tail call void @aio_dispatch(%struct.AioContext* %0) #16, !dbg !363\l  ret i32 1, !dbg !364\l}"];
+}

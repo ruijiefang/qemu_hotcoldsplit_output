@@ -1,0 +1,21 @@
+digraph "CFG for 'blk_root_drained_begin' function" {
+	label="CFG for 'blk_root_drained_begin' function";
+
+	Node0x55d70fdcddd0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  call void @llvm.dbg.value(metadata %struct.BdrvChild* %child, metadata\l... !3088, metadata !DIExpression()), !dbg !3092\l  %opaque = getelementptr inbounds %struct.BdrvChild, %struct.BdrvChild*\l... %child, i64 0, i32 4, !dbg !3093\l  %0 = bitcast i8** %opaque to %struct.BlockBackend**, !dbg !3093\l  %1 = load %struct.BlockBackend*, %struct.BlockBackend** %0, align 8, !dbg\l... !3093\l  call void @llvm.dbg.value(metadata %struct.BlockBackend* %1, metadata !3089,\l... metadata !DIExpression()), !dbg !3092\l  %quiesce_counter = getelementptr inbounds %struct.BlockBackend,\l... %struct.BlockBackend* %1, i64 0, i32 27, !dbg !3094\l  %2 = load i32, i32* %quiesce_counter, align 8, !dbg !3096\l  %inc = add i32 %2, 1, !dbg !3096\l  store i32 %inc, i32* %quiesce_counter, align 8, !dbg !3096\l  %cmp = icmp eq i32 %2, 0, !dbg !3097\l  br i1 %cmp, label %if.then, label %if.end6, !dbg !3098, !prof !3099\l|{<s0>T|<s1>F}}"];
+	Node0x55d70fdcddd0:s0 -> Node0x55d70fdcecd0;
+	Node0x55d70fdcddd0:s1 -> Node0x55d70fdced20;
+	Node0x55d70fdcecd0 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#c32e3170",label="{if.then:                                          \l  %dev_ops = getelementptr inbounds %struct.BlockBackend,\l... %struct.BlockBackend* %1, i64 0, i32 9, !dbg !3100\l  %3 = load %struct.BlockDevOps*, %struct.BlockDevOps** %dev_ops, align 8,\l... !dbg !3100\l  %tobool = icmp eq %struct.BlockDevOps* %3, null, !dbg !3103\l  br i1 %tobool, label %if.end6, label %land.lhs.true, !dbg !3104, !prof !3105\l|{<s0>T|<s1>F}}"];
+	Node0x55d70fdcecd0:s0 -> Node0x55d70fdced20;
+	Node0x55d70fdcecd0:s1 -> Node0x55d70fc9fbb0;
+	Node0x55d70fc9fbb0 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#d0473d70",label="{land.lhs.true:                                    \l  %drained_begin = getelementptr inbounds %struct.BlockDevOps,\l... %struct.BlockDevOps* %3, i64 0, i32 5, !dbg !3106\l  %4 = load void (i8*)*, void (i8*)** %drained_begin, align 8, !dbg !3106\l  %tobool2 = icmp eq void (i8*)* %4, null, !dbg !3107\l  br i1 %tobool2, label %if.end6, label %if.then3, !dbg !3108, !prof !3109\l|{<s0>T|<s1>F}}"];
+	Node0x55d70fc9fbb0:s0 -> Node0x55d70fdced20;
+	Node0x55d70fc9fbb0:s1 -> Node0x55d70fc9faf0;
+	Node0x55d70fc9faf0 [shape=record,penwidth=3.0, color="red",label="{if.then3:                                         \l  %dev_opaque = getelementptr inbounds %struct.BlockBackend,\l... %struct.BlockBackend* %1, i64 0, i32 10, !dbg !3110\l  %5 = load i8*, i8** %dev_opaque, align 8, !dbg !3110\l  tail call void %4(i8* %5) #24, !dbg !3112\l  br label %if.end6, !dbg !3113\l}"];
+	Node0x55d70fc9faf0 -> Node0x55d70fdced20;
+	Node0x55d70fdced20 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.end6:                                          \l  %io_limits_disabled = getelementptr inbounds %struct.BlockBackend,\l... %struct.BlockBackend* %1, i64 0, i32 7, i32 0, i32 3, !dbg !3114\l  %6 = atomicrmw add i32* %io_limits_disabled, i32 1 seq_cst, !dbg !3114\l  %cmp7 = icmp eq i32 %6, 0, !dbg !3116\l  br i1 %cmp7, label %if.then8, label %if.end11, !dbg !3117, !prof !3099\l|{<s0>T|<s1>F}}"];
+	Node0x55d70fdced20:s0 -> Node0x55d70fca1000;
+	Node0x55d70fdced20:s1 -> Node0x55d70fca1050;
+	Node0x55d70fca1000 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#c32e3170",label="{if.then8:                                         \l  %throttle_group_member = getelementptr inbounds %struct.BlockBackend,\l... %struct.BlockBackend* %1, i64 0, i32 7, i32 0, !dbg !3114\l  tail call void @throttle_group_restart_tgm(%struct.ThrottleGroupMember*\l... nonnull %throttle_group_member) #24, !dbg !3118\l  br label %if.end11, !dbg !3120\l}"];
+	Node0x55d70fca1000 -> Node0x55d70fca1050;
+	Node0x55d70fca1050 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.end11:                                         \l  ret void, !dbg !3121\l}"];
+}

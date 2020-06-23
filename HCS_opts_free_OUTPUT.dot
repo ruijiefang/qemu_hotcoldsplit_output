@@ -1,0 +1,10 @@
+digraph "CFG for 'opts_free' function" {
+	label="CFG for 'opts_free' function";
+
+	Node0x557d8272ab10 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  call void @llvm.dbg.value(metadata %struct.Visitor* %v, metadata !335,\l... metadata !DIExpression()), !dbg !339\l  call void @llvm.dbg.value(metadata %struct.Visitor* %v, metadata !336,\l... metadata !DIExpression()), !dbg !339\l  %unprocessed_opts = getelementptr inbounds %struct.Visitor, %struct.Visitor*\l... %v, i64 1, i32 2, !dbg !340\l  %0 = bitcast void (%struct.Visitor*, i8**)** %unprocessed_opts to\l... %struct._GHashTable**, !dbg !340\l  %1 = load %struct._GHashTable*, %struct._GHashTable** %0, align 8, !dbg !340\l  %cmp = icmp eq %struct._GHashTable* %1, null, !dbg !342\l  br i1 %cmp, label %if.end, label %if.then, !dbg !343, !prof !344\l|{<s0>T|<s1>F}}"];
+	Node0x557d8272ab10:s0 -> Node0x557d827585f0;
+	Node0x557d8272ab10:s1 -> Node0x557d827585a0;
+	Node0x557d827585a0 [shape=record,penwidth=3.0, color="red",label="{if.then:                                          \l  tail call void @g_hash_table_destroy(%struct._GHashTable* nonnull %1) #12,\l... !dbg !345\l  br label %if.end, !dbg !347\l}"];
+	Node0x557d827585a0 -> Node0x557d827585f0;
+	Node0x557d827585f0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.end:                                           \l  call void @llvm.dbg.value(metadata %struct.Visitor* %v, metadata !336,\l... metadata !DIExpression()), !dbg !339\l  %fake_id_opt = getelementptr inbounds %struct.Visitor, %struct.Visitor* %v,\l... i64 1, i32 7, !dbg !348\l  %2 = bitcast void (%struct.Visitor*, i8*, %struct.GenericAlternate**, i64,\l... %struct.Error**)** %fake_id_opt to i8**, !dbg !348\l  %3 = load i8*, i8** %2, align 8, !dbg !348\l  tail call void @g_free(i8* %3) #12, !dbg !349\l  %4 = bitcast %struct.Visitor* %v to i8*, !dbg !350\l  tail call void @g_free(i8* %4) #12, !dbg !351\l  ret void, !dbg !352\l}"];
+}

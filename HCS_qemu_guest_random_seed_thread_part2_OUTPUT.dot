@@ -1,0 +1,14 @@
+digraph "CFG for 'qemu_guest_random_seed_thread_part2' function" {
+	label="CFG for 'qemu_guest_random_seed_thread_part2' function";
+
+	Node0x55d63c77fb30 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  %seed.addr = alloca i64, align 8\l  call void @llvm.dbg.value(metadata i64 %seed, metadata !79, metadata\l... !DIExpression()), !dbg !86\l  store i64 %seed, i64* %seed.addr, align 8\l  %0 = load %struct._GRand*, %struct._GRand** @thread_rand, align 8, !dbg !87\l  %cmp = icmp eq %struct._GRand* %0, null, !dbg !87\l  call void @llvm.dbg.value(metadata i32 undef, metadata !80, metadata\l... !DIExpression()), !dbg !89\l  br i1 %cmp, label %do.end, label %if.else2, !dbg !90, !prof !91, !misexpect\l... !92\l|{<s0>T|<s1>F}}"];
+	Node0x55d63c77fb30:s0 -> Node0x55d63c780400;
+	Node0x55d63c77fb30:s1 -> Node0x55d63c780f80;
+	Node0x55d63c780f80 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.else2:                                         \l  tail call void @g_assertion_message_expr(i8* null, i8* getelementptr\l... inbounds ([20 x i8], [20 x i8]* @.str, i64 0, i64 0), i32 82, i8*\l... getelementptr inbounds ([36 x i8], [36 x i8]*\l... @__func__.qemu_guest_random_seed_thread_part2, i64 0, i64 0), i8*\l... getelementptr inbounds ([20 x i8], [20 x i8]* @.str.1, i64 0, i64 0)) #7,\l... !dbg !93\l  unreachable, !dbg !93\l}"];
+	Node0x55d63c780400 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{do.end:                                           \l  %.b8 = load i1, i1* @deterministic, align 1, !dbg !94\l  br i1 %.b8, label %if.then5, label %if.end6, !dbg !96, !prof !97\l|{<s0>T|<s1>F}}"];
+	Node0x55d63c780400:s0 -> Node0x55d63c77fe10;
+	Node0x55d63c780400:s1 -> Node0x55d63c783a80;
+	Node0x55d63c77fe10 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.then5:                                         \l  %1 = bitcast i64* %seed.addr to i32*, !dbg !98\l  call void @llvm.dbg.value(metadata i64* %seed.addr, metadata !79, metadata\l... !DIExpression(DW_OP_deref)), !dbg !86\l  %call = call %struct._GRand* @g_rand_new_with_seed_array(i32* nonnull %1,\l... i32 2) #8, !dbg !100\l  store %struct._GRand* %call, %struct._GRand** @thread_rand, align 8, !dbg\l... !101\l  br label %if.end6, !dbg !102\l}"];
+	Node0x55d63c77fe10 -> Node0x55d63c783a80;
+	Node0x55d63c783a80 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.end6:                                          \l  ret void, !dbg !103\l}"];
+}

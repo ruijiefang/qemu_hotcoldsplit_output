@@ -1,0 +1,9 @@
+digraph "CFG for 'fw_cfg_reset_order_override' function" {
+	label="CFG for 'fw_cfg_reset_order_override' function";
+
+	Node0x561075cc37b0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  call void @llvm.dbg.value(metadata %struct.FWCfgState* %s, metadata !1241,\l... metadata !DIExpression()), !dbg !1243\l  %fw_cfg_order_override = getelementptr inbounds %struct.FWCfgState,\l... %struct.FWCfgState* %s, i64 0, i32 8, !dbg !1244\l  %0 = load i32, i32* %fw_cfg_order_override, align 16, !dbg !1244\l  %cmp = icmp eq i32 %0, 0, !dbg !1244\l  br i1 %cmp, label %if.else, label %if.end, !dbg !1247, !prof !1248\l|{<s0>T|<s1>F}}"];
+	Node0x561075cc37b0:s0 -> Node0x561075cc4790;
+	Node0x561075cc37b0:s1 -> Node0x561075cc4740;
+	Node0x561075cc4790 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.else:                                          \l  tail call void @__assert_fail(i8* getelementptr inbounds ([30 x i8], [30 x\l... i8]* @.str.2, i64 0, i64 0), i8* getelementptr inbounds ([18 x i8], [18 x\l... i8]* @.str.1, i64 0, i64 0), i32 836, i8* getelementptr inbounds ([47 x i8],\l... [47 x i8]* @__PRETTY_FUNCTION__.fw_cfg_reset_order_override, i64 0, i64 0))\l... #21, !dbg !1244\l  unreachable, !dbg !1244\l}"];
+	Node0x561075cc4740 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.end:                                           \l  store i32 0, i32* %fw_cfg_order_override, align 16, !dbg !1249\l  ret void, !dbg !1250\l}"];
+}

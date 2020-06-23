@@ -1,0 +1,13 @@
+digraph "CFG for 'parse_uint_full' function" {
+	label="CFG for 'parse_uint_full' function";
+
+	Node0x5557ed8b4300 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  %endp = alloca i8*, align 8\l  call void @llvm.dbg.value(metadata i8* %s, metadata !117, metadata\l... !DIExpression()), !dbg !123\l  call void @llvm.dbg.value(metadata i64* %value, metadata !118, metadata\l... !DIExpression()), !dbg !123\l  call void @llvm.dbg.value(metadata i32 %base, metadata !119, metadata\l... !DIExpression()), !dbg !123\l  %0 = bitcast i8** %endp to i8*, !dbg !124\l  call void @llvm.lifetime.start.p0i8(i64 8, i8* nonnull %0) #23, !dbg !124\l  call void @llvm.dbg.value(metadata i8** %endp, metadata !120, metadata\l... !DIExpression(DW_OP_deref)), !dbg !123\l  %call = call i32 @parse_uint(i8* %s, i64* %value, i8** nonnull %endp, i32\l... %base), !dbg !125\l  call void @llvm.dbg.value(metadata i32 %call, metadata !121, metadata\l... !DIExpression()), !dbg !123\l  %cmp = icmp slt i32 %call, 0, !dbg !126\l  br i1 %cmp, label %cleanup, label %if.end, !dbg !128, !prof !129\l|{<s0>T|<s1>F}}"];
+	Node0x5557ed8b4300:s0 -> Node0x5557ed8c0640;
+	Node0x5557ed8b4300:s1 -> Node0x5557ed8bfe40;
+	Node0x5557ed8bfe40 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.end:                                           \l  %1 = load i8*, i8** %endp, align 8, !dbg !130\l  call void @llvm.dbg.value(metadata i8* %1, metadata !120, metadata\l... !DIExpression()), !dbg !123\l  %2 = load i8, i8* %1, align 1, !dbg !132\l  %tobool = icmp eq i8 %2, 0, !dbg !132\l  br i1 %tobool, label %cleanup, label %if.then1, !dbg !133, !prof !134\l|{<s0>T|<s1>F}}"];
+	Node0x5557ed8bfe40:s0 -> Node0x5557ed8c0640;
+	Node0x5557ed8bfe40:s1 -> Node0x5557ed8c0900;
+	Node0x5557ed8c0900 [shape=record,penwidth=3.0, color="red",label="{if.then1:                                         \l  store i64 0, i64* %value, align 8, !dbg !135\l  br label %cleanup, !dbg !137\l}"];
+	Node0x5557ed8c0900 -> Node0x5557ed8c0640;
+	Node0x5557ed8c0640 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{cleanup:                                          \l  %retval.0 = phi i32 [ -22, %if.then1 ], [ %call, %entry ], [ 0, %if.end ],\l... !dbg !123\l  call void @llvm.lifetime.end.p0i8(i64 8, i8* nonnull %0) #23, !dbg !138\l  ret i32 %retval.0, !dbg !138\l}"];
+}

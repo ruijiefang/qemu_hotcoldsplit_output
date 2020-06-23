@@ -1,0 +1,20 @@
+digraph "CFG for 'slirp_smb_cleanup' function" {
+	label="CFG for 'slirp_smb_cleanup' function";
+
+	Node0x564e25cb2ec0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  call void @llvm.dbg.value(metadata %struct.SlirpState* %s, metadata !674,\l... metadata !DIExpression()), !dbg !681\l  %smb_dir = getelementptr inbounds %struct.SlirpState, %struct.SlirpState*\l... %s, i64 0, i32 5, !dbg !682\l  %0 = load i8*, i8** %smb_dir, align 8, !dbg !682\l  %tobool = icmp eq i8* %0, null, !dbg !683\l  br i1 %tobool, label %if.end13, label %if.then, !dbg !684, !prof !685\l|{<s0>T|<s1>F}}"];
+	Node0x564e25cb2ec0:s0 -> Node0x564e25c2d7c0;
+	Node0x564e25cb2ec0:s1 -> Node0x564e25c2d770;
+	Node0x564e25c2d770 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.then:                                          \l  %call = tail call noalias i8* (i8*, ...) @g_strdup_printf(i8* getelementptr\l... inbounds ([10 x i8], [10 x i8]* @.str.59, i64 0, i64 0), i8* nonnull %0) #22,\l... !dbg !686\l  call void @llvm.dbg.value(metadata i8* %call, metadata !676, metadata\l... !DIExpression()), !dbg !687\l  %call2 = tail call i32 @system(i8* %call) #22, !dbg !688\l  call void @llvm.dbg.value(metadata i32 %call2, metadata !675, metadata\l... !DIExpression()), !dbg !681\l  %cmp = icmp ne i32 %call2, -1, !dbg !689\l  %and = and i32 %call2, 127, !dbg !691\l  %cmp3 = icmp eq i32 %and, 0, !dbg !691\l  %or.cond = and i1 %cmp, %cmp3, !dbg !692\l  br i1 %or.cond, label %if.else, label %if.then4, !dbg !692\l|{<s0>T|<s1>F}}"];
+	Node0x564e25c2d770:s0 -> Node0x564e25cce060;
+	Node0x564e25c2d770:s1 -> Node0x564e25ccdfc0;
+	Node0x564e25ccdfc0 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.then4:                                         \l  tail call void (i8*, ...) @error_report(i8* getelementptr inbounds ([13 x\l... i8], [13 x i8]* @.str.60, i64 0, i64 0), i8* %call) #22, !dbg !693\l  br label %if.end10, !dbg !695\l}"];
+	Node0x564e25ccdfc0 -> Node0x564e25cce010;
+	Node0x564e25cce060 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.else:                                          \l  %and5 = lshr i32 %call2, 8, !dbg !696\l  %1 = and i32 %and5, 255, !dbg !696\l  %tobool6 = icmp eq i32 %1, 0, !dbg !696\l  br i1 %tobool6, label %if.end10, label %if.then7, !dbg !698\l|{<s0>T|<s1>F}}"];
+	Node0x564e25cce060:s0 -> Node0x564e25cce010;
+	Node0x564e25cce060:s1 -> Node0x564e25cceed0;
+	Node0x564e25cceed0 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.then7:                                         \l  tail call void (i8*, ...) @error_report(i8* getelementptr inbounds ([28 x\l... i8], [28 x i8]* @.str.61, i64 0, i64 0), i8* %call, i32 %1) #22, !dbg !699\l  br label %if.end10, !dbg !701\l}"];
+	Node0x564e25cceed0 -> Node0x564e25cce010;
+	Node0x564e25cce010 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.end10:                                         \l  tail call void @g_free(i8* %call) #22, !dbg !702\l  %2 = load i8*, i8** %smb_dir, align 8, !dbg !703\l  tail call void @g_free(i8* %2) #22, !dbg !704\l  store i8* null, i8** %smb_dir, align 8, !dbg !705\l  br label %if.end13, !dbg !706\l}"];
+	Node0x564e25cce010 -> Node0x564e25c2d7c0;
+	Node0x564e25c2d7c0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.end13:                                         \l  ret void, !dbg !707\l}"];
+}

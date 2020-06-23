@@ -1,0 +1,28 @@
+digraph "CFG for 'json_message_parser_destroy' function" {
+	label="CFG for 'json_message_parser_destroy' function";
+
+	Node0x555a14bd3010 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  call void @llvm.dbg.value(metadata %struct.JSONMessageParser* %parser,\l... metadata !148, metadata !DIExpression()), !dbg !150\l  %lexer = getelementptr inbounds %struct.JSONMessageParser,\l... %struct.JSONMessageParser* %parser, i64 0, i32 3, !dbg !151\l  tail call void @json_lexer_destroy(%struct.JSONLexer* nonnull %lexer) #7,\l... !dbg !152\l  call void @llvm.dbg.value(metadata %struct.JSONMessageParser* %parser,\l... metadata !153, metadata !DIExpression()) #7, !dbg !160\l  %tokens.i = getelementptr inbounds %struct.JSONMessageParser,\l... %struct.JSONMessageParser* %parser, i64 0, i32 6, !dbg !162\l  %call.i2 = tail call i8* @g_queue_pop_head(%struct._GQueue* nonnull\l... %tokens.i) #7, !dbg !163\l  call void @llvm.dbg.value(metadata i8* %call.i2, metadata !156, metadata\l... !DIExpression()) #7, !dbg !160\l  %tobool.i3 = icmp eq i8* %call.i2, null, !dbg !164\l  br i1 %tobool.i3, label %json_message_free_tokens.exit, label\l... %while.body.i.preheader, !dbg !164, !prof !165\l|{<s0>T|<s1>F}}"];
+	Node0x555a14bd3010:s0 -> Node0x555a14ba8050;
+	Node0x555a14bd3010:s1 -> Node0x555a14ce7db0;
+	Node0x555a14ce7db0 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{while.body.i.preheader:                           \l  br label %while.body.i.peel.begin, !dbg !164\l}"];
+	Node0x555a14ce7db0 -> Node0x555a14bcf8f0;
+	Node0x555a14bcf8f0 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{while.body.i.peel.begin:                          \l  br label %while.body.i.peel, !dbg !164\l}"];
+	Node0x555a14bcf8f0 -> Node0x555a14cb7690;
+	Node0x555a14cb7690 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{while.body.i.peel:                                \l  tail call void @g_free(i8* nonnull %call.i2) #7, !dbg !166\l  %call.i.peel = tail call i8* @g_queue_pop_head(%struct._GQueue* nonnull\l... %tokens.i) #7, !dbg !163\l  call void @llvm.dbg.value(metadata i8* %call.i.peel, metadata !156, metadata\l... !DIExpression()) #7, !dbg !160\l  %tobool.i.peel = icmp eq i8* %call.i.peel, null, !dbg !164\l  br i1 %tobool.i.peel, label %json_message_free_tokens.exit.loopexit, label\l... %while.body.i.peel.next, !dbg !164, !prof !165\l|{<s0>T|<s1>F}}"];
+	Node0x555a14cb7690:s0 -> Node0x555a14ce6ab0;
+	Node0x555a14cb7690:s1 -> Node0x555a14ce5bf0;
+	Node0x555a14ce5bf0 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{while.body.i.peel.next:                           \l  br label %while.body.i.peel.next5, !dbg !164\l}"];
+	Node0x555a14ce5bf0 -> Node0x555a14cbc020;
+	Node0x555a14cbc020 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{while.body.i.peel.next5:                          \l  br label %while.body.i.preheader.peel.newph, !dbg !164\l}"];
+	Node0x555a14cbc020 -> Node0x555a14cb64c0;
+	Node0x555a14cb64c0 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{while.body.i.preheader.peel.newph:                \l  br label %while.body.i, !dbg !164\l}"];
+	Node0x555a14cb64c0 -> Node0x555a14c400f0;
+	Node0x555a14c400f0 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{while.body.i:                                     \l  %call.i4 = phi i8* [ %call.i, %while.body.i ], [ %call.i.peel,\l... %while.body.i.preheader.peel.newph ]\l  tail call void @g_free(i8* nonnull %call.i4) #7, !dbg !166\l  %call.i = tail call i8* @g_queue_pop_head(%struct._GQueue* nonnull\l... %tokens.i) #7, !dbg !163\l  call void @llvm.dbg.value(metadata i8* %call.i, metadata !156, metadata\l... !DIExpression()) #7, !dbg !160\l  %tobool.i = icmp eq i8* %call.i, null, !dbg !164\l  br i1 %tobool.i, label %json_message_free_tokens.exit.loopexit.loopexit,\l... label %while.body.i, !dbg !164, !prof !165, !llvm.loop !168\l|{<s0>T|<s1>F}}"];
+	Node0x555a14c400f0:s0 -> Node0x555a14c509a0;
+	Node0x555a14c400f0:s1 -> Node0x555a14c400f0;
+	Node0x555a14c509a0 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{json_message_free_tokens.exit.loopexit.loopexit:  \l  br label %json_message_free_tokens.exit.loopexit, !dbg !172\l}"];
+	Node0x555a14c509a0 -> Node0x555a14ce6ab0;
+	Node0x555a14ce6ab0 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{json_message_free_tokens.exit.loopexit:           \l  br label %json_message_free_tokens.exit, !dbg !172\l}"];
+	Node0x555a14ce6ab0 -> Node0x555a14ba8050;
+	Node0x555a14ba8050 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{json_message_free_tokens.exit:                    \l  ret void, !dbg !172\l}"];
+}

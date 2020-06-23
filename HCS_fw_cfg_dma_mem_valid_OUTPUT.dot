@@ -1,0 +1,13 @@
+digraph "CFG for 'fw_cfg_dma_mem_valid' function" {
+	label="CFG for 'fw_cfg_dma_mem_valid' function";
+
+	Node0x5610759f5330 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  call void @llvm.dbg.value(metadata i32 %attrs.coerce, metadata !1243,\l... metadata !DIExpression()), !dbg !1246\l  call void @llvm.dbg.value(metadata i8* %opaque, metadata !1239, metadata\l... !DIExpression()), !dbg !1246\l  call void @llvm.dbg.value(metadata i64 %addr, metadata !1240, metadata\l... !DIExpression()), !dbg !1246\l  call void @llvm.dbg.value(metadata i32 %size, metadata !1241, metadata\l... !DIExpression()), !dbg !1246\l  call void @llvm.dbg.value(metadata i1 %is_write, metadata !1242, metadata\l... !DIExpression(DW_OP_LLVM_convert, 1, DW_ATE_unsigned, DW_OP_LLVM_convert, 8,\l... DW_ATE_unsigned, DW_OP_stack_value)), !dbg !1246\l  br i1 %is_write, label %lor.rhs, label %lor.end6, !dbg !1247, !prof !1248\l|{<s0>T|<s1>F}}"];
+	Node0x5610759f5330:s0 -> Node0x561075e6b3a0;
+	Node0x5610759f5330:s1 -> Node0x561075e6b350;
+	Node0x561075e6b3a0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{lor.rhs:                                          \l  %cmp = icmp eq i32 %size, 4, !dbg !1249\l  %0 = and i64 %addr, -5, !dbg !1250\l  %1 = icmp eq i64 %0, 0, !dbg !1250\l  %or.cond = and i1 %cmp, %1, !dbg !1251\l  br i1 %or.cond, label %lor.end6, label %lor.rhs3, !dbg !1251, !prof !1248\l|{<s0>T|<s1>F}}"];
+	Node0x561075e6b3a0:s0 -> Node0x561075e6b350;
+	Node0x561075e6b3a0:s1 -> Node0x561075e6b750;
+	Node0x561075e6b750 [shape=record,penwidth=3.0, color="red",label="{lor.rhs3:                                         \l  %cmp4 = icmp eq i32 %size, 8, !dbg !1252\l  %cmp5 = icmp eq i64 %addr, 0, !dbg !1253\l  %2 = and i1 %cmp5, %cmp4, !dbg !1253\l  br label %lor.end6, !dbg !1253\l}"];
+	Node0x561075e6b750 -> Node0x561075e6b350;
+	Node0x561075e6b350 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{lor.end6:                                         \l  %3 = phi i1 [ true, %entry ], [ %2, %lor.rhs3 ], [ true, %lor.rhs ]\l  ret i1 %3, !dbg !1254\l}"];
+}

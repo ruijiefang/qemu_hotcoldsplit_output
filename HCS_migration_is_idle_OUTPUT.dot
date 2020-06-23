@@ -1,0 +1,28 @@
+digraph "CFG for 'migration_is_idle' function" {
+	label="CFG for 'migration_is_idle' function";
+
+	Node0x55867e5f61d0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  %0 = load %struct.MigrationState*, %struct.MigrationState**\l... @current_migration, align 8, !dbg !1573\l  call void @llvm.dbg.value(metadata %struct.MigrationState* %0, metadata\l... !1571, metadata !DIExpression()), !dbg !1574\l  %tobool = icmp eq %struct.MigrationState* %0, null, !dbg !1575\l  br i1 %tobool, label %cleanup, label %if.end, !dbg !1577, !prof !1578\l|{<s0>T|<s1>F}}"];
+	Node0x55867e5f61d0:s0 -> Node0x55867e5fb370;
+	Node0x55867e5f61d0:s1 -> Node0x55867e519ff0;
+	Node0x55867e519ff0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.end:                                           \l  %state = getelementptr inbounds %struct.MigrationState,\l... %struct.MigrationState* %0, i64 0, i32 12, !dbg !1579\l  %1 = load i32, i32* %state, align 8, !dbg !1579\l  switch i32 %1, label %sw.epilog [\l    i32 0, label %cleanup\l    i32 3, label %cleanup\l    i32 8, label %cleanup\l    i32 9, label %cleanup\l    i32 1, label %sw.bb1\l    i32 2, label %sw.bb1\l    i32 4, label %sw.bb1\l    i32 5, label %sw.bb1\l    i32 10, label %sw.bb1\l    i32 11, label %sw.bb1\l    i32 12, label %sw.bb1\l    i32 13, label %sw.bb1\l    i32 14, label %do.body\l  ], !dbg !1580, !prof !1581\l|{<s0>def|<s1>0|<s2>3|<s3>8|<s4>9|<s5>1|<s6>2|<s7>4|<s8>5|<s9>10|<s10>11|<s11>12|<s12>13|<s13>14}}"];
+	Node0x55867e519ff0:s0 -> Node0x55867e5fb520;
+	Node0x55867e519ff0:s1 -> Node0x55867e5fb370;
+	Node0x55867e519ff0:s2 -> Node0x55867e5fb370;
+	Node0x55867e519ff0:s3 -> Node0x55867e5fb370;
+	Node0x55867e519ff0:s4 -> Node0x55867e5fb370;
+	Node0x55867e519ff0:s5 -> Node0x55867e4e0360;
+	Node0x55867e519ff0:s6 -> Node0x55867e4e0360;
+	Node0x55867e519ff0:s7 -> Node0x55867e4e0360;
+	Node0x55867e519ff0:s8 -> Node0x55867e4e0360;
+	Node0x55867e519ff0:s9 -> Node0x55867e4e0360;
+	Node0x55867e519ff0:s10 -> Node0x55867e4e0360;
+	Node0x55867e519ff0:s11 -> Node0x55867e4e0360;
+	Node0x55867e519ff0:s12 -> Node0x55867e4e0360;
+	Node0x55867e519ff0:s13 -> Node0x55867e4e0740;
+	Node0x55867e4e0360 [shape=record,penwidth=3.0, color="red",label="{sw.bb1:                                           \l  br label %cleanup, !dbg !1582\l}"];
+	Node0x55867e4e0360 -> Node0x55867e5fb370;
+	Node0x55867e4e0740 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{do.body:                                          \l  tail call void @g_assertion_message_expr(i8* null, i8* getelementptr\l... inbounds ([22 x i8], [22 x i8]* @.str.1, i64 0, i64 0), i32 1799, i8*\l... getelementptr inbounds ([18 x i8], [18 x i8]* @__func__.migration_is_idle,\l... i64 0, i64 0), i8* null) #19, !dbg !1584\l  unreachable, !dbg !1584\l}"];
+	Node0x55867e5fb520 [shape=record,penwidth=3.0, color="red",label="{sw.epilog:                                        \l  br label %cleanup, !dbg !1586\l}"];
+	Node0x55867e5fb520 -> Node0x55867e5fb370;
+	Node0x55867e5fb370 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{cleanup:                                          \l  %retval.0 = phi i1 [ false, %sw.epilog ], [ false, %sw.bb1 ], [ true, %entry\l... ], [ true, %if.end ], [ true, %if.end ], [ true, %if.end ], [ true, %if.end\l... ], !dbg !1574\l  ret i1 %retval.0, !dbg !1587\l}"];
+}

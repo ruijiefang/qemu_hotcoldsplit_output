@@ -1,0 +1,25 @@
+digraph "CFG for 'qemu_lockcnt_inc' function" {
+	label="CFG for 'qemu_lockcnt_inc' function";
+
+	Node0x55b52491f790 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  %val = alloca i32, align 4\l  %waited = alloca i8, align 1\l  call void @llvm.dbg.value(metadata %struct.QemuLockCnt* %lockcnt, metadata\l... !56, metadata !DIExpression()), !dbg !70\l  %0 = bitcast i32* %val to i8*, !dbg !71\l  call void @llvm.lifetime.start.p0i8(i64 4, i8* nonnull %0) #14, !dbg !71\l  %count = getelementptr inbounds %struct.QemuLockCnt, %struct.QemuLockCnt*\l... %lockcnt, i64 0, i32 0, !dbg !72\l  %1 = load atomic i32, i32* %count monotonic, align 4, !dbg !72\l  call void @llvm.dbg.value(metadata i32 %1, metadata !57, metadata\l... !DIExpression()), !dbg !70\l  store i32 %1, i32* %val, align 4, !dbg !74\l  call void @llvm.lifetime.start.p0i8(i64 1, i8* nonnull %waited) #14, !dbg !75\l  call void @llvm.dbg.value(metadata i8 0, metadata !58, metadata\l... !DIExpression()), !dbg !70\l  store i8 0, i8* %waited, align 1, !dbg !76\l  br label %for.cond, !dbg !77\l}"];
+	Node0x55b52491f790 -> Node0x55b52492cbd0;
+	Node0x55b52492cbd0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{for.cond:                                         \l  %2 = phi i32 [ %1, %entry ], [ %.be, %for.cond.backedge ], !dbg !78\l  call void @llvm.dbg.value(metadata i32 %2, metadata !57, metadata\l... !DIExpression()), !dbg !70\l  %cmp = icmp sgt i32 %2, 3, !dbg !79\l  br i1 %cmp, label %if.then, label %if.else, !dbg !80, !prof !81\l|{<s0>T|<s1>F}}"];
+	Node0x55b52492cbd0:s0 -> Node0x55b52492cf60;
+	Node0x55b52492cbd0:s1 -> Node0x55b52492d000;
+	Node0x55b52492cf60 [shape=record,penwidth=3.0, color="red",label="{if.then:                                          \l  call void @llvm.dbg.value(metadata i32 %2, metadata !60, metadata\l... !DIExpression()), !dbg !82\l  call void @llvm.dbg.value(metadata i32 %2, metadata !66, metadata\l... !DIExpression()), !dbg !83\l  %add = add nuw i32 %2, 4, !dbg !84\l  %3 = cmpxchg i32* %count, i32 %2, i32 %add seq_cst seq_cst, !dbg !84\l  %4 = extractvalue \{ i32, i1 \} %3, 0, !dbg !84\l  call void @llvm.dbg.value(metadata i32 %4, metadata !66, metadata\l... !DIExpression()), !dbg !83\l  call void @llvm.dbg.value(metadata i32 %4, metadata !57, metadata\l... !DIExpression()), !dbg !70\l  store i32 %4, i32* %val, align 4, !dbg !85\l  %cmp4 = extractvalue \{ i32, i1 \} %3, 1, !dbg !86\l  br i1 %cmp4, label %for.end, label %for.cond.backedge\l|{<s0>T|<s1>F}}"];
+	Node0x55b52492cf60:s0 -> Node0x55b52492cb80;
+	Node0x55b52492cf60:s1 -> Node0x55b52492cfb0;
+	Node0x55b52492d000 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.else:                                          \l  call void @llvm.dbg.value(metadata i32* %val, metadata !57, metadata\l... !DIExpression(DW_OP_deref)), !dbg !70\l  call void @llvm.dbg.value(metadata i8* %waited, metadata !58, metadata\l... !DIExpression(DW_OP_deref)), !dbg !70\l  %call = call fastcc zeroext i1\l... @qemu_lockcnt_cmpxchg_or_wait(%struct.QemuLockCnt* %lockcnt, i32* nonnull\l... %val, i32 4, i8* nonnull %waited), !dbg !88\l  br i1 %call, label %for.end, label %if.else.if.end8_crit_edge, !dbg !91,\l... !prof !92\l|{<s0>T|<s1>F}}"];
+	Node0x55b52492d000:s0 -> Node0x55b52492cb80;
+	Node0x55b52492d000:s1 -> Node0x55b52495d9f0;
+	Node0x55b52495d9f0 [shape=record,penwidth=3.0, color="red",label="{if.else.if.end8_crit_edge:                        \l  %.pr.pre = load i32, i32* %val, align 4, !dbg !78\l  br label %for.cond.backedge, !dbg !91\l}"];
+	Node0x55b52495d9f0 -> Node0x55b52492cfb0;
+	Node0x55b52492cfb0 [shape=record,penwidth=3.0, color="red",label="{for.cond.backedge:                                \l  %.be = phi i32 [ %.pr.pre, %if.else.if.end8_crit_edge ], [ %4, %if.then ]\l  br label %for.cond, !dbg !70, !llvm.loop !93\l}"];
+	Node0x55b52492cfb0 -> Node0x55b52492cbd0;
+	Node0x55b52492cb80 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{for.end:                                          \l  %5 = load i8, i8* %waited, align 1, !dbg !96, !range !98\l  call void @llvm.dbg.value(metadata i8 %5, metadata !58, metadata\l... !DIExpression()), !dbg !70\l  %tobool9 = icmp eq i8 %5, 0, !dbg !96\l  br i1 %tobool9, label %if.end11, label %if.then10, !dbg !99, !prof !92\l|{<s0>T|<s1>F}}"];
+	Node0x55b52492cb80:s0 -> Node0x55b524939dd0;
+	Node0x55b52492cb80:s1 -> Node0x55b52491d450;
+	Node0x55b52491d450 [shape=record,penwidth=3.0, color="red",label="{if.then10:                                        \l  tail call fastcc void @lockcnt_wake(%struct.QemuLockCnt* %lockcnt), !dbg !100\l  br label %if.end11, !dbg !102\l}"];
+	Node0x55b52491d450 -> Node0x55b524939dd0;
+	Node0x55b524939dd0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.end11:                                         \l  call void @llvm.lifetime.end.p0i8(i64 1, i8* nonnull %waited) #14, !dbg !103\l  call void @llvm.lifetime.end.p0i8(i64 4, i8* nonnull %0) #14, !dbg !103\l  ret void, !dbg !103\l}"];
+}

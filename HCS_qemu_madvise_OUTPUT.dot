@@ -1,0 +1,12 @@
+digraph "CFG for 'qemu_madvise' function" {
+	label="CFG for 'qemu_madvise' function";
+
+	Node0x558452715910 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  call void @llvm.dbg.value(metadata i8* %addr, metadata !109, metadata\l... !DIExpression()), !dbg !113\l  call void @llvm.dbg.value(metadata i64 %len, metadata !110, metadata\l... !DIExpression()), !dbg !113\l  call void @llvm.dbg.value(metadata i32 %advice, metadata !111, metadata\l... !DIExpression()), !dbg !113\l  %cmp = icmp eq i32 %advice, -1, !dbg !114\l  br i1 %cmp, label %if.then, label %if.end, !dbg !116, !prof !117\l|{<s0>T|<s1>F}}"];
+	Node0x558452715910:s0 -> Node0x558452719be0;
+	Node0x558452715910:s1 -> Node0x558452719c30;
+	Node0x558452719be0 [shape=record,penwidth=3.0, color="red",label="{if.then:                                          \l  %call = tail call i32* @__errno_location() #17, !dbg !118\l  store i32 22, i32* %call, align 4, !dbg !120\l  br label %return, !dbg !121\l}"];
+	Node0x558452719be0 -> Node0x558452718580;
+	Node0x558452719c30 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.end:                                           \l  %call1 = tail call i32 @madvise(i8* %addr, i64 %len, i32 %advice) #8, !dbg\l... !122\l  br label %return, !dbg !123\l}"];
+	Node0x558452719c30 -> Node0x558452718580;
+	Node0x558452718580 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{return:                                           \l  %retval.0 = phi i32 [ -1, %if.then ], [ %call1, %if.end ], !dbg !113\l  ret i32 %retval.0, !dbg !124\l}"];
+}

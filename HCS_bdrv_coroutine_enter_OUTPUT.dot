@@ -1,0 +1,12 @@
+digraph "CFG for 'bdrv_coroutine_enter' function" {
+	label="CFG for 'bdrv_coroutine_enter' function";
+
+	Node0x55906e6a3c40 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  call void @llvm.dbg.value(metadata %struct.BlockDriverState* %bs, metadata\l... !2834, metadata !DIExpression()), !dbg !2837\l  call void @llvm.dbg.value(metadata %struct.Coroutine* %co, metadata !2835,\l... metadata !DIExpression()), !dbg !2837\l  call void @llvm.dbg.value(metadata %struct.BlockDriverState* %bs, metadata\l... !2838, metadata !DIExpression()) #30, !dbg !2843\l  %tobool.i = icmp eq %struct.BlockDriverState* %bs, null, !dbg !2845\l  br i1 %tobool.i, label %cond.false.i, label %cond.true.i, !dbg !2845, !prof\l... !2846\l|{<s0>T|<s1>F}}"];
+	Node0x55906e6a3c40:s0 -> Node0x55906e89d4d0;
+	Node0x55906e6a3c40:s1 -> Node0x55906e96deb0;
+	Node0x55906e96deb0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{cond.true.i:                                      \l  %aio_context.i = getelementptr inbounds %struct.BlockDriverState,\l... %struct.BlockDriverState* %bs, i64 0, i32 9, !dbg !2847\l  %0 = load %struct.AioContext*, %struct.AioContext** %aio_context.i, align 8,\l... !dbg !2847\l  br label %bdrv_get_aio_context.exit, !dbg !2845\l}"];
+	Node0x55906e96deb0 -> Node0x55906e8a3410;
+	Node0x55906e89d4d0 [shape=record,penwidth=3.0, color="red",label="{cond.false.i:                                     \l  %call.i = tail call %struct.AioContext* @qemu_get_aio_context() #30, !dbg\l... !2848\l  br label %bdrv_get_aio_context.exit, !dbg !2845\l}"];
+	Node0x55906e89d4d0 -> Node0x55906e8a3410;
+	Node0x55906e8a3410 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{bdrv_get_aio_context.exit:                        \l  %cond.i = phi %struct.AioContext* [ %0, %cond.true.i ], [ %call.i,\l... %cond.false.i ], !dbg !2845\l  tail call void @aio_co_enter(%struct.AioContext* %cond.i, %struct.Coroutine*\l... %co) #30, !dbg !2849\l  ret void, !dbg !2850\l}"];
+}

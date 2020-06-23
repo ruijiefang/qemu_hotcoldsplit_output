@@ -1,0 +1,22 @@
+digraph "CFG for 'bdrv_find_node' function" {
+	label="CFG for 'bdrv_find_node' function";
+
+	Node0x55906e5658c0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#be242e70",label="{entry:\l  call void @llvm.dbg.value(metadata i8* %node_name, metadata !2834, metadata\l... !DIExpression()), !dbg !2837\l  %tobool = icmp eq i8* %node_name, null, !dbg !2838\l  br i1 %tobool, label %if.else, label %for.cond.preheader, !dbg !2841, !prof\l... !2842\l|{<s0>T|<s1>F}}"];
+	Node0x55906e5658c0:s0 -> Node0x55906e3df8c0;
+	Node0x55906e5658c0:s1 -> Node0x55906e524250;
+	Node0x55906e524250 [shape=record,color="#b70d28ff", style=filled, fillcolor="#be242e70",label="{for.cond.preheader:                               \l  %bs.010 = load %struct.BlockDriverState*, %struct.BlockDriverState** bitcast\l... (%union.anon.47* @graph_bdrv_states to %struct.BlockDriverState**), align 8,\l... !dbg !2843\l  call void @llvm.dbg.value(metadata %struct.BlockDriverState* %bs.010,\l... metadata !2835, metadata !DIExpression()), !dbg !2837\l  %tobool111 = icmp eq %struct.BlockDriverState* %bs.010, null, !dbg !2845\l  br i1 %tobool111, label %cleanup, label %for.body.preheader, !dbg !2845,\l... !prof !2846\l|{<s0>T|<s1>F}}"];
+	Node0x55906e524250:s0 -> Node0x55906e5946e0;
+	Node0x55906e524250:s1 -> Node0x55906e3d68d0;
+	Node0x55906e3d68d0 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#c5333470",label="{for.body.preheader:                               \l  br label %for.body, !dbg !2845\l}"];
+	Node0x55906e3d68d0 -> Node0x55906e593770;
+	Node0x55906e3df8c0 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.else:                                          \l  tail call void @__assert_fail(i8* getelementptr inbounds ([10 x i8], [10 x\l... i8]* @.str.103, i64 0, i64 0), i8* getelementptr inbounds ([8 x i8], [8 x\l... i8]* @.str.2, i64 0, i64 0), i32 5112, i8* getelementptr inbounds ([47 x i8],\l... [47 x i8]* @__PRETTY_FUNCTION__.bdrv_find_node, i64 0, i64 0)) #31, !dbg !2838\l  unreachable, !dbg !2838\l}"];
+	Node0x55906e593770 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{for.body:                                         \l  %bs.012 = phi %struct.BlockDriverState* [ %bs.0, %for.inc ], [ %bs.010,\l... %for.body.preheader ]\l  %arraydecay = getelementptr inbounds %struct.BlockDriverState,\l... %struct.BlockDriverState* %bs.012, i64 0, i32 24, i64 0, !dbg !2847\l  %call = tail call i32 @strcmp(i8* nonnull %node_name, i8* nonnull\l... %arraydecay) #32, !dbg !2851\l  %tobool3 = icmp eq i32 %call, 0, !dbg !2851\l  br i1 %tobool3, label %cleanup.loopexit, label %for.inc, !dbg !2852, !prof\l... !2853\l|{<s0>T|<s1>F}}"];
+	Node0x55906e593770:s0 -> Node0x55906e56cf70;
+	Node0x55906e593770:s1 -> Node0x55906e5936c0;
+	Node0x55906e5936c0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{for.inc:                                          \l  %node_list = getelementptr inbounds %struct.BlockDriverState,\l... %struct.BlockDriverState* %bs.012, i64 0, i32 25, !dbg !2854\l  %tqe_next = bitcast %union.anon.25* %node_list to\l... %struct.BlockDriverState**, !dbg !2854\l  call void @llvm.dbg.value(metadata %struct.BlockDriverState* undef, metadata\l... !2835, metadata !DIExpression()), !dbg !2837\l  %bs.0 = load %struct.BlockDriverState*, %struct.BlockDriverState**\l... %tqe_next, align 8, !dbg !2843\l  call void @llvm.dbg.value(metadata %struct.BlockDriverState* %bs.0, metadata\l... !2835, metadata !DIExpression()), !dbg !2837\l  %tobool1 = icmp eq %struct.BlockDriverState* %bs.0, null, !dbg !2845\l  br i1 %tobool1, label %cleanup.loopexit, label %for.body, !dbg !2845, !prof\l... !2846, !llvm.loop !2855\l|{<s0>T|<s1>F}}"];
+	Node0x55906e5936c0:s0 -> Node0x55906e56cf70;
+	Node0x55906e5936c0:s1 -> Node0x55906e593770;
+	Node0x55906e56cf70 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#c5333470",label="{cleanup.loopexit:                                 \l  %bs.0.lcssa.ph = phi %struct.BlockDriverState* [ null, %for.inc ], [\l... %bs.012, %for.body ]\l  br label %cleanup, !dbg !2857\l}"];
+	Node0x55906e56cf70 -> Node0x55906e5946e0;
+	Node0x55906e5946e0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#be242e70",label="{cleanup:                                          \l  %bs.0.lcssa = phi %struct.BlockDriverState* [ null, %for.cond.preheader ], [\l... %bs.0.lcssa.ph, %cleanup.loopexit ], !dbg !2843\l  ret %struct.BlockDriverState* %bs.0.lcssa, !dbg !2857\l}"];
+}

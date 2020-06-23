@@ -1,0 +1,9 @@
+digraph "CFG for 'pci_bus_set_route_irq_fn' function" {
+	label="CFG for 'pci_bus_set_route_irq_fn' function";
+
+	Node0x55ff9ee96af0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  call void @llvm.dbg.value(metadata %struct.PCIBus* %bus, metadata !1612,\l... metadata !DIExpression()), !dbg !1615\l  call void @llvm.dbg.value(metadata i64 (i8*, i32)* %route_intx_to_irq,\l... metadata !1613, metadata !DIExpression()), !dbg !1615\l  call void @llvm.dbg.value(metadata %struct.PCIBus* %bus, metadata !1616,\l... metadata !DIExpression()), !dbg !1621\l  %flags.i = getelementptr inbounds %struct.PCIBus, %struct.PCIBus* %bus, i64\l... 0, i32 1, !dbg !1625\l  %0 = load i32, i32* %flags.i, align 8, !dbg !1625\l  %and.i = and i32 %0, 1, !dbg !1626\l  %tobool.i = icmp eq i32 %and.i, 0, !dbg !1627\l  br i1 %tobool.i, label %if.else, label %if.end, !dbg !1628, !prof !1629\l|{<s0>T|<s1>F}}"];
+	Node0x55ff9ee96af0:s0 -> Node0x55ff9ee99300;
+	Node0x55ff9ee96af0:s1 -> Node0x55ff9ee992b0;
+	Node0x55ff9ee99300 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.else:                                          \l  tail call void @__assert_fail(i8* getelementptr inbounds ([21 x i8], [21 x\l... i8]* @.str.23, i64 0, i64 0), i8* getelementptr inbounds ([13 x i8], [13 x\l... i8]* @.str.1, i64 0, i64 0), i32 1466, i8* getelementptr inbounds ([58 x i8],\l... [58 x i8]* @__PRETTY_FUNCTION__.pci_bus_set_route_irq_fn, i64 0, i64 0)) #19,\l... !dbg !1630\l  unreachable, !dbg !1630\l}"];
+	Node0x55ff9ee992b0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.end:                                           \l  %route_intx_to_irq1 = getelementptr inbounds %struct.PCIBus, %struct.PCIBus*\l... %bus, i64 0, i32 8, !dbg !1631\l  store i64 (i8*, i32)* %route_intx_to_irq, i64 (i8*, i32)**\l... %route_intx_to_irq1, align 8, !dbg !1632\l  ret void, !dbg !1633\l}"];
+}

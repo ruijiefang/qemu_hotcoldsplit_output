@@ -1,0 +1,41 @@
+digraph "CFG for 'pci_bus_fire_intx_routing_notifier' function" {
+	label="CFG for 'pci_bus_fire_intx_routing_notifier' function";
+
+	Node0x55ff9ee9fd40 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#de614d70",label="{entry:\l  call void @llvm.dbg.value(metadata %struct.PCIBus* %bus, metadata !1612,\l... metadata !DIExpression()), !dbg !1617\l  call void @llvm.dbg.value(metadata i32 0, metadata !1615, metadata\l... !DIExpression()), !dbg !1617\l  br label %for.body, !dbg !1618\l}"];
+	Node0x55ff9ee9fd40 -> Node0x55ff9eeabec0;
+	Node0x55ff9eeabec0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{for.body:                                         \l  %indvars.iv = phi i64 [ 0, %entry ], [ %indvars.iv.next, %for.inc ]\l  call void @llvm.dbg.value(metadata i64 %indvars.iv, metadata !1615, metadata\l... !DIExpression()), !dbg !1617\l  %arrayidx = getelementptr %struct.PCIBus, %struct.PCIBus* %bus, i64 0, i32\l... 10, i64 %indvars.iv, !dbg !1620\l  %0 = load %struct.PCIDevice*, %struct.PCIDevice** %arrayidx, align 8, !dbg\l... !1620\l  call void @llvm.dbg.value(metadata %struct.PCIDevice* %0, metadata !1613,\l... metadata !DIExpression()), !dbg !1617\l  %tobool = icmp eq %struct.PCIDevice* %0, null, !dbg !1623\l  br i1 %tobool, label %for.inc, label %land.lhs.true, !dbg !1625, !prof !1626\l|{<s0>T|<s1>F}}"];
+	Node0x55ff9eeabec0:s0 -> Node0x55ff9eeabe30;
+	Node0x55ff9eeabec0:s1 -> Node0x55ff9eeacb20;
+	Node0x55ff9eeacb20 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#d24b4070",label="{land.lhs.true:                                    \l  %intx_routing_notifier = getelementptr inbounds %struct.PCIDevice,\l... %struct.PCIDevice* %0, i64 0, i32 38, !dbg !1627\l  %1 = load void (%struct.PCIDevice*)*, void (%struct.PCIDevice*)**\l... %intx_routing_notifier, align 8, !dbg !1627\l  %tobool2 = icmp eq void (%struct.PCIDevice*)* %1, null, !dbg !1628\l  br i1 %tobool2, label %for.inc, label %if.then, !dbg !1629, !prof !1630\l|{<s0>T|<s1>F}}"];
+	Node0x55ff9eeacb20:s0 -> Node0x55ff9eeabe30;
+	Node0x55ff9eeacb20:s1 -> Node0x55ff9eeaca40;
+	Node0x55ff9eeaca40 [shape=record,penwidth=3.0, color="red",label="{if.then:                                          \l  tail call void %1(%struct.PCIDevice* nonnull %0) #19, !dbg !1631\l  br label %for.inc, !dbg !1633\l}"];
+	Node0x55ff9eeaca40 -> Node0x55ff9eeabe30;
+	Node0x55ff9eeabe30 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{for.inc:                                          \l  %indvars.iv.next = add nuw nsw i64 %indvars.iv, 1, !dbg !1634\l  call void @llvm.dbg.value(metadata i64 %indvars.iv.next, metadata !1615,\l... metadata !DIExpression()), !dbg !1617\l  %exitcond = icmp eq i64 %indvars.iv.next, 256, !dbg !1635\l  br i1 %exitcond, label %for.end, label %for.body, !dbg !1618, !prof !1636,\l... !llvm.loop !1637\l|{<s0>T|<s1>F}}"];
+	Node0x55ff9eeabe30:s0 -> Node0x55ff9eeabb00;
+	Node0x55ff9eeabe30:s1 -> Node0x55ff9eeabec0;
+	Node0x55ff9eeabb00 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#de614d70",label="{for.end:                                          \l  %lh_first = getelementptr inbounds %struct.PCIBus, %struct.PCIBus* %bus, i64\l... 0, i32 14, i32 0, !dbg !1639\l  call void @llvm.dbg.value(metadata %struct.PCIBus* undef, metadata !1614,\l... metadata !DIExpression()), !dbg !1617\l  %sec.021 = load %struct.PCIBus*, %struct.PCIBus** %lh_first, align 8, !dbg\l... !1641\l  call void @llvm.dbg.value(metadata %struct.PCIBus* %sec.021, metadata !1614,\l... metadata !DIExpression()), !dbg !1617\l  %tobool522 = icmp eq %struct.PCIBus* %sec.021, null, !dbg !1639\l  br i1 %tobool522, label %for.end8, label %for.body6.preheader, !dbg !1639,\l... !prof !1642\l|{<s0>T|<s1>F}}"];
+	Node0x55ff9eeabb00:s0 -> Node0x55ff9eeadbc0;
+	Node0x55ff9eeabb00:s1 -> Node0x55ff9f08bdf0;
+	Node0x55ff9f08bdf0 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{for.body6.preheader:                              \l  br label %for.body6.peel.begin, !dbg !1639\l}"];
+	Node0x55ff9f08bdf0 -> Node0x55ff9f124800;
+	Node0x55ff9f124800 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{for.body6.peel.begin:                             \l  br label %for.body6.peel, !dbg !1639\l}"];
+	Node0x55ff9f124800 -> Node0x55ff9f3baa00;
+	Node0x55ff9f3baa00 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{for.body6.peel:                                   \l  tail call void @pci_bus_fire_intx_routing_notifier(%struct.PCIBus* nonnull\l... %sec.021), !dbg !1643\l  %le_next.peel = getelementptr inbounds %struct.PCIBus, %struct.PCIBus*\l... %sec.021, i64 0, i32 15, i32 0, !dbg !1646\l  call void @llvm.dbg.value(metadata %struct.PCIBus* undef, metadata !1614,\l... metadata !DIExpression()), !dbg !1617\l  %sec.0.peel = load %struct.PCIBus*, %struct.PCIBus** %le_next.peel, align 8,\l... !dbg !1641\l  call void @llvm.dbg.value(metadata %struct.PCIBus* %sec.0.peel, metadata\l... !1614, metadata !DIExpression()), !dbg !1617\l  %tobool5.peel = icmp eq %struct.PCIBus* %sec.0.peel, null, !dbg !1639\l  br i1 %tobool5.peel, label %for.end8.loopexit, label %for.body6.peel.next,\l... !dbg !1639, !prof !1642\l|{<s0>T|<s1>F}}"];
+	Node0x55ff9f3baa00:s0 -> Node0x55ff9efef110;
+	Node0x55ff9f3baa00:s1 -> Node0x55ff9f040060;
+	Node0x55ff9f040060 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{for.body6.peel.next:                              \l  br label %for.body6.peel.next25, !dbg !1639\l}"];
+	Node0x55ff9f040060 -> Node0x55ff9f3765c0;
+	Node0x55ff9f3765c0 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{for.body6.peel.next25:                            \l  br label %for.body6.preheader.peel.newph, !dbg !1639\l}"];
+	Node0x55ff9f3765c0 -> Node0x55ff9f3ac040;
+	Node0x55ff9f3ac040 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{for.body6.preheader.peel.newph:                   \l  br label %for.body6, !dbg !1639\l}"];
+	Node0x55ff9f3ac040 -> Node0x55ff9eeae280;
+	Node0x55ff9eeae280 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{for.body6:                                        \l  %sec.023 = phi %struct.PCIBus* [ %sec.0, %for.body6 ], [ %sec.0.peel,\l... %for.body6.preheader.peel.newph ]\l  tail call void @pci_bus_fire_intx_routing_notifier(%struct.PCIBus* nonnull\l... %sec.023), !dbg !1643\l  %le_next = getelementptr inbounds %struct.PCIBus, %struct.PCIBus* %sec.023,\l... i64 0, i32 15, i32 0, !dbg !1646\l  call void @llvm.dbg.value(metadata %struct.PCIBus* undef, metadata !1614,\l... metadata !DIExpression()), !dbg !1617\l  %sec.0 = load %struct.PCIBus*, %struct.PCIBus** %le_next, align 8, !dbg !1641\l  call void @llvm.dbg.value(metadata %struct.PCIBus* %sec.0, metadata !1614,\l... metadata !DIExpression()), !dbg !1617\l  %tobool5 = icmp eq %struct.PCIBus* %sec.0, null, !dbg !1639\l  br i1 %tobool5, label %for.end8.loopexit.loopexit, label %for.body6, !dbg\l... !1639, !prof !1642, !llvm.loop !1647\l|{<s0>T|<s1>F}}"];
+	Node0x55ff9eeae280:s0 -> Node0x55ff9efb7b70;
+	Node0x55ff9eeae280:s1 -> Node0x55ff9eeae280;
+	Node0x55ff9efb7b70 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{for.end8.loopexit.loopexit:                       \l  br label %for.end8.loopexit, !dbg !1651\l}"];
+	Node0x55ff9efb7b70 -> Node0x55ff9efef110;
+	Node0x55ff9efef110 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{for.end8.loopexit:                                \l  br label %for.end8, !dbg !1651\l}"];
+	Node0x55ff9efef110 -> Node0x55ff9eeadbc0;
+	Node0x55ff9eeadbc0 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#de614d70",label="{for.end8:                                         \l  ret void, !dbg !1651\l}"];
+}

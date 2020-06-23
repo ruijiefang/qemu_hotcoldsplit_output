@@ -1,0 +1,13 @@
+digraph "CFG for 'qcrypto_hash_supports' function" {
+	label="CFG for 'qcrypto_hash_supports' function";
+
+	Node0x55e3ccc34800 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  call void @llvm.dbg.value(metadata i32 %alg, metadata !111, metadata\l... !DIExpression()), !dbg !113\l  %cmp = icmp ult i32 %alg, 7, !dbg !114\l  br i1 %cmp, label %land.lhs.true, label %if.end, !dbg !116, !prof !117\l|{<s0>T|<s1>F}}"];
+	Node0x55e3ccc34800:s0 -> Node0x55e3ccc406a0;
+	Node0x55e3ccc34800:s1 -> Node0x55e3ccc40650;
+	Node0x55e3ccc406a0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{land.lhs.true:                                    \l  %conv = zext i32 %alg to i64, !dbg !118\l  %0 = lshr i64 43, %conv, !dbg !119\l  %1 = and i64 %0, 1, !dbg !119\l  %cmp2 = icmp eq i64 %1, 0, !dbg !119\l  br i1 %cmp2, label %if.end, label %return, !dbg !120, !prof !121\l|{<s0>T|<s1>F}}"];
+	Node0x55e3ccc406a0:s0 -> Node0x55e3ccc40650;
+	Node0x55e3ccc406a0:s1 -> Node0x55e3ccc3b330;
+	Node0x55e3ccc40650 [shape=record,penwidth=3.0, color="red",label="{if.end:                                           \l  br label %return, !dbg !122\l}"];
+	Node0x55e3ccc40650 -> Node0x55e3ccc3b330;
+	Node0x55e3ccc3b330 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{return:                                           \l  %retval.0 = phi i32 [ 0, %if.end ], [ 1, %land.lhs.true ], !dbg !113\l  ret i32 %retval.0, !dbg !123\l}"];
+}

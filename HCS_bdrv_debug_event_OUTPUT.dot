@@ -1,0 +1,16 @@
+digraph "CFG for 'bdrv_debug_event' function" {
+	label="CFG for 'bdrv_debug_event' function";
+
+	Node0x55906e6011d0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  call void @llvm.dbg.value(metadata %struct.BlockDriverState* %bs, metadata\l... !2832, metadata !DIExpression()), !dbg !2835\l  call void @llvm.dbg.value(metadata i32 %event, metadata !2833, metadata\l... !DIExpression()), !dbg !2835\l  %tobool = icmp eq %struct.BlockDriverState* %bs, null, !dbg !2836\l  br i1 %tobool, label %return, label %lor.lhs.false, !dbg !2838, !prof !2839\l|{<s0>T|<s1>F}}"];
+	Node0x55906e6011d0:s0 -> Node0x55906e6041d0;
+	Node0x55906e6011d0:s1 -> Node0x55906e604ea0;
+	Node0x55906e604ea0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{lor.lhs.false:                                    \l  %drv = getelementptr inbounds %struct.BlockDriverState,\l... %struct.BlockDriverState* %bs, i64 0, i32 7, !dbg !2840\l  %0 = load %struct.BlockDriver*, %struct.BlockDriver** %drv, align 8, !dbg\l... !2840\l  %tobool1 = icmp eq %struct.BlockDriver* %0, null, !dbg !2841\l  br i1 %tobool1, label %return, label %lor.lhs.false2, !dbg !2842, !prof !2839\l|{<s0>T|<s1>F}}"];
+	Node0x55906e604ea0:s0 -> Node0x55906e6041d0;
+	Node0x55906e604ea0:s1 -> Node0x55906e6044b0;
+	Node0x55906e6044b0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{lor.lhs.false2:                                   \l  %bdrv_debug_event = getelementptr inbounds %struct.BlockDriver,\l... %struct.BlockDriver* %0, i64 0, i32 73, !dbg !2843\l  %1 = load void (%struct.BlockDriverState*, i32)*, void\l... (%struct.BlockDriverState*, i32)** %bdrv_debug_event, align 8, !dbg !2843\l  %tobool4 = icmp eq void (%struct.BlockDriverState*, i32)* %1, null, !dbg\l... !2844\l  br i1 %tobool4, label %return, label %if.end, !dbg !2845, !prof !2846\l|{<s0>T|<s1>F}}"];
+	Node0x55906e6044b0:s0 -> Node0x55906e6041d0;
+	Node0x55906e6044b0:s1 -> Node0x55906e604160;
+	Node0x55906e604160 [shape=record,penwidth=3.0, color="red",label="{if.end:                                           \l  tail call void %1(%struct.BlockDriverState* nonnull %bs, i32 %event) #30,\l... !dbg !2847\l  br label %return, !dbg !2848\l}"];
+	Node0x55906e604160 -> Node0x55906e6041d0;
+	Node0x55906e6041d0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{return:                                           \l  ret void, !dbg !2848\l}"];
+}

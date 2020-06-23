@@ -1,0 +1,28 @@
+digraph "CFG for 'bdrv_apply_subtree_drain' function" {
+	label="CFG for 'bdrv_apply_subtree_drain' function";
+
+	Node0x55cda42f1b40 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  call void @llvm.dbg.value(metadata %struct.BdrvChild* %child, metadata\l... !2553, metadata !DIExpression()), !dbg !2557\l  call void @llvm.dbg.value(metadata %struct.BlockDriverState* %new_parent,\l... metadata !2554, metadata !DIExpression()), !dbg !2557\l  call void @llvm.dbg.value(metadata i32 0, metadata !2555, metadata\l... !DIExpression()), !dbg !2557\l  %recursive_quiesce_counter = getelementptr inbounds\l... %struct.BlockDriverState, %struct.BlockDriverState* %new_parent, i64 0, i32\l... 50, !dbg !2558\l  %0 = load i32, i32* %recursive_quiesce_counter, align 4, !dbg !2558\l  %cmp4 = icmp sgt i32 %0, 0, !dbg !2561\l  br i1 %cmp4, label %for.body.lr.ph, label %for.end, !dbg !2562, !prof !2563\l|{<s0>T|<s1>F}}"];
+	Node0x55cda42f1b40:s0 -> Node0x55cda4557b80;
+	Node0x55cda42f1b40:s1 -> Node0x55cda42f2af0;
+	Node0x55cda4557b80 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{for.body.lr.ph:                                   \l  %bs = getelementptr inbounds %struct.BdrvChild, %struct.BdrvChild* %child,\l... i64 0, i32 0, !dbg !2564\l  br label %for.body.peel.begin, !dbg !2562\l}"];
+	Node0x55cda4557b80 -> Node0x55cda45c4390;
+	Node0x55cda45c4390 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{for.body.peel.begin:                              \l  br label %for.body.peel, !dbg !2562\l}"];
+	Node0x55cda45c4390 -> Node0x55cda4895590;
+	Node0x55cda4895590 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{for.body.peel:                                    \l  call void @llvm.dbg.value(metadata i32 0, metadata !2555, metadata\l... !DIExpression()), !dbg !2557\l  %1 = load %struct.BlockDriverState*, %struct.BlockDriverState** %bs, align\l... 8, !dbg !2566\l  tail call fastcc void @bdrv_do_drained_begin(%struct.BlockDriverState* %1,\l... i1 zeroext true, %struct.BdrvChild* %child, i1 zeroext false, i1 zeroext\l... true), !dbg !2567\l  call void @llvm.dbg.value(metadata i32 1, metadata !2555, metadata\l... !DIExpression()), !dbg !2557\l  %2 = load i32, i32* %recursive_quiesce_counter, align 4, !dbg !2558\l  %cmp.peel = icmp sgt i32 %2, 1, !dbg !2561\l  br i1 %cmp.peel, label %for.body.peel.next, label %for.end.loopexit, !dbg\l... !2562, !prof !2563\l|{<s0>T|<s1>F}}"];
+	Node0x55cda4895590:s0 -> Node0x55cda4547c80;
+	Node0x55cda4895590:s1 -> Node0x55cda4490bf0;
+	Node0x55cda4547c80 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{for.body.peel.next:                               \l  br label %for.body.peel.next6, !dbg !2562\l}"];
+	Node0x55cda4547c80 -> Node0x55cda45367f0;
+	Node0x55cda45367f0 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{for.body.peel.next6:                              \l  br label %for.body.lr.ph.peel.newph, !dbg !2562\l}"];
+	Node0x55cda45367f0 -> Node0x55cda44b7da0;
+	Node0x55cda44b7da0 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{for.body.lr.ph.peel.newph:                        \l  br label %for.body, !dbg !2562\l}"];
+	Node0x55cda44b7da0 -> Node0x55cda42f2e10;
+	Node0x55cda42f2e10 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{for.body:                                         \l  %i.05 = phi i32 [ 1, %for.body.lr.ph.peel.newph ], [ %inc, %for.body ]\l  call void @llvm.dbg.value(metadata i32 %i.05, metadata !2555, metadata\l... !DIExpression()), !dbg !2557\l  %3 = load %struct.BlockDriverState*, %struct.BlockDriverState** %bs, align\l... 8, !dbg !2566\l  tail call fastcc void @bdrv_do_drained_begin(%struct.BlockDriverState* %3,\l... i1 zeroext true, %struct.BdrvChild* %child, i1 zeroext false, i1 zeroext\l... true), !dbg !2567\l  %inc = add nuw nsw i32 %i.05, 1, !dbg !2568\l  call void @llvm.dbg.value(metadata i32 %inc, metadata !2555, metadata\l... !DIExpression()), !dbg !2557\l  %4 = load i32, i32* %recursive_quiesce_counter, align 4, !dbg !2558\l  %cmp = icmp slt i32 %inc, %4, !dbg !2561\l  br i1 %cmp, label %for.body, label %for.end.loopexit.loopexit, !dbg !2562,\l... !prof !2563, !llvm.loop !2569\l|{<s0>T|<s1>F}}"];
+	Node0x55cda42f2e10:s0 -> Node0x55cda42f2e10;
+	Node0x55cda42f2e10:s1 -> Node0x55cda44e5b50;
+	Node0x55cda44e5b50 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{for.end.loopexit.loopexit:                        \l  br label %for.end.loopexit, !dbg !2573\l}"];
+	Node0x55cda44e5b50 -> Node0x55cda4490bf0;
+	Node0x55cda4490bf0 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{for.end.loopexit:                                 \l  br label %for.end, !dbg !2573\l}"];
+	Node0x55cda4490bf0 -> Node0x55cda42f2af0;
+	Node0x55cda42f2af0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{for.end:                                          \l  ret void, !dbg !2573\l}"];
+}

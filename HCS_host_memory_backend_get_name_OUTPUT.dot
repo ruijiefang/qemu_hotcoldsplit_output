@@ -1,0 +1,12 @@
+digraph "CFG for 'host_memory_backend_get_name' function" {
+	label="CFG for 'host_memory_backend_get_name' function";
+
+	Node0x562907a07e70 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  call void @llvm.dbg.value(metadata %struct.HostMemoryBackend* %backend,\l... metadata !541, metadata !DIExpression()), !dbg !543\l  %use_canonical_path = getelementptr inbounds %struct.HostMemoryBackend,\l... %struct.HostMemoryBackend* %backend, i64 0, i32 4, !dbg !544\l  %0 = load i8, i8* %use_canonical_path, align 2, !dbg !544, !range !546\l  %tobool = icmp eq i8 %0, 0, !dbg !544\l  %1 = getelementptr %struct.HostMemoryBackend, %struct.HostMemoryBackend*\l... %backend, i64 0, i32 0, !dbg !543\l  br i1 %tobool, label %if.then, label %if.end, !dbg !547, !prof !548\l|{<s0>T|<s1>F}}"];
+	Node0x562907a07e70:s0 -> Node0x562907a2d380;
+	Node0x562907a07e70:s1 -> Node0x562907a39ed0;
+	Node0x562907a2d380 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.then:                                          \l  %call = tail call i8* @object_get_canonical_path_component(%struct.Object*\l... %1) #8, !dbg !549\l  br label %return, !dbg !551\l}"];
+	Node0x562907a2d380 -> Node0x562907a1adb0;
+	Node0x562907a39ed0 [shape=record,penwidth=3.0, color="red",label="{if.end:                                           \l  %call1 = tail call i8* @object_get_canonical_path(%struct.Object* %1) #8,\l... !dbg !552\l  br label %return, !dbg !553\l}"];
+	Node0x562907a39ed0 -> Node0x562907a1adb0;
+	Node0x562907a1adb0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{return:                                           \l  %retval.0 = phi i8* [ %call1, %if.end ], [ %call, %if.then ], !dbg !543\l  ret i8* %retval.0, !dbg !554\l}"];
+}

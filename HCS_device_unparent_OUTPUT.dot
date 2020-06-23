@@ -1,0 +1,38 @@
+digraph "CFG for 'device_unparent' function" {
+	label="CFG for 'device_unparent' function";
+
+	Node0x55e1ca1ffb10 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  call void @llvm.dbg.value(metadata %struct.Object* %obj, metadata !1158,\l... metadata !DIExpression()), !dbg !1163\l  %call = tail call %struct.Object*\l... @object_dynamic_cast_assert(%struct.Object* %obj, i8* getelementptr inbounds\l... ([7 x i8], [7 x i8]* @.str, i64 0, i64 0), i8* getelementptr inbounds ([15 x\l... i8], [15 x i8]* @.str.1, i64 0, i64 0), i32 1096, i8* getelementptr inbounds\l... ([16 x i8], [16 x i8]* @__func__.device_unparent, i64 0, i64 0)) #18, !dbg\l... !1164\l  %0 = bitcast %struct.Object* %call to %struct.DeviceState*, !dbg !1164\l  call void @llvm.dbg.value(metadata %struct.DeviceState* %0, metadata !1159,\l... metadata !DIExpression()), !dbg !1163\l  %realized = getelementptr inbounds %struct.Object, %struct.Object* %call,\l... i64 1, i32 2, !dbg !1165\l  %1 = bitcast %struct._GHashTable** %realized to i8*, !dbg !1165\l  %2 = load i8, i8* %1, align 8, !dbg !1165, !range !1167\l  %tobool = icmp eq i8 %2, 0, !dbg !1165\l  br i1 %tobool, label %if.end, label %if.then, !dbg !1168, !prof !1169\l|{<s0>T|<s1>F}}"];
+	Node0x55e1ca1ffb10:s0 -> Node0x55e1ca2b9450;
+	Node0x55e1ca1ffb10:s1 -> Node0x55e1ca2b9400;
+	Node0x55e1ca2b9400 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.then:                                          \l  call void @llvm.dbg.value(metadata %struct.DeviceState* %0, metadata !1170,\l... metadata !DIExpression()) #18, !dbg !1173\l  tail call void @object_property_set_bool(%struct.Object* %call, i1 zeroext\l... false, i8* getelementptr inbounds ([9 x i8], [9 x i8]* @.str.7, i64 0, i64\l... 0), %struct.Error** nonnull @error_abort) #18, !dbg !1176\l  br label %if.end, !dbg !1177\l}"];
+	Node0x55e1ca2b9400 -> Node0x55e1ca2b9450;
+	Node0x55e1ca2b9450 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.end:                                           \l  %num_child_bus = getelementptr inbounds %struct.Object, %struct.Object*\l... %call, i64 2, i32 4, !dbg !1178\l  %3 = bitcast %struct.Object** %num_child_bus to i32*, !dbg !1178\l  %4 = load i32, i32* %3, align 8, !dbg !1178\l  %tobool117 = icmp eq i32 %4, 0, !dbg !1179\l  br i1 %tobool117, label %while.end, label %while.body.lr.ph, !dbg !1179,\l... !prof !1169\l|{<s0>T|<s1>F}}"];
+	Node0x55e1ca2b9450:s0 -> Node0x55e1ca2b9cd0;
+	Node0x55e1ca2b9450:s1 -> Node0x55e1ca1d36b0;
+	Node0x55e1ca1d36b0 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{while.body.lr.ph:                                 \l  %child_bus = getelementptr inbounds %struct.Object, %struct.Object* %call,\l... i64 2, i32 3, !dbg !1180\l  %5 = bitcast i32* %child_bus to %struct.Object**, !dbg !1180\l  br label %while.body.peel.begin, !dbg !1179\l}"];
+	Node0x55e1ca1d36b0 -> Node0x55e1ca429550;
+	Node0x55e1ca429550 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{while.body.peel.begin:                            \l  br label %while.body.peel, !dbg !1179\l}"];
+	Node0x55e1ca429550 -> Node0x55e1ca345400;
+	Node0x55e1ca345400 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{while.body.peel:                                  \l  %6 = load %struct.Object*, %struct.Object** %5, align 8, !dbg !1182\l  call void @llvm.dbg.value(metadata %struct.BusState* undef, metadata !1160,\l... metadata !DIExpression()), !dbg !1163\l  tail call void @object_unparent(%struct.Object* %6) #18, !dbg !1183\l  %7 = load i32, i32* %3, align 8, !dbg !1178\l  %tobool1.peel = icmp eq i32 %7, 0, !dbg !1179\l  br i1 %tobool1.peel, label %while.end.loopexit, label %while.body.peel.next,\l... !dbg !1179, !prof !1169\l|{<s0>T|<s1>F}}"];
+	Node0x55e1ca345400:s0 -> Node0x55e1ca266300;
+	Node0x55e1ca345400:s1 -> Node0x55e1ca345360;
+	Node0x55e1ca345360 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{while.body.peel.next:                             \l  br label %while.body.peel.next18, !dbg !1179\l}"];
+	Node0x55e1ca345360 -> Node0x55e1ca3453b0;
+	Node0x55e1ca3453b0 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{while.body.peel.next18:                           \l  br label %while.body.lr.ph.peel.newph, !dbg !1179\l}"];
+	Node0x55e1ca3453b0 -> Node0x55e1ca3452c0;
+	Node0x55e1ca3452c0 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{while.body.lr.ph.peel.newph:                      \l  br label %while.body, !dbg !1179\l}"];
+	Node0x55e1ca3452c0 -> Node0x55e1ca2ba200;
+	Node0x55e1ca2ba200 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{while.body:                                       \l  %8 = load %struct.Object*, %struct.Object** %5, align 8, !dbg !1182\l  call void @llvm.dbg.value(metadata %struct.BusState* undef, metadata !1160,\l... metadata !DIExpression()), !dbg !1163\l  tail call void @object_unparent(%struct.Object* %8) #18, !dbg !1183\l  %9 = load i32, i32* %3, align 8, !dbg !1178\l  %tobool1 = icmp eq i32 %9, 0, !dbg !1179\l  br i1 %tobool1, label %while.end.loopexit.loopexit, label %while.body, !dbg\l... !1179, !prof !1169, !llvm.loop !1184\l|{<s0>T|<s1>F}}"];
+	Node0x55e1ca2ba200:s0 -> Node0x55e1ca429500;
+	Node0x55e1ca2ba200:s1 -> Node0x55e1ca2ba200;
+	Node0x55e1ca429500 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{while.end.loopexit.loopexit:                      \l  br label %while.end.loopexit, !dbg !1188\l}"];
+	Node0x55e1ca429500 -> Node0x55e1ca266300;
+	Node0x55e1ca266300 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{while.end.loopexit:                               \l  br label %while.end, !dbg !1188\l}"];
+	Node0x55e1ca266300 -> Node0x55e1ca2b9cd0;
+	Node0x55e1ca2b9cd0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{while.end:                                        \l  %parent_bus = getelementptr inbounds %struct.Object, %struct.Object* %call,\l... i64 2, !dbg !1188\l  %10 = bitcast %struct.Object* %parent_bus to %struct.BusState**, !dbg !1188\l  %11 = load %struct.BusState*, %struct.BusState** %10, align 8, !dbg !1188\l  %tobool2 = icmp eq %struct.BusState* %11, null, !dbg !1190\l  br i1 %tobool2, label %if.end7, label %if.then3, !dbg !1191, !prof !1169\l|{<s0>T|<s1>F}}"];
+	Node0x55e1ca2b9cd0:s0 -> Node0x55e1ca2bb2a0;
+	Node0x55e1ca2b9cd0:s1 -> Node0x55e1ca2bb250;
+	Node0x55e1ca2bb250 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.then3:                                         \l  tail call fastcc void @bus_remove_child(%struct.BusState* nonnull %11,\l... %struct.DeviceState* nonnull %0), !dbg !1192\l  %12 = bitcast %struct.Object* %parent_bus to %struct.Object**, !dbg !1194\l  %13 = load %struct.Object*, %struct.Object** %12, align 8, !dbg !1194\l  tail call void @object_unref(%struct.Object* %13) #18, !dbg !1195\l  store %struct.BusState* null, %struct.BusState** %10, align 8, !dbg !1196\l  br label %if.end7, !dbg !1197\l}"];
+	Node0x55e1ca2bb250 -> Node0x55e1ca2bb2a0;
+	Node0x55e1ca2bb2a0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.end7:                                          \l  ret void, !dbg !1198\l}"];
+}

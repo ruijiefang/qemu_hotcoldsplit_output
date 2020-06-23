@@ -1,0 +1,10 @@
+digraph "CFG for 'block_acct_init' function" {
+	label="CFG for 'block_acct_init' function";
+
+	Node0x5588463f5ed0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  call void @llvm.dbg.value(metadata %struct.BlockAcctStats* %stats, metadata\l... !185, metadata !DIExpression()), !dbg !187\l  %lock = getelementptr inbounds %struct.BlockAcctStats,\l... %struct.BlockAcctStats* %stats, i64 0, i32 0, !dbg !188\l  tail call void @qemu_mutex_init(%struct.QemuMutex* %lock) #12, !dbg !189\l  %0 = load i8, i8* @qtest_allowed, align 1, !dbg !190, !range !198\l  %tobool.i = icmp eq i8 %0, 0, !dbg !190\l  br i1 %tobool.i, label %if.end, label %if.then, !dbg !199, !prof !200\l|{<s0>T|<s1>F}}"];
+	Node0x5588463f5ed0:s0 -> Node0x558846408870;
+	Node0x5588463f5ed0:s1 -> Node0x558846408410;
+	Node0x558846408410 [shape=record,penwidth=3.0, color="red",label="{if.then:                                          \l  store i1 true, i1* @clock_type, align 4, !dbg !201\l  br label %if.end, !dbg !203\l}"];
+	Node0x558846408410 -> Node0x558846408870;
+	Node0x558846408870 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.end:                                           \l  ret void, !dbg !204\l}"];
+}

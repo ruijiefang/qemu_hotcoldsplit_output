@@ -1,0 +1,10 @@
+digraph "CFG for 'progress_dummy_print' function" {
+	label="CFG for 'progress_dummy_print' function";
+
+	Node0x5563147fa7f0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  %0 = load volatile i32, i32* @print_pending, align 4, !dbg !67\l  %tobool = icmp eq i32 %0, 0, !dbg !67\l  br i1 %tobool, label %if.end, label %if.then, !dbg !69\l|{<s0>T|<s1>F}}"];
+	Node0x5563147fa7f0:s0 -> Node0x556314818470;
+	Node0x5563147fa7f0:s1 -> Node0x556314818420;
+	Node0x556314818420 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.then:                                          \l  %1 = load %struct._IO_FILE*, %struct._IO_FILE** @stderr, align 8, !dbg !70\l  %2 = load float, float* @state.0, align 8, !dbg !72\l  %conv = fpext float %2 to double, !dbg !73\l  %call = tail call i32 (%struct._IO_FILE*, i8*, ...)\l... @fprintf(%struct._IO_FILE* %1, i8* getelementptr inbounds ([19 x i8], [19 x\l... i8]* @.str.2, i64 0, i64 0), double %conv) #10, !dbg !74\l  store volatile i32 0, i32* @print_pending, align 4, !dbg !75\l  br label %if.end, !dbg !76\l}"];
+	Node0x556314818420 -> Node0x556314818470;
+	Node0x556314818470 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.end:                                           \l  ret void, !dbg !77\l}"];
+}

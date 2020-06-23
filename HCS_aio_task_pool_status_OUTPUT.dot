@@ -1,0 +1,10 @@
+digraph "CFG for 'aio_task_pool_status' function" {
+	label="CFG for 'aio_task_pool_status' function";
+
+	Node0x55bef4d9e510 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  call void @llvm.dbg.value(metadata %struct.AioTaskPool* %pool, metadata !64,\l... metadata !DIExpression()), !dbg !66\l  %tobool = icmp eq %struct.AioTaskPool* %pool, null, !dbg !67\l  br i1 %tobool, label %return, label %if.end, !dbg !69, !prof !70\l|{<s0>T|<s1>F}}"];
+	Node0x55bef4d9e510:s0 -> Node0x55bef4d9e640;
+	Node0x55bef4d9e510:s1 -> Node0x55bef4d9e330;
+	Node0x55bef4d9e330 [shape=record,penwidth=3.0, color="red",label="{if.end:                                           \l  %status = getelementptr inbounds %struct.AioTaskPool, %struct.AioTaskPool*\l... %pool, i64 0, i32 1, !dbg !71\l  %0 = load i32, i32* %status, align 8, !dbg !71\l  br label %return, !dbg !72\l}"];
+	Node0x55bef4d9e330 -> Node0x55bef4d9e640;
+	Node0x55bef4d9e640 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{return:                                           \l  %retval.0 = phi i32 [ %0, %if.end ], [ 0, %entry ], !dbg !66\l  ret i32 %retval.0, !dbg !73\l}"];
+}

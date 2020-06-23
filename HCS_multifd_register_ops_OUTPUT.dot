@@ -1,0 +1,9 @@
+digraph "CFG for 'multifd_register_ops' function" {
+	label="CFG for 'multifd_register_ops' function";
+
+	Node0x56423d49ffa0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  call void @llvm.dbg.value(metadata i32 %method, metadata !674, metadata\l... !DIExpression()), !dbg !677\l  call void @llvm.dbg.value(metadata %struct.MultiFDMethods* %ops, metadata\l... !675, metadata !DIExpression()), !dbg !677\l  %0 = icmp eq i32 %method, 1, !dbg !678\l  br i1 %0, label %if.end, label %if.else, !dbg !678, !prof !681\l|{<s0>T|<s1>F}}"];
+	Node0x56423d49ffa0:s0 -> Node0x56423d4ca100;
+	Node0x56423d49ffa0:s1 -> Node0x56423d4ca150;
+	Node0x56423d4ca150 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.else:                                          \l  tail call void @__assert_fail(i8* getelementptr inbounds ([48 x i8], [48 x\l... i8]* @.str, i64 0, i64 0), i8* getelementptr inbounds ([20 x i8], [20 x i8]*\l... @.str.1, i64 0, i64 0), i32 171, i8* getelementptr inbounds ([49 x i8], [49 x\l... i8]* @__PRETTY_FUNCTION__.multifd_register_ops, i64 0, i64 0)) #12, !dbg !678\l  unreachable, !dbg !678\l}"];
+	Node0x56423d4ca100 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.end:                                           \l  store %struct.MultiFDMethods* %ops, %struct.MultiFDMethods** getelementptr\l... inbounds ([2 x %struct.MultiFDMethods*], [2 x %struct.MultiFDMethods*]*\l... @multifd_ops, i64 0, i64 1), align 8, !dbg !682\l  ret void, !dbg !683\l}"];
+}

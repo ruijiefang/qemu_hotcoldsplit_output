@@ -1,0 +1,18 @@
+digraph "CFG for 'object_class_by_name' function" {
+	label="CFG for 'object_class_by_name' function";
+
+	Node0x55ee225c24e0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  call void @llvm.dbg.value(metadata i8* %typename, metadata !345, metadata\l... !DIExpression()), !dbg !348\l  call void @llvm.dbg.value(metadata i8* %typename, metadata !349, metadata\l... !DIExpression()) #9, !dbg !354\l  %cmp.i = icmp eq i8* %typename, null, !dbg !356\l  br i1 %cmp.i, label %cleanup, label %if.end.i, !dbg !358, !prof !359\l|{<s0>T|<s1>F}}"];
+	Node0x55ee225c24e0:s0 -> Node0x55ee225c4850;
+	Node0x55ee225c24e0:s1 -> Node0x55ee225df350;
+	Node0x55ee225df350 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.end.i:                                         \l  call void @llvm.dbg.value(metadata i8* %typename, metadata !360, metadata\l... !DIExpression()) #9, !dbg !363\l  %0 = load %struct._GHashTable*, %struct._GHashTable**\l... @type_table_get.type_table, align 8, !dbg !365\l  %cmp.i.i.i = icmp eq %struct._GHashTable* %0, null, !dbg !368\l  br i1 %cmp.i.i.i, label %if.then.i.i.i, label %type_get_by_name.exit, !dbg\l... !369, !prof !359\l|{<s0>T|<s1>F}}"];
+	Node0x55ee225df350:s0 -> Node0x55ee229ed030;
+	Node0x55ee225df350:s1 -> Node0x55ee22679820;
+	Node0x55ee229ed030 [shape=record,penwidth=3.0, color="red",label="{if.then.i.i.i:                                    \l  %call.i.i.i = tail call %struct._GHashTable* @g_hash_table_new(i32 (i8*)*\l... nonnull @g_str_hash, i32 (i8*, i8*)* nonnull @g_str_equal) #9, !dbg !370\l  store %struct._GHashTable* %call.i.i.i, %struct._GHashTable**\l... @type_table_get.type_table, align 8, !dbg !372\l  br label %type_get_by_name.exit, !dbg !373\l}"];
+	Node0x55ee229ed030 -> Node0x55ee22679820;
+	Node0x55ee22679820 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{type_get_by_name.exit:                            \l  %1 = phi %struct._GHashTable* [ %0, %if.end.i ], [ %call.i.i.i,\l... %if.then.i.i.i ], !dbg !374\l  %call1.i.i = tail call i8* @g_hash_table_lookup(%struct._GHashTable* %1, i8*\l... nonnull %typename) #9, !dbg !375\l  call void @llvm.dbg.value(metadata i8* %call1.i.i, metadata !346, metadata\l... !DIExpression()), !dbg !348\l  %tobool = icmp eq i8* %call1.i.i, null, !dbg !376\l  br i1 %tobool, label %cleanup, label %if.end, !dbg !378, !prof !379\l|{<s0>T|<s1>F}}"];
+	Node0x55ee22679820:s0 -> Node0x55ee225c4850;
+	Node0x55ee22679820:s1 -> Node0x55ee225c43d0;
+	Node0x55ee225c43d0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.end:                                           \l  %2 = bitcast i8* %call1.i.i to %struct.TypeImpl*, !dbg !375\l  call void @llvm.dbg.value(metadata %struct.TypeImpl* %2, metadata !346,\l... metadata !DIExpression()), !dbg !348\l  tail call fastcc void @type_initialize(%struct.TypeImpl* nonnull %2), !dbg\l... !380\l  %class = getelementptr inbounds i8, i8* %call1.i.i, i64 96, !dbg !381\l  %3 = bitcast i8* %class to %struct.ObjectClass**, !dbg !381\l  %4 = load %struct.ObjectClass*, %struct.ObjectClass** %3, align 8, !dbg !381\l  br label %cleanup, !dbg !382\l}"];
+	Node0x55ee225c43d0 -> Node0x55ee225c4850;
+	Node0x55ee225c4850 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{cleanup:                                          \l  %retval.0 = phi %struct.ObjectClass* [ %4, %if.end ], [ null,\l... %type_get_by_name.exit ], [ null, %entry ], !dbg !348\l  ret %struct.ObjectClass* %retval.0, !dbg !383\l}"];
+}

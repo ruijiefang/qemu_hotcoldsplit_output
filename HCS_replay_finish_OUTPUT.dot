@@ -1,0 +1,29 @@
+digraph "CFG for 'replay_finish' function" {
+	label="CFG for 'replay_finish' function";
+
+	Node0x55a80353aeb0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  %0 = load i32, i32* @replay_mode, align 4, !dbg !197\l  %cmp = icmp eq i32 %0, 0, !dbg !199\l  br i1 %cmp, label %return, label %if.end, !dbg !200, !prof !201\l|{<s0>T|<s1>F}}"];
+	Node0x55a80353aeb0:s0 -> Node0x55a80353bda0;
+	Node0x55a80353aeb0:s1 -> Node0x55a80353be70;
+	Node0x55a80353be70 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.end:                                           \l  tail call void @replay_save_instructions() #16, !dbg !202\l  %1 = load %struct._IO_FILE*, %struct._IO_FILE** @replay_file, align 8, !dbg\l... !203\l  %tobool = icmp eq %struct._IO_FILE* %1, null, !dbg !203\l  br i1 %tobool, label %if.end6, label %if.then1, !dbg !205\l|{<s0>T|<s1>F}}"];
+	Node0x55a80353be70:s0 -> Node0x55a80353c360;
+	Node0x55a80353be70:s1 -> Node0x55a80353c310;
+	Node0x55a80353c310 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.then1:                                         \l  %2 = load i32, i32* @replay_mode, align 4, !dbg !206\l  %cmp2 = icmp eq i32 %2, 1, !dbg !209\l  br i1 %cmp2, label %do.body.i, label %if.end4, !dbg !210\l|{<s0>T|<s1>F}}"];
+	Node0x55a80353c310:s0 -> Node0x55a80364d620;
+	Node0x55a80353c310:s1 -> Node0x55a80353c6f0;
+	Node0x55a80364d620 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{do.body.i:                                        \l  call void @llvm.dbg.value(metadata i32 4, metadata !211, metadata\l... !DIExpression()) #16, !dbg !223\l  %call.i = tail call zeroext i1 @replay_mutex_locked() #16, !dbg !226\l  call void @llvm.dbg.value(metadata i32 undef, metadata !217, metadata\l... !DIExpression()) #16, !dbg !228\l  br i1 %call.i, label %replay_shutdown_request.exit, label %if.else3.i, !dbg\l... !229, !prof !230, !misexpect !231\l|{<s0>T|<s1>F}}"];
+	Node0x55a80364d620:s0 -> Node0x55a803646c00;
+	Node0x55a80364d620:s1 -> Node0x55a8034c1420;
+	Node0x55a8034c1420 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.else3.i:                                       \l  tail call void @g_assertion_message_expr(i8* null, i8* getelementptr\l... inbounds ([16 x i8], [16 x i8]* @.str.1, i64 0, i64 0), i32 171, i8*\l... getelementptr inbounds ([24 x i8], [24 x i8]*\l... @__func__.replay_shutdown_request, i64 0, i64 0), i8* getelementptr inbounds\l... ([22 x i8], [22 x i8]* @.str.2, i64 0, i64 0)) #17, !dbg !232\l  unreachable, !dbg !232\l}"];
+	Node0x55a803646c00 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{replay_shutdown_request.exit:                     \l  tail call void @replay_put_event(i8 zeroext 8) #16, !dbg !233\l  tail call void @replay_put_event(i8 zeroext 32) #16, !dbg !234\l  %3 = load %struct._IO_FILE*, %struct._IO_FILE** @replay_file, align 8, !dbg\l... !235\l  %call = tail call i32 @fseek(%struct._IO_FILE* %3, i64 0, i32 0), !dbg !236\l  tail call void @replay_put_dword(i32 14688265) #16, !dbg !237\l  %.pre = load %struct._IO_FILE*, %struct._IO_FILE** @replay_file, align 8,\l... !dbg !238\l  br label %if.end4, !dbg !239\l}"];
+	Node0x55a803646c00 -> Node0x55a80353c6f0;
+	Node0x55a80353c6f0 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.end4:                                          \l  %4 = phi %struct._IO_FILE* [ %.pre, %replay_shutdown_request.exit ], [ %1,\l... %if.then1 ], !dbg !238\l  %call5 = tail call i32 @fclose(%struct._IO_FILE* %4), !dbg !240\l  store %struct._IO_FILE* null, %struct._IO_FILE** @replay_file, align 8, !dbg\l... !241\l  br label %if.end6, !dbg !242\l}"];
+	Node0x55a80353c6f0 -> Node0x55a80353c360;
+	Node0x55a80353c360 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.end6:                                          \l  %5 = load i8*, i8** @replay_filename, align 8, !dbg !243\l  %tobool7 = icmp eq i8* %5, null, !dbg !243\l  br i1 %tobool7, label %if.end9, label %if.then8, !dbg !245\l|{<s0>T|<s1>F}}"];
+	Node0x55a80353c360:s0 -> Node0x55a803540950;
+	Node0x55a80353c360:s1 -> Node0x55a803540900;
+	Node0x55a803540900 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.then8:                                         \l  tail call void @g_free(i8* nonnull %5) #16, !dbg !246\l  store i8* null, i8** @replay_filename, align 8, !dbg !248\l  br label %if.end9, !dbg !249\l}"];
+	Node0x55a803540900 -> Node0x55a803540950;
+	Node0x55a803540950 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.end9:                                          \l  %6 = load i8*, i8** @replay_snapshot, align 8, !dbg !250\l  tail call void @g_free(i8* %6) #16, !dbg !251\l  store i8* null, i8** @replay_snapshot, align 8, !dbg !252\l  store i32 0, i32* @replay_mode, align 4, !dbg !253\l  tail call void @replay_finish_events() #16, !dbg !254\l  br label %return, !dbg !255\l}"];
+	Node0x55a803540950 -> Node0x55a80353bda0;
+	Node0x55a80353bda0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{return:                                           \l  ret void, !dbg !255\l}"];
+}

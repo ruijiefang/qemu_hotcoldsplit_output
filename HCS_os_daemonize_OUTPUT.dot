@@ -1,0 +1,38 @@
+digraph "CFG for 'os_daemonize' function" {
+	label="CFG for 'os_daemonize' function";
+
+	Node0x5560c3d49220 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  %fds = alloca [2 x i32], align 4\l  %status = alloca i8, align 1\l  %.b = load i1, i1* @daemonize, align 4, !dbg !122\l  br i1 %.b, label %if.then, label %if.end39, !dbg !123, !prof !124\l|{<s0>T|<s1>F}}"];
+	Node0x5560c3d49220:s0 -> Node0x5560c3d52f70;
+	Node0x5560c3d49220:s1 -> Node0x5560c3d52fc0;
+	Node0x5560c3d52f70 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.then:                                          \l  %0 = bitcast [2 x i32]* %fds to i8*, !dbg !125\l  call void @llvm.lifetime.start.p0i8(i64 8, i8* nonnull %0) #14, !dbg !125\l  call void @llvm.dbg.declare(metadata [2 x i32]* %fds, metadata !106,\l... metadata !DIExpression()), !dbg !126\l  %arraydecay = getelementptr inbounds [2 x i32], [2 x i32]* %fds, i64 0, i64\l... 0, !dbg !127\l  %call = call i32 @pipe(i32* nonnull %arraydecay) #14, !dbg !129\l  %cmp = icmp eq i32 %call, -1, !dbg !130\l  br i1 %cmp, label %if.then1, label %if.end, !dbg !131\l|{<s0>T|<s1>F}}"];
+	Node0x5560c3d52f70:s0 -> Node0x5560c3d51250;
+	Node0x5560c3d52f70:s1 -> Node0x5560c3d512a0;
+	Node0x5560c3d51250 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.then1:                                         \l  call void @exit(i32 1) #15, !dbg !132\l  unreachable, !dbg !132\l}"];
+	Node0x5560c3d512a0 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.end:                                           \l  %call2 = call i32 @fork() #14, !dbg !134\l  call void @llvm.dbg.value(metadata i32 %call2, metadata !101, metadata\l... !DIExpression()), !dbg !135\l  %cmp3 = icmp sgt i32 %call2, 0, !dbg !136\l  br i1 %cmp3, label %if.then4, label %if.else, !dbg !137\l|{<s0>T|<s1>F}}"];
+	Node0x5560c3d512a0:s0 -> Node0x5560c3d57c10;
+	Node0x5560c3d512a0:s1 -> Node0x5560c3d57cb0;
+	Node0x5560c3d57c10 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.then4:                                         \l  call void @llvm.lifetime.start.p0i8(i64 1, i8* nonnull %status) #14, !dbg\l... !138\l  %arrayidx = getelementptr inbounds [2 x i32], [2 x i32]* %fds, i64 0, i64 1,\l... !dbg !139\l  %1 = load i32, i32* %arrayidx, align 4, !dbg !139\l  %call5 = call i32 @close(i32 %1) #14, !dbg !140\l  br label %do.body, !dbg !141\l}"];
+	Node0x5560c3d57c10 -> Node0x5560c3d59240;
+	Node0x5560c3d59240 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{do.body:                                          \l  %2 = load i32, i32* %arraydecay, align 4, !dbg !142\l  call void @llvm.dbg.value(metadata i8* %status, metadata !110, metadata\l... !DIExpression(DW_OP_deref)), !dbg !144\l  %call7 = call i64 @read(i32 %2, i8* nonnull %status, i64 1) #14, !dbg !145\l  call void @llvm.dbg.value(metadata i64 %call7, metadata !117, metadata\l... !DIExpression()), !dbg !144\l  %cmp8 = icmp slt i64 %call7, 0, !dbg !146\l  br i1 %cmp8, label %land.rhs, label %do.end, !dbg !147\l|{<s0>T|<s1>F}}"];
+	Node0x5560c3d59240:s0 -> Node0x5560c3d5a330;
+	Node0x5560c3d59240:s1 -> Node0x5560c3d591a0;
+	Node0x5560c3d5a330 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{land.rhs:                                         \l  %call9 = tail call i32* @__errno_location() #16, !dbg !148\l  %3 = load i32, i32* %call9, align 4, !dbg !148\l  %cmp10 = icmp eq i32 %3, 4, !dbg !149\l  br i1 %cmp10, label %do.body, label %do.end, !dbg !150, !llvm.loop !151\l|{<s0>T|<s1>F}}"];
+	Node0x5560c3d5a330:s0 -> Node0x5560c3d59240;
+	Node0x5560c3d5a330:s1 -> Node0x5560c3d591a0;
+	Node0x5560c3d591a0 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{do.end:                                           \l  %call7.lcssa = phi i64 [ %call7, %land.rhs ], [ %call7, %do.body ], !dbg !145\l  %cmp11 = icmp ne i64 %call7.lcssa, 1, !dbg !153\l  %4 = load i8, i8* %status, align 1, !dbg !154\l  call void @llvm.dbg.value(metadata i8 %4, metadata !110, metadata\l... !DIExpression()), !dbg !144\l  %cmp13 = icmp ne i8 %4, 0, !dbg !154\l  %not. = or i1 %cmp11, %cmp13, !dbg !155\l  %cond = zext i1 %not. to i32, !dbg !155\l  call void @exit(i32 %cond) #15, !dbg !156\l  unreachable, !dbg !156\l}"];
+	Node0x5560c3d57cb0 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.else:                                          \l  %cmp16 = icmp slt i32 %call2, 0, !dbg !157\l  br i1 %cmp16, label %if.then18, label %if.end20, !dbg !159\l|{<s0>T|<s1>F}}"];
+	Node0x5560c3d57cb0:s0 -> Node0x5560c3d5c020;
+	Node0x5560c3d57cb0:s1 -> Node0x5560c3d57c60;
+	Node0x5560c3d5c020 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.then18:                                        \l  call void @exit(i32 1) #15, !dbg !160\l  unreachable, !dbg !160\l}"];
+	Node0x5560c3d57c60 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.end20:                                         \l  %5 = load i32, i32* %arraydecay, align 4, !dbg !162\l  %call22 = call i32 @close(i32 %5) #14, !dbg !163\l  %arrayidx23 = getelementptr inbounds [2 x i32], [2 x i32]* %fds, i64 0, i64\l... 1, !dbg !164\l  %6 = load i32, i32* %arrayidx23, align 4, !dbg !164\l  store i32 %6, i32* @daemon_pipe, align 4, !dbg !165\l  call void @qemu_set_cloexec(i32 %6) #14, !dbg !166\l  %call24 = call i32 @setsid() #14, !dbg !167\l  %call25 = call i32 @fork() #14, !dbg !168\l  call void @llvm.dbg.value(metadata i32 %call25, metadata !101, metadata\l... !DIExpression()), !dbg !135\l  %cmp26 = icmp sgt i32 %call25, 0, !dbg !169\l  br i1 %cmp26, label %if.then28, label %if.else29, !dbg !171\l|{<s0>T|<s1>F}}"];
+	Node0x5560c3d57c60:s0 -> Node0x5560c3d5c6a0;
+	Node0x5560c3d57c60:s1 -> Node0x5560c3bd0860;
+	Node0x5560c3d5c6a0 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.then28:                                        \l  call void @exit(i32 0) #15, !dbg !172\l  unreachable, !dbg !172\l}"];
+	Node0x5560c3bd0860 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.else29:                                        \l  %cmp30 = icmp slt i32 %call25, 0, !dbg !174\l  br i1 %cmp30, label %if.then32, label %if.end34, !dbg !176\l|{<s0>T|<s1>F}}"];
+	Node0x5560c3bd0860:s0 -> Node0x5560c3bd0c00;
+	Node0x5560c3bd0860:s1 -> Node0x5560c3bcf510;
+	Node0x5560c3bd0c00 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.then32:                                        \l  call void @exit(i32 1) #15, !dbg !177\l  unreachable, !dbg !177\l}"];
+	Node0x5560c3bcf510 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.end34:                                         \l  %call35 = call i32 @umask(i32 23) #14, !dbg !179\l  %call36 = call void (i32)* @signal(i32 20, void (i32)* nonnull inttoptr (i64\l... 1 to void (i32)*)) #14, !dbg !180\l  %call37 = call void (i32)* @signal(i32 22, void (i32)* nonnull inttoptr (i64\l... 1 to void (i32)*)) #14, !dbg !181\l  %call38 = call void (i32)* @signal(i32 21, void (i32)* nonnull inttoptr (i64\l... 1 to void (i32)*)) #14, !dbg !182\l  call void @llvm.lifetime.end.p0i8(i64 8, i8* nonnull %0) #14, !dbg !183\l  br label %if.end39, !dbg !184\l}"];
+	Node0x5560c3bcf510 -> Node0x5560c3d52fc0;
+	Node0x5560c3d52fc0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.end39:                                         \l  ret void, !dbg !185\l}"];
+}

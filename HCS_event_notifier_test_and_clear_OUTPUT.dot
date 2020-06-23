@@ -1,0 +1,16 @@
+digraph "CFG for 'event_notifier_test_and_clear' function" {
+	label="CFG for 'event_notifier_test_and_clear' function";
+
+	Node0x560a5299ab90 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  %buffer = alloca [512 x i8], align 16\l  call void @llvm.dbg.value(metadata %struct.EventNotifier* %e, metadata !76,\l... metadata !DIExpression()), !dbg !85\l  %0 = getelementptr inbounds [512 x i8], [512 x i8]* %buffer, i64 0, i64 0,\l... !dbg !86\l  call void @llvm.lifetime.start.p0i8(i64 512, i8* nonnull %0) #13, !dbg !86\l  call void @llvm.dbg.declare(metadata [512 x i8]* %buffer, metadata !79,\l... metadata !DIExpression()), !dbg !87\l  call void @llvm.dbg.value(metadata i32 0, metadata !77, metadata\l... !DIExpression()), !dbg !85\l  %rfd = getelementptr inbounds %struct.EventNotifier, %struct.EventNotifier*\l... %e, i64 0, i32 0, !dbg !88\l  br label %do.body, !dbg !90\l}"];
+	Node0x560a5299ab90 -> Node0x560a5299bee0;
+	Node0x560a5299bee0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{do.body:                                          \l  %value.0 = phi i32 [ 0, %entry ], [ %or, %do.body.backedge ], !dbg !85\l  call void @llvm.dbg.value(metadata i32 %value.0, metadata !77, metadata\l... !DIExpression()), !dbg !85\l  %1 = load i32, i32* %rfd, align 4, !dbg !91\l  %call = call i64 @read(i32 %1, i8* nonnull %0, i64 512) #13, !dbg !92\l  call void @llvm.dbg.value(metadata i64 %call, metadata !78, metadata\l... !DIExpression()), !dbg !85\l  %cmp = icmp sgt i64 %call, 0, !dbg !93\l  %conv = zext i1 %cmp to i32, !dbg !93\l  %or = or i32 %value.0, %conv, !dbg !94\l  call void @llvm.dbg.value(metadata i32 %or, metadata !77, metadata\l... !DIExpression()), !dbg !85\l  switch i64 %call, label %do.end [\l    i64 -1, label %land.lhs.true\l    i64 512, label %do.body.backedge\l  ], !dbg !95, !prof !96\l|{<s0>def|<s1>-1|<s2>512}}"];
+	Node0x560a5299bee0:s0 -> Node0x560a5299be00;
+	Node0x560a5299bee0:s1 -> Node0x560a5299d290;
+	Node0x560a5299bee0:s2 -> Node0x560a5299a9d0;
+	Node0x560a5299d290 [shape=record,penwidth=3.0, color="red",label="{land.lhs.true:                                    \l  %call3 = tail call i32* @__errno_location() #14, !dbg !97\l  %2 = load i32, i32* %call3, align 4, !dbg !97\l  %cmp4 = icmp eq i32 %2, 4, !dbg !98\l  br i1 %cmp4, label %do.body.backedge, label %do.end, !dbg !99\l|{<s0>T|<s1>F}}"];
+	Node0x560a5299d290:s0 -> Node0x560a5299a9d0;
+	Node0x560a5299d290:s1 -> Node0x560a5299be00;
+	Node0x560a5299a9d0 [shape=record,penwidth=3.0, color="red",label="{do.body.backedge:                                 \l  br label %do.body, !dbg !85, !llvm.loop !100\l}"];
+	Node0x560a5299a9d0 -> Node0x560a5299bee0;
+	Node0x560a5299be00 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{do.end:                                           \l  %or.lcssa = phi i32 [ %or, %land.lhs.true ], [ %or, %do.body ], !dbg !94\l  call void @llvm.lifetime.end.p0i8(i64 512, i8* nonnull %0) #13, !dbg !102\l  ret i32 %or.lcssa, !dbg !103\l}"];
+}

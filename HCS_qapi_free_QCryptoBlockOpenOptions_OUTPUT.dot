@@ -1,0 +1,10 @@
+digraph "CFG for 'qapi_free_QCryptoBlockOpenOptions' function" {
+	label="CFG for 'qapi_free_QCryptoBlockOpenOptions' function";
+
+	Node0x556598a51c20 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  %obj.addr = alloca %struct.QCryptoBlockOpenOptions*, align 8\l  call void @llvm.dbg.value(metadata %struct.QCryptoBlockOpenOptions* %obj,\l... metadata !141, metadata !DIExpression()), !dbg !148\l  store %struct.QCryptoBlockOpenOptions* %obj,\l... %struct.QCryptoBlockOpenOptions** %obj.addr, align 8\l  %tobool = icmp eq %struct.QCryptoBlockOpenOptions* %obj, null, !dbg !149\l  br i1 %tobool, label %cleanup, label %if.end, !dbg !151, !prof !152\l|{<s0>T|<s1>F}}"];
+	Node0x556598a51c20:s0 -> Node0x556598a577d0;
+	Node0x556598a51c20:s1 -> Node0x556598a57490;
+	Node0x556598a57490 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.end:                                           \l  %call = tail call %struct.Visitor* @qapi_dealloc_visitor_new() #5, !dbg !153\l  call void @llvm.dbg.value(metadata %struct.Visitor* %call, metadata !142,\l... metadata !DIExpression()), !dbg !148\l  call void @llvm.dbg.value(metadata %struct.QCryptoBlockOpenOptions**\l... %obj.addr, metadata !141, metadata !DIExpression(DW_OP_deref)), !dbg !148\l  call void @visit_type_QCryptoBlockOpenOptions(%struct.Visitor* %call, i8*\l... null, %struct.QCryptoBlockOpenOptions** nonnull %obj.addr, %struct.Error**\l... null) #5, !dbg !154\l  call void @visit_free(%struct.Visitor* %call) #5, !dbg !155\l  br label %cleanup, !dbg !156\l}"];
+	Node0x556598a57490 -> Node0x556598a577d0;
+	Node0x556598a577d0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{cleanup:                                          \l  ret void, !dbg !156\l}"];
+}

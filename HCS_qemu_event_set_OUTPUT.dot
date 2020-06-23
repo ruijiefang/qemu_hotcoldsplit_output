@@ -1,0 +1,17 @@
+digraph "CFG for 'qemu_event_set' function" {
+	label="CFG for 'qemu_event_set' function";
+
+	Node0x5613f1a7e8d0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  call void @llvm.dbg.value(metadata %struct.QemuEvent* %ev, metadata !138,\l... metadata !DIExpression()), !dbg !140\l  %initialized = getelementptr inbounds %struct.QemuEvent, %struct.QemuEvent*\l... %ev, i64 0, i32 1, !dbg !141\l  %0 = load i8, i8* %initialized, align 4, !dbg !141, !range !144\l  %tobool = icmp eq i8 %0, 0, !dbg !141\l  br i1 %tobool, label %if.else, label %if.end, !dbg !145, !prof !146\l|{<s0>T|<s1>F}}"];
+	Node0x5613f1a7e8d0:s0 -> Node0x5613f1a800b0;
+	Node0x5613f1a7e8d0:s1 -> Node0x5613f1a7f1e0;
+	Node0x5613f1a800b0 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.else:                                          \l  tail call void @__assert_fail(i8* getelementptr inbounds ([16 x i8], [16 x\l... i8]* @.str.4, i64 0, i64 0), i8* getelementptr inbounds ([25 x i8], [25 x\l... i8]* @.str.1, i64 0, i64 0), i32 415, i8* getelementptr inbounds ([33 x i8],\l... [33 x i8]* @__PRETTY_FUNCTION__.qemu_event_set, i64 0, i64 0)) #22, !dbg !141\l  unreachable, !dbg !141\l}"];
+	Node0x5613f1a7f1e0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.end:                                           \l  tail call void asm sideeffect \"\", \"~\{memory\},~\{dirflag\},~\{fpsr\},~\{flags\}\"()\l... #23, !dbg !147, !srcloc !150\l  fence seq_cst, !dbg !151\l  %value = getelementptr inbounds %struct.QemuEvent, %struct.QemuEvent* %ev,\l... i64 0, i32 0, !dbg !152\l  %1 = load atomic i32, i32* %value monotonic, align 4, !dbg !152\l  %cmp = icmp eq i32 %1, 0, !dbg !155\l  br i1 %cmp, label %if.end9, label %if.then1, !dbg !156, !prof !157\l|{<s0>T|<s1>F}}"];
+	Node0x5613f1a7f1e0:s0 -> Node0x5613f1a81350;
+	Node0x5613f1a7f1e0:s1 -> Node0x5613f1a81300;
+	Node0x5613f1a81300 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.then1:                                         \l  %2 = atomicrmw xchg i32* %value, i32 0 seq_cst, !dbg !158\l  %cmp6 = icmp eq i32 %2, -1, !dbg !163\l  br i1 %cmp6, label %if.then7, label %if.end9, !dbg !164, !prof !165\l|{<s0>T|<s1>F}}"];
+	Node0x5613f1a81300:s0 -> Node0x5613f1a81d20;
+	Node0x5613f1a81300:s1 -> Node0x5613f1a81350;
+	Node0x5613f1a81d20 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#f7ac8e70",label="{if.then7:                                         \l  call void @llvm.dbg.value(metadata %struct.QemuEvent* %ev, metadata !166,\l... metadata !DIExpression()) #23, !dbg !173\l  call void @llvm.dbg.value(metadata i32 2147483647, metadata !172, metadata\l... !DIExpression()) #23, !dbg !173\l  %call.i = tail call i64 (i64, ...) @syscall(i64 202, %struct.QemuEvent*\l... nonnull %ev, i32 1, i32 2147483647, i8* null, i8* null, i32 0) #23, !dbg !176\l  br label %if.end9, !dbg !177\l}"];
+	Node0x5613f1a81d20 -> Node0x5613f1a81350;
+	Node0x5613f1a81350 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.end9:                                          \l  ret void, !dbg !178\l}"];
+}

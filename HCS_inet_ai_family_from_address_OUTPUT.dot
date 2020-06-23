@@ -1,0 +1,38 @@
+digraph "CFG for 'inet_ai_family_from_address' function" {
+	label="CFG for 'inet_ai_family_from_address' function";
+
+	Node0x55cbae823430 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  call void @llvm.dbg.value(metadata %struct.InetSocketAddress* %addr,\l... metadata !248, metadata !DIExpression()), !dbg !251\l  call void @llvm.dbg.value(metadata %struct.Error** %errp, metadata !249,\l... metadata !DIExpression()), !dbg !251\l  %has_ipv6 = getelementptr inbounds %struct.InetSocketAddress,\l... %struct.InetSocketAddress* %addr, i64 0, i32 8, !dbg !252\l  %0 = load i8, i8* %has_ipv6, align 8, !dbg !252, !range !254\l  %tobool = icmp eq i8 %0, 0, !dbg !252\l  %has_ipv429.phi.trans.insert = getelementptr inbounds\l... %struct.InetSocketAddress, %struct.InetSocketAddress* %addr, i64 0, i32 6,\l... !dbg !251\l  %.pre66 = load i8, i8* %has_ipv429.phi.trans.insert, align 2, !dbg !251,\l... !range !254\l  %tobool30 = icmp eq i8 %.pre66, 0, !dbg !251\l  br i1 %tobool, label %lor.lhs.false28, label %land.lhs.true, !dbg !255,\l... !prof !256\l|{<s0>T|<s1>F}}"];
+	Node0x55cbae823430:s0 -> Node0x55cbae830450;
+	Node0x55cbae823430:s1 -> Node0x55cbae827720;
+	Node0x55cbae827720 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{land.lhs.true:                                    \l  %ipv69.phi.trans.insert = getelementptr inbounds %struct.InetSocketAddress,\l... %struct.InetSocketAddress* %addr, i64 0, i32 9, !dbg !251\l  %.pre = load i8, i8* %ipv69.phi.trans.insert, align 1, !dbg !251, !range !254\l  %tobool10 = icmp eq i8 %.pre, 0, !dbg !251\l  br i1 %tobool30, label %land.lhs.true8, label %land.lhs.true2, !dbg !257\l|{<s0>T|<s1>F}}"];
+	Node0x55cbae827720:s0 -> Node0x55cbae82c020;
+	Node0x55cbae827720:s1 -> Node0x55cbae827670;
+	Node0x55cbae827670 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{land.lhs.true2:                                   \l  %ipv4 = getelementptr inbounds %struct.InetSocketAddress,\l... %struct.InetSocketAddress* %addr, i64 0, i32 7, !dbg !251\l  %1 = load i8, i8* %ipv4, align 1, !dbg !251, !range !254\l  %tobool5 = icmp eq i8 %1, 0, !dbg !251\l  br i1 %tobool10, label %land.lhs.true4, label %land.lhs.true14, !dbg !258\l|{<s0>T|<s1>F}}"];
+	Node0x55cbae827670:s0 -> Node0x55cbae8275c0;
+	Node0x55cbae827670:s1 -> Node0x55cbae82cb60;
+	Node0x55cbae8275c0 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{land.lhs.true4:                                   \l  br i1 %tobool5, label %if.then, label %land.lhs.true31, !dbg !259\l|{<s0>T|<s1>F}}"];
+	Node0x55cbae8275c0:s0 -> Node0x55cbae827520;
+	Node0x55cbae8275c0:s1 -> Node0x55cbae831500;
+	Node0x55cbae827520 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.then:                                          \l  tail call void (%struct.Error**, i8*, i32, i8*, i8*, ...)\l... @error_setg_internal(%struct.Error** %errp, i8* getelementptr inbounds ([20 x\l... i8], [20 x i8]* @.str, i64 0, i64 0), i32 132, i8* getelementptr inbounds\l... ([28 x i8], [28 x i8]* @__func__.inet_ai_family_from_address, i64 0, i64 0),\l... i8* getelementptr inbounds ([42 x i8], [42 x i8]* @.str.1, i64 0, i64 0))\l... #16, !dbg !260\l  br label %return, !dbg !262\l}"];
+	Node0x55cbae827520 -> Node0x55cbae81fed0;
+	Node0x55cbae82c020 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{land.lhs.true8:                                   \l  br i1 %tobool10, label %land.lhs.true44, label %return, !dbg !263\l|{<s0>T|<s1>F}}"];
+	Node0x55cbae82c020:s0 -> Node0x55cbae832c20;
+	Node0x55cbae82c020:s1 -> Node0x55cbae81fed0;
+	Node0x55cbae82cb60 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{land.lhs.true14:                                  \l  br i1 %tobool5, label %return, label %if.then17, !dbg !265\l|{<s0>T|<s1>F}}"];
+	Node0x55cbae82cb60:s0 -> Node0x55cbae81fed0;
+	Node0x55cbae82cb60:s1 -> Node0x55cbae823090;
+	Node0x55cbae823090 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.then17:                                        \l  %host = getelementptr inbounds %struct.InetSocketAddress,\l... %struct.InetSocketAddress* %addr, i64 0, i32 0, !dbg !266\l  %2 = load i8*, i8** %host, align 8, !dbg !266\l  %tobool18 = icmp eq i8* %2, null, !dbg !269\l  br i1 %tobool18, label %return, label %lor.lhs.false, !dbg !270\l|{<s0>T|<s1>F}}"];
+	Node0x55cbae823090:s0 -> Node0x55cbae81fed0;
+	Node0x55cbae823090:s1 -> Node0x55cbae82d550;
+	Node0x55cbae82d550 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{lor.lhs.false:                                    \l  %call = tail call i32 @g_str_equal(i8* nonnull %2, i8* getelementptr\l... inbounds ([1 x i8], [1 x i8]* @.str.2, i64 0, i64 0)) #16, !dbg !271\l  %tobool20 = icmp eq i32 %call, 0, !dbg !271\l  %spec.select = select i1 %tobool20, i32 0, i32 10, !dbg !272\l  ret i32 %spec.select, !dbg !272\l}"];
+	Node0x55cbae830450 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{lor.lhs.false28:                                  \l  br i1 %tobool30, label %if.end48, label %land.lhs.true31, !dbg !273, !prof\l... !275\l|{<s0>T|<s1>F}}"];
+	Node0x55cbae830450:s0 -> Node0x55cbae8322f0;
+	Node0x55cbae830450:s1 -> Node0x55cbae831500;
+	Node0x55cbae831500 [shape=record,penwidth=3.0, color="red",label="{land.lhs.true31:                                  \l  %ipv432 = getelementptr inbounds %struct.InetSocketAddress,\l... %struct.InetSocketAddress* %addr, i64 0, i32 7, !dbg !276\l  %3 = load i8, i8* %ipv432, align 1, !dbg !276, !range !254\l  %tobool33 = icmp eq i8 %3, 0, !dbg !276\l  %spec.select80 = select i1 %tobool33, i32 10, i32 2, !dbg !277\l  ret i32 %spec.select80, !dbg !277\l}"];
+	Node0x55cbae832c20 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{land.lhs.true44:                                  \l  %ipv645 = getelementptr inbounds %struct.InetSocketAddress,\l... %struct.InetSocketAddress* %addr, i64 0, i32 9, !dbg !278\l  %4 = load i8, i8* %ipv645, align 1, !dbg !278, !range !254\l  %tobool46 = icmp eq i8 %4, 0, !dbg !278\l  br i1 %tobool46, label %return, label %if.end48, !dbg !280\l|{<s0>T|<s1>F}}"];
+	Node0x55cbae832c20:s0 -> Node0x55cbae81fed0;
+	Node0x55cbae832c20:s1 -> Node0x55cbae8322f0;
+	Node0x55cbae8322f0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.end48:                                         \l  br label %return, !dbg !281\l}"];
+	Node0x55cbae8322f0 -> Node0x55cbae81fed0;
+	Node0x55cbae81fed0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{return:                                           \l  %retval.0 = phi i32 [ 0, %if.end48 ], [ 0, %if.then ], [ 10, %if.then17 ], [\l... 2, %land.lhs.true44 ], [ 10, %land.lhs.true8 ], [ 10, %land.lhs.true14 ],\l... !dbg !251\l  ret i32 %retval.0, !dbg !282\l}"];
+}

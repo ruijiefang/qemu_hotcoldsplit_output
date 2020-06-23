@@ -1,0 +1,12 @@
+digraph "CFG for 'loc_pop' function" {
+	label="CFG for 'loc_pop' function";
+
+	Node0x55915b5b3e60 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  call void @llvm.dbg.value(metadata %struct.Location* %loc, metadata !100,\l... metadata !DIExpression()), !dbg !102\l  %0 = load %struct.Location*, %struct.Location** @cur_loc, align 8, !dbg !103\l  %cmp = icmp eq %struct.Location* %0, %loc, !dbg !103\l  br i1 %cmp, label %land.lhs.true, label %if.else, !dbg !103, !prof !106\l|{<s0>T|<s1>F}}"];
+	Node0x55915b5b3e60:s0 -> Node0x55915b5b99d0;
+	Node0x55915b5b3e60:s1 -> Node0x55915b5b9980;
+	Node0x55915b5b99d0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{land.lhs.true:                                    \l  %prev = getelementptr inbounds %struct.Location, %struct.Location* %loc, i64\l... 0, i32 3, !dbg !103\l  %1 = load %struct.Location*, %struct.Location** %prev, align 8, !dbg !103\l  %tobool = icmp eq %struct.Location* %1, null, !dbg !103\l  br i1 %tobool, label %if.else, label %if.end, !dbg !107, !prof !108\l|{<s0>T|<s1>F}}"];
+	Node0x55915b5b99d0:s0 -> Node0x55915b5b9980;
+	Node0x55915b5b99d0:s1 -> Node0x55915b5ba480;
+	Node0x55915b5b9980 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.else:                                          \l  tail call void @__assert_fail(i8* getelementptr inbounds ([28 x i8], [28 x\l... i8]* @.str.2, i64 0, i64 0), i8* getelementptr inbounds ([18 x i8], [18 x\l... i8]* @.str.1, i64 0, i64 0), i32 89, i8* getelementptr inbounds ([30 x i8],\l... [30 x i8]* @__PRETTY_FUNCTION__.loc_pop, i64 0, i64 0)) #13, !dbg !103\l  unreachable, !dbg !103\l}"];
+	Node0x55915b5ba480 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.end:                                           \l  store %struct.Location* %1, %struct.Location** @cur_loc, align 8, !dbg !109\l  store %struct.Location* null, %struct.Location** %prev, align 8, !dbg !110\l  ret %struct.Location* %loc, !dbg !111\l}"];
+}

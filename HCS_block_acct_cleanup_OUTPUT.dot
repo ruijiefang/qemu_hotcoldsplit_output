@@ -1,0 +1,28 @@
+digraph "CFG for 'block_acct_cleanup' function" {
+	label="CFG for 'block_acct_cleanup' function";
+
+	Node0x55884640cef0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  call void @llvm.dbg.value(metadata %struct.BlockAcctStats* %stats, metadata\l... !185, metadata !DIExpression()), !dbg !189\l  %slh_first = getelementptr inbounds %struct.BlockAcctStats,\l... %struct.BlockAcctStats* %stats, i64 0, i32 8, i32 0, !dbg !190\l  %0 = load %struct.BlockAcctTimedStats*, %struct.BlockAcctTimedStats**\l... %slh_first, align 8, !dbg !190\l  call void @llvm.dbg.value(metadata %struct.BlockAcctTimedStats* %0, metadata\l... !186, metadata !DIExpression()), !dbg !189\l  %tobool6 = icmp eq %struct.BlockAcctTimedStats* %0, null, !dbg !192\l  br i1 %tobool6, label %for.end, label %land.rhs.preheader, !dbg !192, !prof\l... !194\l|{<s0>T|<s1>F}}"];
+	Node0x55884640cef0:s0 -> Node0x55884640fb50;
+	Node0x55884640cef0:s1 -> Node0x55884646f630;
+	Node0x55884646f630 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{land.rhs.preheader:                               \l  br label %land.rhs.peel.begin, !dbg !190\l}"];
+	Node0x55884646f630 -> Node0x558846444d00;
+	Node0x558846444d00 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{land.rhs.peel.begin:                              \l  br label %land.rhs.peel, !dbg !190\l}"];
+	Node0x558846444d00 -> Node0x558846570de0;
+	Node0x558846570de0 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{land.rhs.peel:                                    \l  call void @llvm.dbg.value(metadata %struct.BlockAcctTimedStats* %0, metadata\l... !186, metadata !DIExpression()), !dbg !189\l  %sle_next.peel = getelementptr inbounds %struct.BlockAcctTimedStats,\l... %struct.BlockAcctTimedStats* %0, i64 0, i32 3, i32 0, !dbg !192\l  %1 = load %struct.BlockAcctTimedStats*, %struct.BlockAcctTimedStats**\l... %sle_next.peel, align 8, !dbg !192\l  call void @llvm.dbg.value(metadata %struct.BlockAcctTimedStats* %1, metadata\l... !187, metadata !DIExpression()), !dbg !189\l  %2 = bitcast %struct.BlockAcctTimedStats* %0 to i8*, !dbg !195\l  tail call void @g_free(i8* nonnull %2) #12, !dbg !197\l  call void @llvm.dbg.value(metadata %struct.BlockAcctTimedStats* %1, metadata\l... !186, metadata !DIExpression()), !dbg !189\l  %tobool.peel = icmp eq %struct.BlockAcctTimedStats* %1, null, !dbg !192\l  br i1 %tobool.peel, label %for.end.loopexit, label %land.rhs.peel.next, !dbg\l... !192, !prof !194\l|{<s0>T|<s1>F}}"];
+	Node0x558846570de0:s0 -> Node0x5588465a80d0;
+	Node0x558846570de0:s1 -> Node0x55884641e4c0;
+	Node0x55884641e4c0 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{land.rhs.peel.next:                               \l  br label %land.rhs.peel.next8, !dbg !190\l}"];
+	Node0x55884641e4c0 -> Node0x558846448d00;
+	Node0x558846448d00 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{land.rhs.peel.next8:                              \l  br label %land.rhs.preheader.peel.newph, !dbg !190\l}"];
+	Node0x558846448d00 -> Node0x558846570d90;
+	Node0x558846570d90 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{land.rhs.preheader.peel.newph:                    \l  br label %land.rhs, !dbg !190\l}"];
+	Node0x558846570d90 -> Node0x5588464116e0;
+	Node0x5588464116e0 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{land.rhs:                                         \l  %s.07 = phi %struct.BlockAcctTimedStats* [ %3, %land.rhs ], [ %1,\l... %land.rhs.preheader.peel.newph ]\l  call void @llvm.dbg.value(metadata %struct.BlockAcctTimedStats* %s.07,\l... metadata !186, metadata !DIExpression()), !dbg !189\l  %sle_next = getelementptr inbounds %struct.BlockAcctTimedStats,\l... %struct.BlockAcctTimedStats* %s.07, i64 0, i32 3, i32 0, !dbg !192\l  %3 = load %struct.BlockAcctTimedStats*, %struct.BlockAcctTimedStats**\l... %sle_next, align 8, !dbg !192\l  call void @llvm.dbg.value(metadata %struct.BlockAcctTimedStats* %3, metadata\l... !187, metadata !DIExpression()), !dbg !189\l  %4 = bitcast %struct.BlockAcctTimedStats* %s.07 to i8*, !dbg !195\l  tail call void @g_free(i8* nonnull %4) #12, !dbg !197\l  call void @llvm.dbg.value(metadata %struct.BlockAcctTimedStats* %3, metadata\l... !186, metadata !DIExpression()), !dbg !189\l  %tobool = icmp eq %struct.BlockAcctTimedStats* %3, null, !dbg !192\l  br i1 %tobool, label %for.end.loopexit.loopexit, label %land.rhs, !dbg !192,\l... !prof !194, !llvm.loop !198\l|{<s0>T|<s1>F}}"];
+	Node0x5588464116e0:s0 -> Node0x558846598830;
+	Node0x5588464116e0:s1 -> Node0x5588464116e0;
+	Node0x558846598830 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{for.end.loopexit.loopexit:                        \l  br label %for.end.loopexit, !dbg !202\l}"];
+	Node0x558846598830 -> Node0x5588465a80d0;
+	Node0x5588465a80d0 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{for.end.loopexit:                                 \l  br label %for.end, !dbg !202\l}"];
+	Node0x5588465a80d0 -> Node0x55884640fb50;
+	Node0x55884640fb50 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{for.end:                                          \l  %lock = getelementptr inbounds %struct.BlockAcctStats,\l... %struct.BlockAcctStats* %stats, i64 0, i32 0, !dbg !202\l  tail call void @qemu_mutex_destroy(%struct.QemuMutex* %lock) #12, !dbg !203\l  ret void, !dbg !204\l}"];
+}

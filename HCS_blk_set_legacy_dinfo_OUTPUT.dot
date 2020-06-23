@@ -1,0 +1,9 @@
+digraph "CFG for 'blk_set_legacy_dinfo' function" {
+	label="CFG for 'blk_set_legacy_dinfo' function";
+
+	Node0x55d70fbebd70 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  call void @llvm.dbg.value(metadata %struct.BlockBackend* %blk, metadata\l... !3090, metadata !DIExpression()), !dbg !3093\l  call void @llvm.dbg.value(metadata %struct.DriveInfo* %dinfo, metadata\l... !3091, metadata !DIExpression()), !dbg !3093\l  %legacy_dinfo = getelementptr inbounds %struct.BlockBackend,\l... %struct.BlockBackend* %blk, i64 0, i32 4, !dbg !3094\l  %0 = load %struct.DriveInfo*, %struct.DriveInfo** %legacy_dinfo, align 8,\l... !dbg !3094\l  %tobool = icmp eq %struct.DriveInfo* %0, null, !dbg !3094\l  br i1 %tobool, label %if.end, label %if.else, !dbg !3097, !prof !3098\l|{<s0>T|<s1>F}}"];
+	Node0x55d70fbebd70:s0 -> Node0x55d70fba17b0;
+	Node0x55d70fbebd70:s1 -> Node0x55d70fba1800;
+	Node0x55d70fba1800 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.else:                                          \l  tail call void @__assert_fail(i8* getelementptr inbounds ([19 x i8], [19 x\l... i8]* @.str.12, i64 0, i64 0), i8* getelementptr inbounds ([22 x i8], [22 x\l... i8]* @.str.2, i64 0, i64 0), i32 768, i8* getelementptr inbounds ([61 x i8],\l... [61 x i8]* @__PRETTY_FUNCTION__.blk_set_legacy_dinfo, i64 0, i64 0)) #26,\l... !dbg !3094\l  unreachable, !dbg !3094\l}"];
+	Node0x55d70fba17b0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.end:                                           \l  store %struct.DriveInfo* %dinfo, %struct.DriveInfo** %legacy_dinfo, align 8,\l... !dbg !3099\l  ret %struct.DriveInfo* %dinfo, !dbg !3100\l}"];
+}

@@ -1,0 +1,9 @@
+digraph "CFG for 'chardev_machine_done_hook' function" {
+	label="CFG for 'chardev_machine_done_hook' function";
+
+	Node0x55fa00cd5c40 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  call void @llvm.dbg.value(metadata %struct.Notifier* %notifier, metadata\l... !799, metadata !DIExpression()), !dbg !804\l  call void @llvm.dbg.value(metadata i8* %unused, metadata !800, metadata\l... !DIExpression()), !dbg !804\l  %call.i = tail call %struct.Object* @object_get_root() #17, !dbg !805\l  %call1.i = tail call %struct.Object* @container_get(%struct.Object* %call.i,\l... i8* getelementptr inbounds ([10 x i8], [10 x i8]* @.str.108, i64 0, i64 0))\l... #17, !dbg !811\l  %call1 = tail call i32 @object_child_foreach(%struct.Object* %call1.i, i32\l... (%struct.Object*, i8*)* nonnull @chardev_machine_done_notify_one, i8* null)\l... #17, !dbg !812\l  call void @llvm.dbg.value(metadata i32 %call1, metadata !801, metadata\l... !DIExpression()), !dbg !804\l  %tobool = icmp eq i32 %call1, 0, !dbg !813\l  br i1 %tobool, label %if.end, label %if.then, !dbg !815, !prof !816\l|{<s0>T|<s1>F}}"];
+	Node0x55fa00cd5c40:s0 -> Node0x55fa00e72890;
+	Node0x55fa00cd5c40:s1 -> Node0x55fa0097cd40;
+	Node0x55fa0097cd40 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.then:                                          \l  tail call void (i8*, ...) @error_report(i8* getelementptr inbounds ([42 x\l... i8], [42 x i8]* @.str.112, i64 0, i64 0)) #17, !dbg !817\l  tail call void @exit(i32 1) #18, !dbg !819\l  unreachable, !dbg !819\l}"];
+	Node0x55fa00e72890 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.end:                                           \l  ret void, !dbg !820\l}"];
+}

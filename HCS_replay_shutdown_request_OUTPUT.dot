@@ -1,0 +1,14 @@
+digraph "CFG for 'replay_shutdown_request' function" {
+	label="CFG for 'replay_shutdown_request' function";
+
+	Node0x55a8034ff690 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  call void @llvm.dbg.value(metadata i32 %cause, metadata !197, metadata\l... !DIExpression()), !dbg !205\l  %0 = load i32, i32* @replay_mode, align 4, !dbg !206\l  %cmp = icmp eq i32 %0, 1, !dbg !207\l  br i1 %cmp, label %do.body, label %if.end6, !dbg !208, !prof !209\l|{<s0>T|<s1>F}}"];
+	Node0x55a8034ff690:s0 -> Node0x55a80333e870;
+	Node0x55a8034ff690:s1 -> Node0x55a80333de90;
+	Node0x55a80333e870 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{do.body:                                          \l  %call = tail call zeroext i1 @replay_mutex_locked() #14, !dbg !210\l  call void @llvm.dbg.value(metadata i32 undef, metadata !198, metadata\l... !DIExpression()), !dbg !212\l  br i1 %call, label %do.end, label %if.else3, !dbg !213, !prof !214,\l... !misexpect !215\l|{<s0>T|<s1>F}}"];
+	Node0x55a80333e870:s0 -> Node0x55a80333e7d0;
+	Node0x55a80333e870:s1 -> Node0x55a80333ea30;
+	Node0x55a80333ea30 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.else3:                                         \l  tail call void @g_assertion_message_expr(i8* null, i8* getelementptr\l... inbounds ([16 x i8], [16 x i8]* @.str.1, i64 0, i64 0), i32 171, i8*\l... getelementptr inbounds ([24 x i8], [24 x i8]*\l... @__func__.replay_shutdown_request, i64 0, i64 0), i8* getelementptr inbounds\l... ([22 x i8], [22 x i8]* @.str.2, i64 0, i64 0)) #15, !dbg !216\l  unreachable, !dbg !216\l}"];
+	Node0x55a80333e7d0 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{do.end:                                           \l  %1 = trunc i32 %cause to i8, !dbg !217\l  %conv5 = add i8 %1, 4, !dbg !217\l  tail call void @replay_put_event(i8 zeroext %conv5) #14, !dbg !218\l  br label %if.end6, !dbg !219\l}"];
+	Node0x55a80333e7d0 -> Node0x55a80333de90;
+	Node0x55a80333de90 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.end6:                                          \l  ret void, !dbg !220\l}"];
+}

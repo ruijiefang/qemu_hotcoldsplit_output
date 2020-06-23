@@ -1,0 +1,44 @@
+digraph "CFG for 'replay_checkpoint' function" {
+	label="CFG for 'replay_checkpoint' function";
+
+	Node0x55a80333e820 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  call void @llvm.dbg.value(metadata i32 %checkpoint, metadata !95, metadata\l... !DIExpression()), !dbg !193\l  call void @llvm.dbg.value(metadata i8 0, metadata !96, metadata\l... !DIExpression()), !dbg !193\l  %add = add i32 %checkpoint, 23, !dbg !194\l  %cmp = icmp ult i32 %add, 32, !dbg !194\l  br i1 %cmp, label %if.end, label %if.else, !dbg !197, !prof !198\l|{<s0>T|<s1>F}}"];
+	Node0x55a80333e820:s0 -> Node0x55a803511e50;
+	Node0x55a80333e820:s1 -> Node0x55a803511ea0;
+	Node0x55a803511ea0 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.else:                                          \l  tail call void @__assert_fail(i8* getelementptr inbounds ([55 x i8], [55 x\l... i8]* @.str.4, i64 0, i64 0), i8* getelementptr inbounds ([16 x i8], [16 x\l... i8]* @.str.1, i64 0, i64 0), i32 180, i8* getelementptr inbounds ([42 x i8],\l... [42 x i8]* @__PRETTY_FUNCTION__.replay_checkpoint, i64 0, i64 0)) #14, !dbg\l... !194\l  unreachable, !dbg !194\l}"];
+	Node0x55a803511e50 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.end:                                           \l  %0 = load %struct._IO_FILE*, %struct._IO_FILE** @replay_file, align 8, !dbg\l... !199\l  %tobool = icmp eq %struct._IO_FILE* %0, null, !dbg !199\l  br i1 %tobool, label %cleanup, label %if.end2, !dbg !201, !prof !198\l|{<s0>T|<s1>F}}"];
+	Node0x55a803511e50:s0 -> Node0x55a803512c40;
+	Node0x55a803511e50:s1 -> Node0x55a803512a20;
+	Node0x55a803512a20 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.end2:                                          \l  %.b64 = load i1, i1* @replay_checkpoint.in_checkpoint, align 1, !dbg !202\l  br i1 %.b64, label %cleanup, label %if.end5, !dbg !204\l|{<s0>T|<s1>F}}"];
+	Node0x55a803512a20:s0 -> Node0x55a803512c40;
+	Node0x55a803512a20:s1 -> Node0x55a803514480;
+	Node0x55a803514480 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.end5:                                          \l  store i1 true, i1* @replay_checkpoint.in_checkpoint, align 1, !dbg !205\l  tail call void @replay_save_instructions() #15, !dbg !206\l  %1 = load i32, i32* @replay_mode, align 4, !dbg !207\l  switch i32 %1, label %out [\l    i32 2, label %do.body\l    i32 1, label %do.body30\l  ], !dbg !208\l|{<s0>def|<s1>2|<s2>1}}"];
+	Node0x55a803514480:s0 -> Node0x55a803517ea0;
+	Node0x55a803514480:s1 -> Node0x55a8035151c0;
+	Node0x55a803514480:s2 -> Node0x55a8034f22b0;
+	Node0x55a8035151c0 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{do.body:                                          \l  %call = tail call zeroext i1 @replay_mutex_locked() #15, !dbg !209\l  call void @llvm.dbg.value(metadata i32 undef, metadata !97, metadata\l... !DIExpression()), !dbg !211\l  br i1 %call, label %do.end, label %if.else13, !dbg !212, !prof !213,\l... !misexpect !214\l|{<s0>T|<s1>F}}"];
+	Node0x55a8035151c0:s0 -> Node0x55a803515120;
+	Node0x55a8035151c0:s1 -> Node0x55a803515440;
+	Node0x55a803515440 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.else13:                                        \l  tail call void @g_assertion_message_expr(i8* null, i8* getelementptr\l... inbounds ([16 x i8], [16 x i8]* @.str.1, i64 0, i64 0), i32 199, i8*\l... getelementptr inbounds ([18 x i8], [18 x i8]* @__func__.replay_checkpoint,\l... i64 0, i64 0), i8* getelementptr inbounds ([22 x i8], [22 x i8]* @.str.2, i64\l... 0, i64 0)) #14, !dbg !215\l  unreachable, !dbg !215\l}"];
+	Node0x55a803515120 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{do.end:                                           \l  %call16 = tail call zeroext i1 @replay_next_event_is(i32 %add), !dbg !216\l  br i1 %call16, label %if.then17, label %if.else18, !dbg !218\l|{<s0>T|<s1>F}}"];
+	Node0x55a803515120:s0 -> Node0x55a8035167f0;
+	Node0x55a803515120:s1 -> Node0x55a803516ae0;
+	Node0x55a8035167f0 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.then17:                                        \l  tail call void @replay_finish_event() #15, !dbg !219\l  br label %if.end23, !dbg !221\l}"];
+	Node0x55a8035167f0 -> Node0x55a803516a90;
+	Node0x55a803516ae0 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.else18:                                        \l  %2 = load i32, i32* getelementptr inbounds (%struct.ReplayState,\l... %struct.ReplayState* @replay_state, i64 0, i32 3), align 4, !dbg !222\l  %cmp19 = icmp eq i32 %2, 3, !dbg !224\l  br i1 %cmp19, label %if.end23, label %out, !dbg !225\l|{<s0>T|<s1>F}}"];
+	Node0x55a803516ae0:s0 -> Node0x55a803516a90;
+	Node0x55a803516ae0:s1 -> Node0x55a803517ea0;
+	Node0x55a803516a90 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.end23:                                         \l  tail call void @replay_read_events(i32 %checkpoint) #15, !dbg !226\l  %3 = load i32, i32* getelementptr inbounds (%struct.ReplayState,\l... %struct.ReplayState* @replay_state, i64 0, i32 3), align 4, !dbg !227\l  %cmp24 = icmp ne i32 %3, 3, !dbg !228\l  call void @llvm.dbg.value(metadata i1 %cmp24, metadata !96, metadata\l... !DIExpression(DW_OP_LLVM_convert, 1, DW_ATE_unsigned, DW_OP_LLVM_convert, 8,\l... DW_ATE_unsigned, DW_OP_stack_value)), !dbg !193\l  br label %out, !dbg !229\l}"];
+	Node0x55a803516a90 -> Node0x55a803517ea0;
+	Node0x55a8034f22b0 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{do.body30:                                        \l  %call32 = tail call zeroext i1 @replay_mutex_locked() #15, !dbg !230\l  call void @llvm.dbg.value(metadata i32 undef, metadata !103, metadata\l... !DIExpression()), !dbg !232\l  br i1 %call32, label %do.end44, label %if.else41, !dbg !233, !prof !213,\l... !misexpect !214\l|{<s0>T|<s1>F}}"];
+	Node0x55a8034f22b0:s0 -> Node0x55a8034f2210;
+	Node0x55a8034f22b0:s1 -> Node0x55a803515e50;
+	Node0x55a803515e50 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.else41:                                        \l  tail call void @g_assertion_message_expr(i8* null, i8* getelementptr\l... inbounds ([16 x i8], [16 x i8]* @.str.1, i64 0, i64 0), i32 212, i8*\l... getelementptr inbounds ([18 x i8], [18 x i8]* @__func__.replay_checkpoint,\l... i64 0, i64 0), i8* getelementptr inbounds ([22 x i8], [22 x i8]* @.str.2, i64\l... 0, i64 0)) #14, !dbg !234\l  unreachable, !dbg !234\l}"];
+	Node0x55a8034f2210 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{do.end44:                                         \l  %conv46 = trunc i32 %add to i8, !dbg !235\l  tail call void @replay_put_event(i8 zeroext %conv46) #15, !dbg !236\l  %4 = and i32 %checkpoint, -5, !dbg !237\l  %5 = icmp eq i32 %4, 0, !dbg !237\l  br i1 %5, label %out, label %if.then51, !dbg !237\l|{<s0>T|<s1>F}}"];
+	Node0x55a8034f2210:s0 -> Node0x55a803517ea0;
+	Node0x55a8034f2210:s1 -> Node0x55a80351b5e0;
+	Node0x55a80351b5e0 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.then51:                                        \l  tail call void @replay_save_events(i32 %checkpoint) #15, !dbg !239\l  br label %out, !dbg !241\l}"];
+	Node0x55a80351b5e0 -> Node0x55a803517ea0;
+	Node0x55a803517ea0 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{out:                                              \l  %res.0 = phi i1 [ %cmp24, %if.end23 ], [ false, %if.else18 ], [ false,\l... %if.end5 ], [ true, %do.end44 ], [ true, %if.then51 ]\l  call void @llvm.dbg.value(metadata i8 undef, metadata !96, metadata\l... !DIExpression()), !dbg !193\l  call void @llvm.dbg.label(metadata !109), !dbg !242\l  store i1 false, i1* @replay_checkpoint.in_checkpoint, align 1, !dbg !243\l  br label %cleanup, !dbg !244\l}"];
+	Node0x55a803517ea0 -> Node0x55a803512c40;
+	Node0x55a803512c40 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{cleanup:                                          \l  %retval.0 = phi i1 [ %res.0, %out ], [ true, %if.end ], [ true, %if.end2 ],\l... !dbg !193\l  ret i1 %retval.0, !dbg !245\l}"];
+}

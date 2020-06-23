@@ -1,0 +1,12 @@
+digraph "CFG for 'qio_dns_resolver_get_instance' function" {
+	label="CFG for 'qio_dns_resolver_get_instance' function";
+
+	Node0x55b589787990 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  %0 = load volatile i32, i32* getelementptr inbounds (%struct._GOnce,\l... %struct._GOnce* @instance_init, i64 0, i32 0), align 8, !dbg !271\l  %cmp = icmp eq i32 %0, 2, !dbg !271\l  br i1 %cmp, label %cond.true, label %cond.false, !dbg !271, !prof !272\l|{<s0>T|<s1>F}}"];
+	Node0x55b589787990:s0 -> Node0x55b589794fe0;
+	Node0x55b589787990:s1 -> Node0x55b589795060;
+	Node0x55b589794fe0 [shape=record,penwidth=3.0, color="red",label="{cond.true:                                        \l  %1 = load volatile i8*, i8** getelementptr inbounds (%struct._GOnce,\l... %struct._GOnce* @instance_init, i64 0, i32 1), align 8, !dbg !271\l  br label %cond.end, !dbg !271\l}"];
+	Node0x55b589794fe0 -> Node0x55b5897950e0;
+	Node0x55b589795060 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{cond.false:                                       \l  %call = tail call i8* @g_once_impl(%struct._GOnce* nonnull @instance_init,\l... i8* (i8*)* nonnull @qio_dns_resolve_init_instance, i8* null) #11, !dbg !271\l  br label %cond.end, !dbg !271\l}"];
+	Node0x55b589795060 -> Node0x55b5897950e0;
+	Node0x55b5897950e0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{cond.end:                                         \l  %2 = load %struct.QIODNSResolver*, %struct.QIODNSResolver** @instance, align\l... 8, !dbg !273\l  ret %struct.QIODNSResolver* %2, !dbg !274\l}"];
+}

@@ -1,0 +1,9 @@
+digraph "CFG for 'acpi_data_len' function" {
+	label="CFG for 'acpi_data_len' function";
+
+	Node0x559ed8e98480 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  call void @llvm.dbg.value(metadata %struct._GArray* %table, metadata !305,\l... metadata !DIExpression()), !dbg !307\l  %call = tail call i32 @g_array_get_element_size(%struct._GArray* %table) #4,\l... !dbg !308\l  %cmp = icmp eq i32 %call, 1, !dbg !308\l  br i1 %cmp, label %if.end, label %if.else, !dbg !311, !prof !312\l|{<s0>T|<s1>F}}"];
+	Node0x559ed8e98480:s0 -> Node0x559ed8e98de0;
+	Node0x559ed8e98480:s1 -> Node0x559ed8e99e20;
+	Node0x559ed8e99e20 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.else:                                          \l  tail call void @__assert_fail(i8* getelementptr inbounds ([37 x i8], [37 x\l... i8]* @.str.21, i64 0, i64 0), i8* getelementptr inbounds ([20 x i8], [20 x\l... i8]* @.str.1, i64 0, i64 0), i32 1566, i8* getelementptr inbounds ([37 x i8],\l... [37 x i8]* @__PRETTY_FUNCTION__.acpi_data_len, i64 0, i64 0)) #17, !dbg !308\l  unreachable, !dbg !308\l}"];
+	Node0x559ed8e98de0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.end:                                           \l  %len = getelementptr inbounds %struct._GArray, %struct._GArray* %table, i64\l... 0, i32 1, !dbg !313\l  %0 = load i32, i32* %len, align 8, !dbg !313\l  ret i32 %0, !dbg !314\l}"];
+}

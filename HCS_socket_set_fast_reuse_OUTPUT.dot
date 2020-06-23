@@ -1,0 +1,9 @@
+digraph "CFG for 'socket_set_fast_reuse' function" {
+	label="CFG for 'socket_set_fast_reuse' function";
+
+	Node0x55834e16a3d0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  %val = alloca i32, align 4\l  call void @llvm.dbg.value(metadata i32 %fd, metadata !461, metadata\l... !DIExpression()), !dbg !465\l  %0 = bitcast i32* %val to i8*, !dbg !466\l  call void @llvm.lifetime.start.p0i8(i64 4, i8* nonnull %0) #17, !dbg !466\l  call void @llvm.dbg.value(metadata i32 1, metadata !462, metadata\l... !DIExpression()), !dbg !465\l  store i32 1, i32* %val, align 4, !dbg !467\l  call void @llvm.dbg.value(metadata i32* %val, metadata !462, metadata\l... !DIExpression(DW_OP_deref)), !dbg !465\l  %call = call i32 @setsockopt(i32 %fd, i32 1, i32 2, i8* nonnull %0, i32 4)\l... #17, !dbg !468\l  call void @llvm.dbg.value(metadata i32 %call, metadata !463, metadata\l... !DIExpression()), !dbg !465\l  %cmp = icmp eq i32 %call, 0, !dbg !469\l  br i1 %cmp, label %if.end, label %if.else, !dbg !472, !prof !473\l|{<s0>T|<s1>F}}"];
+	Node0x55834e16a3d0:s0 -> Node0x55834e16c930;
+	Node0x55834e16a3d0:s1 -> Node0x55834e16c980;
+	Node0x55834e16c980 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.else:                                          \l  call void @__assert_fail(i8* getelementptr inbounds ([9 x i8], [9 x i8]*\l... @.str.9, i64 0, i64 0), i8* getelementptr inbounds ([19 x i8], [19 x i8]*\l... @.str, i64 0, i64 0), i32 284, i8* getelementptr inbounds ([31 x i8], [31 x\l... i8]* @__PRETTY_FUNCTION__.socket_set_fast_reuse, i64 0, i64 0)) #18, !dbg !469\l  unreachable, !dbg !469\l}"];
+	Node0x55834e16c930 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.end:                                           \l  call void @llvm.lifetime.end.p0i8(i64 4, i8* nonnull %0) #17, !dbg !474\l  ret i32 0, !dbg !475\l}"];
+}

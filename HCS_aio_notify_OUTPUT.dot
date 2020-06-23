@@ -1,0 +1,10 @@
+digraph "CFG for 'aio_notify' function" {
+	label="CFG for 'aio_notify' function";
+
+	Node0x55e9b6a096d0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  call void @llvm.dbg.value(metadata %struct.AioContext* %ctx, metadata !352,\l... metadata !DIExpression()), !dbg !354\l  tail call void asm sideeffect \"\", \"~\{memory\},~\{dirflag\},~\{fpsr\},~\{flags\}\"()\l... #15, !dbg !355, !srcloc !358\l  fence seq_cst, !dbg !359\l  %notify_me = getelementptr inbounds %struct.AioContext, %struct.AioContext*\l... %ctx, i64 0, i32 4, !dbg !360\l  %0 = load atomic i32, i32* %notify_me monotonic, align 8, !dbg !360\l  %tobool = icmp eq i32 %0, 0, !dbg !363\l  br i1 %tobool, label %if.end, label %if.then, !dbg !364, !prof !365\l|{<s0>T|<s1>F}}"];
+	Node0x55e9b6a096d0:s0 -> Node0x55e9b6a10290;
+	Node0x55e9b6a096d0:s1 -> Node0x55e9b6a10240;
+	Node0x55e9b6a10240 [shape=record,penwidth=3.0, color="red",label="{if.then:                                          \l  %notifier = getelementptr inbounds %struct.AioContext, %struct.AioContext*\l... %ctx, i64 0, i32 9, !dbg !366\l  %call = tail call i32 @event_notifier_set(%struct.EventNotifier* nonnull\l... %notifier) #15, !dbg !368\l  %notified = getelementptr inbounds %struct.AioContext, %struct.AioContext*\l... %ctx, i64 0, i32 8, !dbg !369\l  %1 = atomicrmw xchg i8* %notified, i8 1 seq_cst, !dbg !369\l  br label %if.end, !dbg !372\l}"];
+	Node0x55e9b6a10240 -> Node0x55e9b6a10290;
+	Node0x55e9b6a10290 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.end:                                           \l  ret void, !dbg !373\l}"];
+}

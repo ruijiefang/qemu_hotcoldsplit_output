@@ -1,0 +1,10 @@
+digraph "CFG for 'i440fx_realize' function" {
+	label="CFG for 'i440fx_realize' function";
+
+	Node0x557ae65f8610 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  call void @llvm.dbg.value(metadata %struct.PCIDevice* %dev, metadata !1090,\l... metadata !DIExpression()), !dbg !1094\l  call void @llvm.dbg.value(metadata %struct.Error** %errp, metadata !1091,\l... metadata !DIExpression()), !dbg !1094\l  %config = getelementptr inbounds %struct.PCIDevice, %struct.PCIDevice* %dev,\l... i64 0, i32 2, !dbg !1095\l  %0 = load i8*, i8** %config, align 16, !dbg !1095\l  %arrayidx = getelementptr i8, i8* %0, i64 114, !dbg !1096\l  store i8 2, i8* %arrayidx, align 1, !dbg !1097\l  %call = tail call %struct.Object* @qdev_get_machine() #7, !dbg !1098\l  %call1 = tail call zeroext i1 @object_property_get_bool(%struct.Object*\l... %call, i8* getelementptr inbounds ([6 x i8], [6 x i8]* @.str.18, i64 0, i64\l... 0), %struct.Error** null) #7, !dbg !1100\l  br i1 %call1, label %if.then, label %if.end, !dbg !1101, !prof !1102\l|{<s0>T|<s1>F}}"];
+	Node0x557ae65f8610:s0 -> Node0x557ae66b9e30;
+	Node0x557ae65f8610:s1 -> Node0x557ae66bb4d0;
+	Node0x557ae66b9e30 [shape=record,penwidth=3.0, color="red",label="{if.then:                                          \l  tail call void (i8*, ...) @warn_report(i8* getelementptr inbounds ([38 x\l... i8], [38 x i8]* @.str.19, i64 0, i64 0)) #7, !dbg !1103\l  br label %if.end, !dbg !1105\l}"];
+	Node0x557ae66b9e30 -> Node0x557ae66bb4d0;
+	Node0x557ae66bb4d0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.end:                                           \l  ret void, !dbg !1106\l}"];
+}

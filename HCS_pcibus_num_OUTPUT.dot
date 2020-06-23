@@ -1,0 +1,10 @@
+digraph "CFG for 'pcibus_num' function" {
+	label="CFG for 'pcibus_num' function";
+
+	Node0x55ff9f175c80 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  call void @llvm.dbg.value(metadata %struct.PCIBus* %bus, metadata !1610,\l... metadata !DIExpression()), !dbg !1613\l  call void @llvm.dbg.value(metadata %struct.PCIBus* %bus, metadata !1614,\l... metadata !DIExpression()), !dbg !1619\l  %flags.i = getelementptr inbounds %struct.PCIBus, %struct.PCIBus* %bus, i64\l... 0, i32 1, !dbg !1622\l  %0 = load i32, i32* %flags.i, align 8, !dbg !1622\l  %and.i = and i32 %0, 1, !dbg !1623\l  %tobool.i = icmp eq i32 %and.i, 0, !dbg !1624\l  br i1 %tobool.i, label %if.end, label %return, !dbg !1625, !prof !1626\l|{<s0>T|<s1>F}}"];
+	Node0x55ff9f175c80:s0 -> Node0x55ff9f17b410;
+	Node0x55ff9f175c80:s1 -> Node0x55ff9f175db0;
+	Node0x55ff9f17b410 [shape=record,penwidth=3.0, color="red",label="{if.end:                                           \l  %parent_dev = getelementptr inbounds %struct.PCIBus, %struct.PCIBus* %bus,\l... i64 0, i32 11, !dbg !1627\l  %1 = load %struct.PCIDevice*, %struct.PCIDevice** %parent_dev, align 8, !dbg\l... !1627\l  %config = getelementptr inbounds %struct.PCIDevice, %struct.PCIDevice* %1,\l... i64 0, i32 2, !dbg !1628\l  %2 = load i8*, i8** %config, align 16, !dbg !1628\l  %arrayidx = getelementptr i8, i8* %2, i64 25, !dbg !1629\l  %3 = load i8, i8* %arrayidx, align 1, !dbg !1629\l  %conv = zext i8 %3 to i32, !dbg !1629\l  br label %return, !dbg !1630\l}"];
+	Node0x55ff9f17b410 -> Node0x55ff9f175db0;
+	Node0x55ff9f175db0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{return:                                           \l  %retval.0 = phi i32 [ %conv, %if.end ], [ 0, %entry ], !dbg !1613\l  ret i32 %retval.0, !dbg !1631\l}"];
+}

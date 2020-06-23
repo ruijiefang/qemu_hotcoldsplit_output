@@ -1,0 +1,12 @@
+digraph "CFG for 'qdev_prop_set_chr' function" {
+	label="CFG for 'qdev_prop_set_chr' function";
+
+	Node0x556c1842f510 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  call void @llvm.dbg.value(metadata %struct.DeviceState* %dev, metadata !896,\l... metadata !DIExpression()), !dbg !900\l  call void @llvm.dbg.value(metadata i8* %name, metadata !897, metadata\l... !DIExpression()), !dbg !900\l  call void @llvm.dbg.value(metadata %struct.Chardev* %value, metadata !898,\l... metadata !DIExpression()), !dbg !900\l  %tobool = icmp eq %struct.Chardev* %value, null, !dbg !901\l  br i1 %tobool, label %cond.end, label %lor.lhs.false, !dbg !901, !prof !904\l|{<s0>T|<s1>F}}"];
+	Node0x556c1842f510:s0 -> Node0x556c18519ad0;
+	Node0x556c1842f510:s1 -> Node0x556c18517bc0;
+	Node0x556c18517bc0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{lor.lhs.false:                                    \l  %label = getelementptr inbounds %struct.Chardev, %struct.Chardev* %value,\l... i64 0, i32 3, !dbg !901\l  %0 = load i8*, i8** %label, align 8, !dbg !901\l  %tobool1 = icmp eq i8* %0, null, !dbg !901\l  br i1 %tobool1, label %if.else, label %cond.end, !dbg !905, !prof !904\l|{<s0>T|<s1>F}}"];
+	Node0x556c18517bc0:s0 -> Node0x556c18517b50;
+	Node0x556c18517bc0:s1 -> Node0x556c18519ad0;
+	Node0x556c18517b50 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.else:                                          \l  tail call void @__assert_fail(i8* getelementptr inbounds ([23 x i8], [23 x\l... i8]* @.str.6, i64 0, i64 0), i8* getelementptr inbounds ([33 x i8], [33 x\l... i8]* @.str.7, i64 0, i64 0), i32 434, i8* getelementptr inbounds ([63 x i8],\l... [63 x i8]* @__PRETTY_FUNCTION__.qdev_prop_set_chr, i64 0, i64 0)) #7, !dbg\l... !901\l  unreachable, !dbg !901\l}"];
+	Node0x556c18519ad0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{cond.end:                                         \l  %cond = phi i8* [ getelementptr inbounds ([1 x i8], [1 x i8]* @.str.5, i64\l... 0, i64 0), %entry ], [ %0, %lor.lhs.false ], !dbg !906\l  %1 = getelementptr %struct.DeviceState, %struct.DeviceState* %dev, i64 0,\l... i32 0, !dbg !907\l  tail call void @object_property_set_str(%struct.Object* %1, i8* nonnull\l... %cond, i8* %name, %struct.Error** nonnull @error_abort) #8, !dbg !908\l  ret void, !dbg !909\l}"];
+}

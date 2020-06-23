@@ -1,0 +1,17 @@
+digraph "CFG for 'qapi_event_send_resume' function" {
+	label="CFG for 'qapi_event_send_resume' function";
+
+	Node0x55cc34794b30 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  %call = tail call %struct.QDict* @qmp_event_build_dict(i8* getelementptr\l... inbounds ([7 x i8], [7 x i8]* @.str.5, i64 0, i64 0)) #8, !dbg !201\l  call void @llvm.dbg.value(metadata %struct.QDict* %call, metadata !168,\l... metadata !DIExpression()), !dbg !202\l  tail call void @qapi_event_emit(i32 4, %struct.QDict* %call) #8, !dbg !203\l  call void @llvm.dbg.value(metadata %struct.QDict* %call, metadata !194,\l... metadata !DIExpression()), !dbg !204\l  %0 = bitcast %struct.QDict* %call to %struct.QObject*, !dbg !205\l  call void @llvm.dbg.value(metadata %struct.QObject* %0, metadata !206,\l... metadata !DIExpression()) #8, !dbg !211\l  %tobool.i = icmp eq %struct.QDict* %call, null, !dbg !213\l  br i1 %tobool.i, label %qobject_unref_impl.exit, label %lor.lhs.false.i,\l... !dbg !213, !prof !216\l|{<s0>T|<s1>F}}"];
+	Node0x55cc34794b30:s0 -> Node0x55cc3479e7c0;
+	Node0x55cc34794b30:s1 -> Node0x55cc347d1e20;
+	Node0x55cc347d1e20 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{lor.lhs.false.i:                                  \l  %1 = getelementptr inbounds %struct.QDict, %struct.QDict* %call, i64 0, i32\l... 0, i32 1, !dbg !213\l  %2 = load i64, i64* %1, align 8, !dbg !213\l  %tobool1.i = icmp eq i64 %2, 0, !dbg !213\l  br i1 %tobool1.i, label %if.else.i, label %land.lhs.true.i, !dbg !217, !prof\l... !216\l|{<s0>T|<s1>F}}"];
+	Node0x55cc347d1e20:s0 -> Node0x55cc34020d70;
+	Node0x55cc347d1e20:s1 -> Node0x55cc347a94a0;
+	Node0x55cc34020d70 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.else.i:                                        \l  tail call void @__assert_fail(i8* getelementptr inbounds ([25 x i8], [25 x\l... i8]* @.str.12, i64 0, i64 0), i8* getelementptr inbounds ([71 x i8], [71 x\l... i8]* @.str.13, i64 0, i64 0), i32 98, i8* getelementptr inbounds ([35 x i8],\l... [35 x i8]* @__PRETTY_FUNCTION__.qobject_unref_impl, i64 0, i64 0)) #9, !dbg\l... !213\l  unreachable, !dbg !213\l}"];
+	Node0x55cc347a94a0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{land.lhs.true.i:                                  \l  %dec.i = add i64 %2, -1, !dbg !218\l  store i64 %dec.i, i64* %1, align 8, !dbg !218\l  %cmp.i = icmp eq i64 %dec.i, 0, !dbg !220\l  br i1 %cmp.i, label %if.then5.i, label %qobject_unref_impl.exit, !dbg !221,\l... !prof !222\l|{<s0>T|<s1>F}}"];
+	Node0x55cc347a94a0:s0 -> Node0x55cc34796c10;
+	Node0x55cc347a94a0:s1 -> Node0x55cc3479e7c0;
+	Node0x55cc34796c10 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.then5.i:                                       \l  tail call void @qobject_destroy(%struct.QObject* nonnull %0) #8, !dbg !223\l  br label %qobject_unref_impl.exit, !dbg !225\l}"];
+	Node0x55cc34796c10 -> Node0x55cc3479e7c0;
+	Node0x55cc3479e7c0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{qobject_unref_impl.exit:                          \l  ret void, !dbg !226\l}"];
+}

@@ -1,0 +1,10 @@
+digraph "CFG for 'qemu_set_fd_handler' function" {
+	label="CFG for 'qemu_set_fd_handler' function";
+
+	Node0x564b1a935b10 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  call void @llvm.dbg.value(metadata i32 %fd, metadata !380, metadata\l... !DIExpression()), !dbg !385\l  call void @llvm.dbg.value(metadata void (i8*)* %fd_read, metadata !381,\l... metadata !DIExpression()), !dbg !385\l  call void @llvm.dbg.value(metadata void (i8*)* %fd_write, metadata !382,\l... metadata !DIExpression()), !dbg !385\l  call void @llvm.dbg.value(metadata i8* %opaque, metadata !383, metadata\l... !DIExpression()), !dbg !385\l  %0 = load %struct.AioContext*, %struct.AioContext** @iohandler_ctx, align 8,\l... !dbg !386\l  %tobool.i = icmp eq %struct.AioContext* %0, null, !dbg !386\l  br i1 %tobool.i, label %if.then.i, label %iohandler_init.exit, !dbg !391,\l... !prof !392\l|{<s0>T|<s1>F}}"];
+	Node0x564b1a935b10:s0 -> Node0x564b1a95f730;
+	Node0x564b1a935b10:s1 -> Node0x564b1a47f490;
+	Node0x564b1a95f730 [shape=record,penwidth=3.0, color="red",label="{if.then.i:                                        \l  %call.i = tail call %struct.AioContext* @aio_context_new(%struct.Error**\l... nonnull @error_abort) #14, !dbg !393\l  store %struct.AioContext* %call.i, %struct.AioContext** @iohandler_ctx,\l... align 8, !dbg !395\l  br label %iohandler_init.exit, !dbg !396\l}"];
+	Node0x564b1a95f730 -> Node0x564b1a47f490;
+	Node0x564b1a47f490 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{iohandler_init.exit:                              \l  %1 = phi %struct.AioContext* [ %0, %entry ], [ %call.i, %if.then.i ], !dbg\l... !397\l  tail call void @aio_set_fd_handler(%struct.AioContext* %1, i32 %fd, i1\l... zeroext false, void (i8*)* %fd_read, void (i8*)* %fd_write, i1 (i8*)* null,\l... i8* %opaque) #14, !dbg !398\l  ret void, !dbg !399\l}"];
+}

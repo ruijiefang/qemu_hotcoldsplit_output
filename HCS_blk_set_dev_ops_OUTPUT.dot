@@ -1,0 +1,13 @@
+digraph "CFG for 'blk_set_dev_ops' function" {
+	label="CFG for 'blk_set_dev_ops' function";
+
+	Node0x55d70fc1bb70 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  call void @llvm.dbg.value(metadata %struct.BlockBackend* %blk, metadata\l... !3090, metadata !DIExpression()), !dbg !3094\l  call void @llvm.dbg.value(metadata %struct.BlockDevOps* %ops, metadata\l... !3091, metadata !DIExpression()), !dbg !3094\l  call void @llvm.dbg.value(metadata i8* %opaque, metadata !3092, metadata\l... !DIExpression()), !dbg !3094\l  %dev_ops = getelementptr inbounds %struct.BlockBackend,\l... %struct.BlockBackend* %blk, i64 0, i32 9, !dbg !3095\l  store %struct.BlockDevOps* %ops, %struct.BlockDevOps** %dev_ops, align 8,\l... !dbg !3096\l  %dev_opaque = getelementptr inbounds %struct.BlockBackend,\l... %struct.BlockBackend* %blk, i64 0, i32 10, !dbg !3097\l  store i8* %opaque, i8** %dev_opaque, align 8, !dbg !3098\l  %quiesce_counter = getelementptr inbounds %struct.BlockBackend,\l... %struct.BlockBackend* %blk, i64 0, i32 27, !dbg !3099\l  %0 = load i32, i32* %quiesce_counter, align 8, !dbg !3099\l  %tobool = icmp eq i32 %0, 0, !dbg !3101\l  br i1 %tobool, label %if.end, label %land.lhs.true, !dbg !3102, !prof !3103\l|{<s0>T|<s1>F}}"];
+	Node0x55d70fc1bb70:s0 -> Node0x55d70fbcfef0;
+	Node0x55d70fc1bb70:s1 -> Node0x55d70fbcff60;
+	Node0x55d70fbcff60 [shape=record,penwidth=3.0, color="red",label="{land.lhs.true:                                    \l  %drained_begin = getelementptr inbounds %struct.BlockDevOps,\l... %struct.BlockDevOps* %ops, i64 0, i32 5, !dbg !3104\l  %1 = load void (i8*)*, void (i8*)** %drained_begin, align 8, !dbg !3104\l  %tobool1 = icmp eq void (i8*)* %1, null, !dbg !3105\l  br i1 %tobool1, label %if.end, label %if.then, !dbg !3106\l|{<s0>T|<s1>F}}"];
+	Node0x55d70fbcff60:s0 -> Node0x55d70fbcfef0;
+	Node0x55d70fbcff60:s1 -> Node0x55d70fbcfea0;
+	Node0x55d70fbcfea0 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#5977e370",label="{if.then:                                          \l  tail call void %1(i8* %opaque) #27, !dbg !3107\l  br label %if.end, !dbg !3109\l}"];
+	Node0x55d70fbcfea0 -> Node0x55d70fbcfef0;
+	Node0x55d70fbcfef0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.end:                                           \l  ret void, !dbg !3110\l}"];
+}

@@ -1,0 +1,10 @@
+digraph "CFG for 'vmstate_check_only_migratable' function" {
+	label="CFG for 'vmstate_check_only_migratable' function";
+
+	Node0x55b47a2986d0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  call void @llvm.dbg.value(metadata %struct.VMStateDescription* %vmsd,\l... metadata !1673, metadata !DIExpression()), !dbg !1675\l  %0 = load i32, i32* @only_migratable, align 4, !dbg !1676\l  %tobool = icmp eq i32 %0, 0, !dbg !1676\l  %tobool1 = icmp eq %struct.VMStateDescription* %vmsd, null, !dbg !1678\l  %or.cond = or i1 %tobool1, %tobool, !dbg !1679\l  br i1 %or.cond, label %return, label %land.rhs, !dbg !1679, !prof !1680\l|{<s0>T|<s1>F}}"];
+	Node0x55b47a2986d0:s0 -> Node0x55b47a298b80;
+	Node0x55b47a2986d0:s1 -> Node0x55b47a29b440;
+	Node0x55b47a29b440 [shape=record,penwidth=3.0, color="red",label="{land.rhs:                                         \l  %unmigratable = getelementptr inbounds %struct.VMStateDescription,\l... %struct.VMStateDescription* %vmsd, i64 0, i32 1, !dbg !1681\l  %1 = load i32, i32* %unmigratable, align 8, !dbg !1681\l  %tobool2 = icmp eq i32 %1, 0, !dbg !1682\l  br label %return\l}"];
+	Node0x55b47a29b440 -> Node0x55b47a298b80;
+	Node0x55b47a298b80 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{return:                                           \l  %retval.0 = phi i1 [ true, %entry ], [ %tobool2, %land.rhs ], !dbg !1675\l  ret i1 %retval.0, !dbg !1683\l}"];
+}

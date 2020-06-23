@@ -1,0 +1,10 @@
+digraph "CFG for 'replay_register_char_driver' function" {
+	label="CFG for 'replay_register_char_driver' function";
+
+	Node0x5561335dcee0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  call void @llvm.dbg.value(metadata %struct.Chardev* %chr, metadata !294,\l... metadata !DIExpression()), !dbg !296\l  %0 = load i32, i32* @replay_mode, align 4, !dbg !297\l  %cmp = icmp eq i32 %0, 0, !dbg !299\l  br i1 %cmp, label %return, label %if.end, !dbg !300, !prof !301\l|{<s0>T|<s1>F}}"];
+	Node0x5561335dcee0:s0 -> Node0x556133986c00;
+	Node0x5561335dcee0:s1 -> Node0x55613399de80;
+	Node0x55613399de80 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.end:                                           \l  %1 = load i8*, i8** bitcast (%struct.Chardev*** @char_drivers to i8**),\l... align 8, !dbg !302\l  %2 = load i32, i32* @drivers_count, align 4, !dbg !303\l  %add = add i32 %2, 1, !dbg !304\l  %conv = sext i32 %add to i64, !dbg !305\l  %mul = shl nsw i64 %conv, 3, !dbg !306\l  %call = tail call i8* @g_realloc(i8* %1, i64 %mul) #9, !dbg !307\l  %3 = bitcast i8* %call to %struct.Chardev**, !dbg !307\l  store i8* %call, i8** bitcast (%struct.Chardev*** @char_drivers to i8**),\l... align 8, !dbg !308\l  %4 = load i32, i32* @drivers_count, align 4, !dbg !309\l  %inc = add i32 %4, 1, !dbg !309\l  store i32 %inc, i32* @drivers_count, align 4, !dbg !309\l  %idxprom = sext i32 %4 to i64, !dbg !310\l  %arrayidx = getelementptr %struct.Chardev*, %struct.Chardev** %3, i64\l... %idxprom, !dbg !310\l  store %struct.Chardev* %chr, %struct.Chardev** %arrayidx, align 8, !dbg !311\l  br label %return, !dbg !312\l}"];
+	Node0x55613399de80 -> Node0x556133986c00;
+	Node0x556133986c00 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{return:                                           \l  ret void, !dbg !312\l}"];
+}

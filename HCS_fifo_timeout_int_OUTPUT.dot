@@ -1,0 +1,30 @@
+digraph "CFG for 'fifo_timeout_int' function" {
+	label="CFG for 'fifo_timeout_int' function";
+
+	Node0x5588d3d2e2d0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  call void @llvm.dbg.value(metadata i8* %opaque, metadata !964, metadata\l... !DIExpression()), !dbg !968\l  call void @llvm.dbg.value(metadata i8* %opaque, metadata !965, metadata\l... !DIExpression()), !dbg !968\l  %num = getelementptr inbounds i8, i8* %opaque, i64 272, !dbg !969\l  %0 = bitcast i8* %num to i32*, !dbg !969\l  %1 = load i32, i32* %0, align 16, !dbg !969\l  %tobool = icmp eq i32 %1, 0, !dbg !971\l  br i1 %tobool, label %if.end, label %if.then, !dbg !972, !prof !973\l|{<s0>T|<s1>F}}"];
+	Node0x5588d3d2e2d0:s0 -> Node0x5588d4125720;
+	Node0x5588d3d2e2d0:s1 -> Node0x5588d4128f30;
+	Node0x5588d4128f30 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.then:                                          \l  call void @llvm.dbg.value(metadata i8* %opaque, metadata !965, metadata\l... !DIExpression()), !dbg !968\l  %timeout_ipending = getelementptr inbounds i8, i8* %opaque, i64 320, !dbg\l... !974\l  %2 = bitcast i8* %timeout_ipending to i32*, !dbg !974\l  store i32 1, i32* %2, align 16, !dbg !976\l  call void @llvm.dbg.value(metadata i8* %opaque, metadata !977, metadata\l... !DIExpression()) #17, !dbg !983\l  call void @llvm.dbg.value(metadata i8 1, metadata !982, metadata\l... !DIExpression()) #17, !dbg !983\l  %3 = getelementptr inbounds i8, i8* %opaque, i64 141, !dbg !985\l  %4 = load i8, i8* %3, align 1, !dbg !985\l  %5 = and i8 %4, 4, !dbg !987\l  %tobool.i = icmp eq i8 %5, 0, !dbg !987\l  br i1 %tobool.i, label %if.else.i, label %land.lhs.true.i, !dbg !988, !prof\l... !989\l|{<s0>T|<s1>F}}"];
+	Node0x5588d4128f30:s0 -> Node0x5588d42c88d0;
+	Node0x5588d4128f30:s1 -> Node0x5588d4274b90;
+	Node0x5588d4274b90 [shape=record,penwidth=3.0, color="red",label="{land.lhs.true.i:                                  \l  %6 = getelementptr inbounds i8, i8* %opaque, i64 145, !dbg !990\l  %7 = load i8, i8* %6, align 1, !dbg !990\l  %8 = and i8 %7, 30, !dbg !991\l  %tobool3.i = icmp eq i8 %8, 0, !dbg !991\l  br i1 %tobool3.i, label %if.else.i, label %if.end49.i, !dbg !992, !prof !993\l|{<s0>T|<s1>F}}"];
+	Node0x5588d4274b90:s0 -> Node0x5588d42c88d0;
+	Node0x5588d4274b90:s1 -> Node0x5588d42b2250;
+	Node0x5588d42c88d0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.else.i:                                        \l  %9 = and i8 %4, 1, !dbg !994\l  %tobool7.i = icmp eq i8 %9, 0, !dbg !994\l  br i1 %tobool7.i, label %if.else28.i, label %if.end49.i, !dbg !996, !prof\l... !989\l|{<s0>T|<s1>F}}"];
+	Node0x5588d42c88d0:s0 -> Node0x5588d42b2030;
+	Node0x5588d42c88d0:s1 -> Node0x5588d42b2250;
+	Node0x5588d42b2030 [shape=record,color="#b70d28ff", style=filled, fillcolor="#be242e70",label="{if.else28.i:                                      \l  %10 = and i8 %4, 2, !dbg !997\l  %tobool32.i = icmp eq i8 %10, 0, !dbg !997\l  br i1 %tobool32.i, label %if.else36.i, label %land.lhs.true33.i, !dbg !1000,\l... !prof !1001\l|{<s0>T|<s1>F}}"];
+	Node0x5588d42b2030:s0 -> Node0x5588d4260930;
+	Node0x5588d42b2030:s1 -> Node0x5588d4146f10;
+	Node0x5588d4146f10 [shape=record,penwidth=3.0, color="red",label="{land.lhs.true33.i:                                \l  %thr_ipending.i = getelementptr inbounds i8, i8* %opaque, i64 152, !dbg !1002\l  %11 = bitcast i8* %thr_ipending.i to i32*, !dbg !1002\l  %12 = load i32, i32* %11, align 8, !dbg !1002\l  %tobool34.i = icmp eq i32 %12, 0, !dbg !1003\l  br i1 %tobool34.i, label %if.else36.i, label %if.end49.i, !dbg !1004, !prof\l... !1005\l|{<s0>T|<s1>F}}"];
+	Node0x5588d4146f10:s0 -> Node0x5588d4260930;
+	Node0x5588d4146f10:s1 -> Node0x5588d42b2250;
+	Node0x5588d4260930 [shape=record,color="#b70d28ff", style=filled, fillcolor="#be242e70",label="{if.else36.i:                                      \l  %13 = and i8 %4, 8, !dbg !1006\l  %tobool40.i = icmp eq i8 %13, 0, !dbg !1006\l  br i1 %tobool40.i, label %if.end49.i, label %land.lhs.true41.i, !dbg !1008,\l... !prof !1009\l|{<s0>T|<s1>F}}"];
+	Node0x5588d4260930:s0 -> Node0x5588d42b2250;
+	Node0x5588d4260930:s1 -> Node0x5588d4274920;
+	Node0x5588d4274920 [shape=record,penwidth=3.0, color="red",label="{land.lhs.true41.i:                                \l  %14 = getelementptr inbounds i8, i8* %opaque, i64 146, !dbg !1010\l  %15 = load i8, i8* %14, align 2, !dbg !1010\l  %16 = and i8 %15, 15, !dbg !1011\l  %tobool44.i = icmp eq i8 %16, 0, !dbg !1011\l  %spec.select.i = zext i1 %tobool44.i to i32, !dbg !1012\l  br label %if.end49.i, !dbg !1012\l}"];
+	Node0x5588d4274920 -> Node0x5588d42b2250;
+	Node0x5588d42b2250 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.end49.i:                                       \l  %tmp_iir.0.i = phi i32 [ 6, %land.lhs.true.i ], [ 2, %land.lhs.true33.i ], [\l... %spec.select.i, %land.lhs.true41.i ], [ 1, %if.else36.i ], [ 12, %if.else.i ]\l  call void @llvm.dbg.value(metadata i8 undef, metadata !982, metadata\l... !DIExpression()) #17, !dbg !983\l  %17 = getelementptr inbounds i8, i8* %opaque, i64 142, !dbg !1013\l  %18 = load i8, i8* %17, align 2, !dbg !1013\l  %19 = and i8 %18, -16, !dbg !1014\l  %20 = trunc i32 %tmp_iir.0.i to i8, !dbg !1015\l  %conv53.i = or i8 %19, %20, !dbg !1015\l  store i8 %conv53.i, i8* %17, align 2, !dbg !1016\l  %cmp56.i = icmp ne i32 %tmp_iir.0.i, 1, !dbg !1017\l  %irq.i = getelementptr inbounds i8, i8* %opaque, i64 160, !dbg !1019\l  %21 = bitcast i8* %irq.i to %struct.IRQState**, !dbg !1019\l  %22 = load %struct.IRQState*, %struct.IRQState** %21, align 16, !dbg !1019\l  %. = zext i1 %cmp56.i to i32\l  tail call void @qemu_set_irq(%struct.IRQState* %22, i32 %.) #17, !dbg !1019\l  br label %if.end, !dbg !1020\l}"];
+	Node0x5588d42b2250 -> Node0x5588d4125720;
+	Node0x5588d4125720 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.end:                                           \l  ret void, !dbg !1020\l}"];
+}

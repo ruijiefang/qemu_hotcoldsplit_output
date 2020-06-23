@@ -1,0 +1,25 @@
+digraph "CFG for 'update_flags_from_options' function" {
+	label="CFG for 'update_flags_from_options' function";
+
+	Node0x55906e6896f0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  call void @llvm.dbg.value(metadata i32* %flags, metadata !2834, metadata\l... !DIExpression()), !dbg !2838\l  call void @llvm.dbg.value(metadata %struct.QemuOpts* %opts, metadata !2835,\l... metadata !DIExpression()), !dbg !2838\l  %0 = load i32, i32* %flags, align 4, !dbg !2839\l  %and = and i32 %0, -131619, !dbg !2839\l  store i32 %and, i32* %flags, align 4, !dbg !2839\l  %call = tail call zeroext i1 @qemu_opt_get_bool_del(%struct.QemuOpts* %opts,\l... i8* getelementptr inbounds ([15 x i8], [15 x i8]* @.str.46, i64 0, i64 0), i1\l... zeroext false) #30, !dbg !2840\l  br i1 %call, label %if.then, label %if.end, !dbg !2842, !prof !2843\l|{<s0>T|<s1>F}}"];
+	Node0x55906e6896f0:s0 -> Node0x55906e6276b0;
+	Node0x55906e6896f0:s1 -> Node0x55906e627700;
+	Node0x55906e6276b0 [shape=record,penwidth=3.0, color="red",label="{if.then:                                          \l  %1 = load i32, i32* %flags, align 4, !dbg !2844\l  %or = or i32 %1, 512, !dbg !2844\l  store i32 %or, i32* %flags, align 4, !dbg !2844\l  br label %if.end, !dbg !2846\l}"];
+	Node0x55906e6276b0 -> Node0x55906e627700;
+	Node0x55906e627700 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.end:                                           \l  %call1 = tail call zeroext i1 @qemu_opt_get_bool_del(%struct.QemuOpts*\l... %opts, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.44, i64 0, i64\l... 0), i1 zeroext false) #30, !dbg !2847\l  br i1 %call1, label %if.then2, label %if.end4, !dbg !2849, !prof !2843\l|{<s0>T|<s1>F}}"];
+	Node0x55906e627700:s0 -> Node0x55906e6279b0;
+	Node0x55906e627700:s1 -> Node0x55906e628a20;
+	Node0x55906e6279b0 [shape=record,penwidth=3.0, color="red",label="{if.then2:                                         \l  %2 = load i32, i32* %flags, align 4, !dbg !2850\l  %or3 = or i32 %2, 32, !dbg !2850\l  store i32 %or3, i32* %flags, align 4, !dbg !2850\l  br label %if.end4, !dbg !2852\l}"];
+	Node0x55906e6279b0 -> Node0x55906e628a20;
+	Node0x55906e628a20 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.end4:                                          \l  %call5 = tail call zeroext i1 @qemu_opt_get_bool_del(%struct.QemuOpts*\l... %opts, i8* getelementptr inbounds ([10 x i8], [10 x i8]* @.str.48, i64 0, i64\l... 0), i1 zeroext false) #30, !dbg !2853\l  br i1 %call5, label %if.end8, label %if.then6, !dbg !2855, !prof !2843\l|{<s0>T|<s1>F}}"];
+	Node0x55906e628a20:s0 -> Node0x55906e690ae0;
+	Node0x55906e628a20:s1 -> Node0x55906e690a70;
+	Node0x55906e690a70 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.then6:                                         \l  %3 = load i32, i32* %flags, align 4, !dbg !2856\l  %or7 = or i32 %3, 2, !dbg !2856\l  store i32 %or7, i32* %flags, align 4, !dbg !2856\l  br label %if.end8, !dbg !2858\l}"];
+	Node0x55906e690a70 -> Node0x55906e690ae0;
+	Node0x55906e690ae0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.end8:                                          \l  %call9 = tail call zeroext i1 @qemu_opt_get_bool_del(%struct.QemuOpts*\l... %opts, i8* getelementptr inbounds ([15 x i8], [15 x i8]* @.str.50, i64 0, i64\l... 0), i1 zeroext false) #30, !dbg !2859\l  br i1 %call9, label %if.then10, label %if.end12, !dbg !2861, !prof !2862\l|{<s0>T|<s1>F}}"];
+	Node0x55906e690ae0:s0 -> Node0x55906e691210;
+	Node0x55906e690ae0:s1 -> Node0x55906e691280;
+	Node0x55906e691210 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.then10:                                        \l  %4 = load i32, i32* %flags, align 4, !dbg !2863\l  %or11 = or i32 %4, 131072, !dbg !2863\l  store i32 %or11, i32* %flags, align 4, !dbg !2863\l  br label %if.end12, !dbg !2865\l}"];
+	Node0x55906e691210 -> Node0x55906e691280;
+	Node0x55906e691280 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{if.end12:                                         \l  ret void, !dbg !2866\l}"];
+}

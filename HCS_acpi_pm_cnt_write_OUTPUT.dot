@@ -1,0 +1,21 @@
+digraph "CFG for 'acpi_pm_cnt_write' function" {
+	label="CFG for 'acpi_pm_cnt_write' function";
+
+	Node0x561dc7834190 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  call void @llvm.dbg.value(metadata i8* %opaque, metadata !451, metadata\l... !DIExpression()), !dbg !457\l  call void @llvm.dbg.value(metadata i64 %addr, metadata !452, metadata\l... !DIExpression()), !dbg !457\l  call void @llvm.dbg.value(metadata i64 %val, metadata !453, metadata\l... !DIExpression()), !dbg !457\l  call void @llvm.dbg.value(metadata i32 %width, metadata !454, metadata\l... !DIExpression()), !dbg !457\l  %conv = trunc i64 %val to i16, !dbg !458\l  call void @llvm.dbg.value(metadata i8* %opaque, metadata !459, metadata\l... !DIExpression()) #22, !dbg !468\l  call void @llvm.dbg.value(metadata i16 %conv, metadata !464, metadata\l... !DIExpression()) #22, !dbg !468\l  %and.i = and i16 %conv, -8193, !dbg !470\l  %cnt2.i = getelementptr inbounds i8, i8* %opaque, i64 800, !dbg !471\l  %0 = bitcast i8* %cnt2.i to i16*, !dbg !471\l  store i16 %and.i, i16* %0, align 16, !dbg !472\l  %1 = and i16 %conv, 8192, !dbg !473\l  %tobool.i = icmp eq i16 %1, 0, !dbg !473\l  br i1 %tobool.i, label %acpi_pm1_cnt_write.exit, label %if.then.i, !dbg\l... !474, !prof !475\l|{<s0>T|<s1>F}}"];
+	Node0x561dc7834190:s0 -> Node0x561dc786db70;
+	Node0x561dc7834190:s1 -> Node0x561dc78b4590;
+	Node0x561dc78b4590 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#c32e3170",label="{if.then.i:                                        \l  %2 = lshr i16 %conv, 10, !dbg !476\l  %and6.i = and i16 %2, 7, !dbg !477\l  call void @llvm.dbg.value(metadata i16 %and6.i, metadata !465, metadata\l... !DIExpression()) #22, !dbg !478\l  %conv8.i = zext i16 %and6.i to i32, !dbg !479\l  switch i32 %conv8.i, label %sw.default.i [\l    i32 0, label %sw.bb.i\l    i32 1, label %sw.bb9.i\l  ], !dbg !480, !prof !481\l|{<s0>def|<s1>0|<s2>1}}"];
+	Node0x561dc78b4590:s0 -> Node0x561dc789f310;
+	Node0x561dc78b4590:s1 -> Node0x561dc7813900;
+	Node0x561dc78b4590:s2 -> Node0x561dc78c2160;
+	Node0x561dc7813900 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#c32e3170",label="{sw.bb.i:                                          \l  tail call void @qemu_system_shutdown_request(i32 6) #22, !dbg !482\l  br label %acpi_pm1_cnt_write.exit, !dbg !484\l}"];
+	Node0x561dc7813900 -> Node0x561dc786db70;
+	Node0x561dc78c2160 [shape=record,penwidth=3.0, color="red",label="{sw.bb9.i:                                         \l  tail call void @qemu_system_suspend_request() #22, !dbg !485\l  br label %acpi_pm1_cnt_write.exit, !dbg !486\l}"];
+	Node0x561dc78c2160 -> Node0x561dc786db70;
+	Node0x561dc789f310 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{sw.default.i:                                     \l  %3 = getelementptr inbounds i8, i8* %opaque, i64 802, !dbg !487\l  %4 = load i8, i8* %3, align 2, !dbg !487\l  %5 = zext i8 %4 to i16, !dbg !489\l  %cmp.i = icmp eq i16 %and6.i, %5, !dbg !489\l  br i1 %cmp.i, label %if.then15.i, label %acpi_pm1_cnt_write.exit, !dbg !490\l|{<s0>T|<s1>F}}"];
+	Node0x561dc789f310:s0 -> Node0x561dc789ebd0;
+	Node0x561dc789f310:s1 -> Node0x561dc786db70;
+	Node0x561dc789ebd0 [shape=record,penwidth=3.0, style="filled", color="red", fillcolor="yellow",label="{if.then15.i:                                      \l  tail call void @qapi_event_send_suspend_disk() #22, !dbg !491\l  tail call void @qemu_system_shutdown_request(i32 6) #22, !dbg !493\l  br label %acpi_pm1_cnt_write.exit, !dbg !494\l}"];
+	Node0x561dc789ebd0 -> Node0x561dc786db70;
+	Node0x561dc786db70 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{acpi_pm1_cnt_write.exit:                          \l  ret void, !dbg !495\l}"];
+}
